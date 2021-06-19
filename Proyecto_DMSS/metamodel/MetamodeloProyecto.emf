@@ -1,0 +1,157 @@
+@gmf(foo="bar")
+@"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
+@namespace(uri="http://DataWebDeskDSL.com", prefix="DataWebDeskDSL")
+package DataWebDeskDSL;
+
+@gmf.diagram(foo="bar", diagram.extension="DMSS")
+@Ecore(constraints="idRedSocialNombre idRedSocialID idPagina idRol idURLExterna idEntidadID idEntidadNombre unaPrincipalR1 algunaRSR5")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(idRedSocialNombre="self.redsocial->isUnique(nombre)", idRedSocialID="self.redsocial->isUnique(ID_RedSocial)", idPagina="self.pagina->isUnique(TituloPag)", idRol="self.rol->isUnique(NombreRol)", idURLExterna="self.urlexterna->isUnique(Link)", idEntidadID="self.entidad->isUnique(ID_Entidad)", idEntidadNombre="self.entidad->isUnique(nombreEntidad)", unaPrincipalR1="self.pagina->selectByType(PaginaPrincipal)->size()=1", algunaRSR5="self.pagina.muestra->size() > 0")
+class DataWebDesk {
+	val Pagina[*] pagina;
+	val Rol[*] rol;
+	val Entidad[*] entidad;
+	attr String[1] nombreAplicacion;
+
+	@GenModel(documentation="D03")
+	@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(derivation="if(self.rol->size()=0) then 0
+			else self.rol.numeroPaginasAccesiblesD1->sum() / self.rol->size()
+			endif")
+	volatile transient derived attr float[1] paginasMediasAccesiblesD3;
+	val RedSocial[*] redsocial;
+	val URLExterna[*] urlexterna;
+}
+
+@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/pagina.svg", label.icon="false", label.placement="external")
+@Ecore(constraints="noPagAisladaR2")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(noPagAisladaR2="self->closure(accede).accedida_por -> size() > 0")
+abstract class Pagina {
+	ref Pagina[*]#accede accedida;
+
+	@gmf.link(source="accede", target="accedida", label="accede", target.decoration="arrow")
+	ref Pagina[*]#accedida accede;
+	attr String[1] TituloPag;
+	ref URLExterna[*]#pagina urlexterna;
+	ref RedSocial[*]#mostrada muestra;
+	ref Rol[*]#tiene_acceso accedida_por;
+}
+
+class PaginasNormales extends Pagina {
+	attr String[+] Texto;
+	attr String[*] Multimedia;
+}
+
+@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg", label.icon="false", label.placement="external")
+@Ecore(constraints="CRUDNoSuelta")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(CRUDNoSuelta="self.tiene_asociada->size()>0 or self.accede->selectByType(CRUD)->size()>0")
+abstract class PagCRUD extends Pagina {
+	ref Entidad#asociada tiene_asociada;
+}
+
+@gmf.node(label="nombreEntidad", border.color="0,0,0")
+@Ecore(constraints="idCaracteristica soloCRUDR3 indiceDetalleR4 detalleIndiceR4 noSelfRefR6 noBidireccionalRefR7")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(idCaracteristica="self.caracteristica->isUnique(nombreCaract)", soloCRUDR3="self.asociada->select(p: PagCRUD | p.oclIsTypeOf(CRUD))->size() > 0 implies self.asociada->size()=1", indiceDetalleR4="self.asociada->select(p: PagCRUD | p.oclIsTypeOf(PagIndice)) -> size() > 0 implies self.asociada->select(p: PagCRUD | p.oclIsTypeOf(PagLeer)) -> size() = 1 ", detalleIndiceR4="self.asociada->select(p: PagCRUD | p.oclIsTypeOf(PagLeer)) -> size() > 0 implies self.asociada->select(p: PagCRUD | p.oclIsTypeOf(PagIndice)) -> size() = 1 ", noSelfRefR6="self.esta_relacionada->excludes(self)", noBidireccionalRefR7=" self.relacionada->closure(relacionada)->excludes(self)")
+class Entidad {
+
+	@gmf.compartment(layout="list")
+	val CaracteristicaEntidad[*] caracteristica;
+
+	@gmf.link(source="tiene_asociada", target="asociada", label="CRUD asociada", target.decoration="arrow")
+	ref PagCRUD[*]#tiene_asociada asociada;
+	attr int[1] ID_Entidad;
+
+	@gmf.link(source="esta_en", target="clave_primaria", label="clave_primaria", target.decoration="arrow")
+	ref CaracteristicaEntidad[1]#esta_en clave_primaria;
+	attr String[1] nombreEntidad;
+
+	@gmf.link(source="relacionada", target="esta_relacionada", label="relacionada", target.decoration="arrow")
+	ref Entidad[*]#esta_relacionada relacionada;
+	ref Entidad[*]#relacionada esta_relacionada;
+}
+
+@gmf.node(label="nombreCaract", figure="rectangle", label.icon="true")
+class CaracteristicaEntidad {
+	attr String[1] nombreCaract;
+	attr TipoDato TDato;
+	ref Entidad#clave_primaria esta_en;
+}
+
+class PagCrear extends PagCRUD {
+}
+
+class PagLeer extends PagCRUD {
+}
+
+class PagBorrar extends PagCRUD {
+}
+
+class PagActualizar extends PagCRUD {
+}
+
+@gmf.node(label="NombreRol", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/rol.svg", label.icon="false", label.placement="external")
+class Rol {
+	attr String[1] NombreRol;
+
+	@GenModel(documentation="D01")
+	@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(derivation="self.tiene_acceso->closure(accede)->size()")
+	volatile transient derived attr int[1] numeroPaginasAccesiblesD1;
+
+	@GenModel(documentation="D02")
+	@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(derivation="if(self.tiene_acceso->size() = 0) then 0
+					else self.tiene_acceso->selectByType(PagCRUD).tiene_asociada->asSet()->size()
+					endif")
+	volatile transient derived attr int[1] numeroEntidadesAccesiblesD2;
+
+	@gmf.link(source="accedida_por", target="tiene_acceso", label="tiene_acceso", target.decoration="arrow")
+	ref Pagina[*]#accedida_por tiene_acceso;
+}
+
+@gmf.node(label="nombre", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg", label.icon="false", label.placement="external")
+abstract class RedSocial {
+	attr tipoContenido TipoCont;
+	attr int[1] ID_RedSocial;
+
+	@gmf.link(source="muestra", target="mostrada", label="mostrada_en", target.decoration="arrow")
+	ref Pagina[*]#muestra mostrada;
+	attr String[1] nombre;
+}
+
+class Twitter extends RedSocial {
+}
+
+class Facebook extends RedSocial {
+}
+
+class PagIndice extends PagCRUD {
+}
+
+enum TipoDato {
+	INTEGER = 0;
+	BOOLEAN = 1;
+	STRING = 2;
+}
+
+class CRUD extends PagCRUD {
+}
+
+enum tipoContenido {
+	TEXTO = 0;
+	MULTIMEDIA = 1;
+}
+
+@gmf.node(label="Link", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/link.svg", label.icon="false", label.placement="external")
+class URLExterna {
+
+	@gmf.link(source="urlexterna", target="pagina", label="enlazada_en", target.decoration="arrow")
+	ref Pagina[*]#urlexterna pagina;
+	attr String[1] Link;
+	attr String[1] nombreWeb;
+}
+
+@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/home.svg", label.icon="false", label.placement="external")
+class PaginaPrincipal extends Pagina {
+}
+
+class RSS extends RedSocial {
+}
+

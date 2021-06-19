@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataWebDeskDSL:DataWebDesk xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataWebDeskDSL="http://DataWebDeskDSL.com" nombreAplicacion="DWD">
+  <pagina xsi:type="DataWebDeskDSL:PaginaPrincipal" accedida="//@pagina.1" accede="//@pagina.1" TituloPag="index" accedida_por="//@rol.0"/>
+  <pagina xsi:type="DataWebDeskDSL:PaginasNormales" accedida="//@pagina.0 //@pagina.2" accede="//@pagina.2 //@pagina.0" TituloPag="LleiviPagina" urlexterna="//@urlexterna.0" muestra="//@redsocial.0">
+    <Texto>DMSS pa julio</Texto>
+  </pagina>
+  <pagina xsi:type="DataWebDeskDSL:CRUD" accedida="//@pagina.1 //@pagina.3" accede="//@pagina.1 //@pagina.3" TituloPag="CRUD Lleivi" tiene_asociada="//@entidad.0"/>
+  <pagina xsi:type="DataWebDeskDSL:PagIndice" accedida="//@pagina.2" accede="//@pagina.2" TituloPag="IndiceLlivi"/>
+  <rol NombreRol="Admin" tiene_acceso="//@pagina.0"/>
+  <entidad asociada="//@pagina.2" clave_primaria="//@entidad.0/@caracteristica.0" nombreEntidad="Lleivi" relacionada="//@entidad.1">
+    <caracteristica nombreCaract="ID" esta_en="//@entidad.0"/>
+    <caracteristica nombreCaract="IP"/>
+  </entidad>
+  <entidad ID_Entidad="1" clave_primaria="//@entidad.1/@caracteristica.0" nombreEntidad="Alberto" esta_relacionada="//@entidad.0">
+    <caracteristica nombreCaract="Id" esta_en="//@entidad.1"/>
+  </entidad>
+  <redsocial xsi:type="DataWebDeskDSL:Facebook" mostrada="//@pagina.1" nombre="Facebook Lleivi"/>
+  <urlexterna pagina="//@pagina.1" Link="http://lleivi.com" nombreWeb="LleiviWeb"/>
+</DataWebDeskDSL:DataWebDesk>

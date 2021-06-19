@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="DataWebDeskDSL">
+  <figures name="Default">
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="PaginaAccedeFigureTargetDecoration"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="EntidadAsociadaFigureTargetDecoration"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="EntidadClave_primariaFigureTargetDecoration"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="EntidadRelacionadaFigureTargetDecoration"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="RolTiene_accesoFigureTargetDecoration"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="RedSocialMostradaFigureTargetDecoration"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="URLExternaPaginaFigureTargetDecoration"/>
+    <descriptors name="PaginasNormalesFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PaginasNormalesFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/pagina.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="PaginasNormalesLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PaginasNormalesLabelFigure" text="PaginasNormales"/>
+    </descriptors>
+    <descriptors name="EntidadFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="EntidadFigure">
+        <foregroundColor xsi:type="gmfgraph:RGBColor"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="EntidadLabelFigure" text="Entidad">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Rectangle" name="EntidadCaracteristicaCompartmentFigure" outline="false"/>
+      </actualFigure>
+      <accessors accessor="getFigureEntidadLabelFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+      <accessors accessor="getEntidadCaracteristicaCompartmentFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors name="CaracteristicaEntidadFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="CaracteristicaEntidadFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="CaracteristicaEntidadLabelFigure" text="CaracteristicaEntidad"/>
+      </actualFigure>
+      <accessors accessor="getFigureCaracteristicaEntidadLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="PagCrearFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagCrearFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="PagCrearLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PagCrearLabelFigure" text="PagCrear"/>
+    </descriptors>
+    <descriptors name="PagLeerFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagLeerFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="PagLeerLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PagLeerLabelFigure" text="PagLeer"/>
+    </descriptors>
+    <descriptors name="PagBorrarFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagBorrarFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="PagBorrarLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PagBorrarLabelFigure" text="PagBorrar"/>
+    </descriptors>
+    <descriptors name="PagActualizarFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagActualizarFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="PagActualizarLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PagActualizarLabelFigure" text="PagActualizar"/>
+    </descriptors>
+    <descriptors name="RolFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="RolFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/rol.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="RolLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="RolLabelFigure" text="Rol"/>
+    </descriptors>
+    <descriptors name="TwitterFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="TwitterFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="TwitterLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="TwitterLabelFigure" text="Twitter"/>
+    </descriptors>
+    <descriptors name="FacebookFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="FacebookFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="FacebookLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="FacebookLabelFigure" text="Facebook"/>
+    </descriptors>
+    <descriptors name="PagIndiceFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagIndiceFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="PagIndiceLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PagIndiceLabelFigure" text="PagIndice"/>
+    </descriptors>
+    <descriptors name="CRUDFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="CRUDFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="CRUDLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="CRUDLabelFigure" text="CRUD"/>
+    </descriptors>
+    <descriptors name="URLExternaFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="URLExternaFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/link.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="URLExternaLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="URLExternaLabelFigure" text="URLExterna"/>
+    </descriptors>
+    <descriptors name="PaginaPrincipalFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PaginaPrincipalFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/home.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="PaginaPrincipalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PaginaPrincipalLabelFigure" text="PaginaPrincipal"/>
+    </descriptors>
+    <descriptors name="RSSFigure">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="RSSFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="RSSLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="RSSLabelFigure" text="RSS"/>
+    </descriptors>
+    <descriptors name="PaginaAccedeFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="PaginaAccedeFigure" targetDecoration="//@figures.0/@figures.0"/>
+    </descriptors>
+    <descriptors name="PaginaAccedeExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PaginaAccedeExternalLabel" text="accede"/>
+    </descriptors>
+    <descriptors name="EntidadAsociadaFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="EntidadAsociadaFigure" targetDecoration="//@figures.0/@figures.1"/>
+    </descriptors>
+    <descriptors name="EntidadAsociadaExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="EntidadAsociadaExternalLabel" text="CRUD asociada"/>
+    </descriptors>
+    <descriptors name="EntidadClave_primariaFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="EntidadClave_primariaFigure" targetDecoration="//@figures.0/@figures.2"/>
+    </descriptors>
+    <descriptors name="EntidadClave_primariaExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="EntidadClave_primariaExternalLabel" text="clave_primaria"/>
+    </descriptors>
+    <descriptors name="EntidadRelacionadaFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="EntidadRelacionadaFigure" targetDecoration="//@figures.0/@figures.3"/>
+    </descriptors>
+    <descriptors name="EntidadRelacionadaExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="EntidadRelacionadaExternalLabel" text="relacionada"/>
+    </descriptors>
+    <descriptors name="RolTiene_accesoFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="RolTiene_accesoFigure" targetDecoration="//@figures.0/@figures.4"/>
+    </descriptors>
+    <descriptors name="RolTiene_accesoExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="RolTiene_accesoExternalLabel" text="tiene_acceso"/>
+    </descriptors>
+    <descriptors name="RedSocialMostradaFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="RedSocialMostradaFigure" targetDecoration="//@figures.0/@figures.5"/>
+    </descriptors>
+    <descriptors name="RedSocialMostradaExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="RedSocialMostradaExternalLabel" text="mostrada_en"/>
+    </descriptors>
+    <descriptors name="URLExternaPaginaFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="URLExternaPaginaFigure" targetDecoration="//@figures.0/@figures.6"/>
+    </descriptors>
+    <descriptors name="URLExternaPaginaExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="URLExternaPaginaExternalLabel" text="enlazada_en"/>
+    </descriptors>
+  </figures>
+  <nodes name="PaginasNormales" figure="PaginasNormalesFigure"/>
+  <nodes name="Entidad" figure="EntidadFigure"/>
+  <nodes name="CaracteristicaEntidad" figure="CaracteristicaEntidadFigure"/>
+  <nodes name="PagCrear" figure="PagCrearFigure"/>
+  <nodes name="PagLeer" figure="PagLeerFigure"/>
+  <nodes name="PagBorrar" figure="PagBorrarFigure"/>
+  <nodes name="PagActualizar" figure="PagActualizarFigure"/>
+  <nodes name="Rol" figure="RolFigure"/>
+  <nodes name="Twitter" figure="TwitterFigure"/>
+  <nodes name="Facebook" figure="FacebookFigure"/>
+  <nodes name="PagIndice" figure="PagIndiceFigure"/>
+  <nodes name="CRUD" figure="CRUDFigure"/>
+  <nodes name="URLExterna" figure="URLExternaFigure"/>
+  <nodes name="PaginaPrincipal" figure="PaginaPrincipalFigure"/>
+  <nodes name="RSS" figure="RSSFigure"/>
+  <connections name="PaginaAccede" figure="PaginaAccedeFigure"/>
+  <connections name="EntidadAsociada" figure="EntidadAsociadaFigure"/>
+  <connections name="EntidadClave_primaria" figure="EntidadClave_primariaFigure"/>
+  <connections name="EntidadRelacionada" figure="EntidadRelacionadaFigure"/>
+  <connections name="RolTiene_acceso" figure="RolTiene_accesoFigure"/>
+  <connections name="RedSocialMostrada" figure="RedSocialMostradaFigure"/>
+  <connections name="URLExternaPagina" figure="URLExternaPaginaFigure"/>
+  <compartments name="EntidadCaracteristicaCompartment" figure="EntidadFigure" collapsible="true" accessor="//@figures.0/@descriptors.2/@accessors.1"/>
+  <labels name="PaginasNormalesLabel" figure="PaginasNormalesLabelFigure" elementIcon="false"/>
+  <labels name="EntidadLabel" figure="EntidadFigure" accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels name="CaracteristicaEntidadLabel" figure="CaracteristicaEntidadFigure" accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels name="PagCrearLabel" figure="PagCrearLabelFigure" elementIcon="false"/>
+  <labels name="PagLeerLabel" figure="PagLeerLabelFigure" elementIcon="false"/>
+  <labels name="PagBorrarLabel" figure="PagBorrarLabelFigure" elementIcon="false"/>
+  <labels name="PagActualizarLabel" figure="PagActualizarLabelFigure" elementIcon="false"/>
+  <labels name="RolLabel" figure="RolLabelFigure" elementIcon="false"/>
+  <labels name="TwitterLabel" figure="TwitterLabelFigure" elementIcon="false"/>
+  <labels name="FacebookLabel" figure="FacebookLabelFigure" elementIcon="false"/>
+  <labels name="PagIndiceLabel" figure="PagIndiceLabelFigure" elementIcon="false"/>
+  <labels name="CRUDLabel" figure="CRUDLabelFigure" elementIcon="false"/>
+  <labels name="URLExternaLabel" figure="URLExternaLabelFigure" elementIcon="false"/>
+  <labels name="PaginaPrincipalLabel" figure="PaginaPrincipalLabelFigure" elementIcon="false"/>
+  <labels name="RSSLabel" figure="RSSLabelFigure" elementIcon="false"/>
+  <labels name="PaginaAccedeExternalLabel" figure="PaginaAccedeExternalLabelFigure" elementIcon="false"/>
+  <labels name="EntidadAsociadaExternalLabel" figure="EntidadAsociadaExternalLabelFigure" elementIcon="false"/>
+  <labels name="EntidadClave_primariaExternalLabel" figure="EntidadClave_primariaExternalLabelFigure" elementIcon="false"/>
+  <labels name="EntidadRelacionadaExternalLabel" figure="EntidadRelacionadaExternalLabelFigure" elementIcon="false"/>
+  <labels name="RolTiene_accesoExternalLabel" figure="RolTiene_accesoExternalLabelFigure" elementIcon="false"/>
+  <labels name="RedSocialMostradaExternalLabel" figure="RedSocialMostradaExternalLabelFigure" elementIcon="false"/>
+  <labels name="URLExternaPaginaExternalLabel" figure="URLExternaPaginaExternalLabelFigure" elementIcon="false"/>
+</gmfgraph:Canvas>

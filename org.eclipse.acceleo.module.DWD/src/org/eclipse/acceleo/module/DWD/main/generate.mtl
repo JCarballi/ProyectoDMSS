@@ -1,0 +1,356 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate.
+ */]
+[module generate('http://DataWebDeskDSL.com')]
+
+
+[**
+ * The documentation of the template generateDataWebDesk.
+ * @param aDataWebDesk
+ */]
+[template public generate(aDataWebDesk : DataWebDesk)]
+[comment @main/]
+[file ('index.html', false, 'UTF-8')]
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aDataWebDesk.nombreAplicacion/]</title>
+</head>
+
+<body>
+
+<p>Nombre de la aplicación: [aDataWebDesk.nombreAplicacion/]</p>
+<br>
+<p>Roles de acceso a la información:</p>
+<br>
+
+<ol type="1">
+	<li>Salir</li>
+[for (r: Rol | aDataWebDesk.rol)]
+	[generate(r)/]
+	<li><a href="[r.NombreRol/]/index_[r.NombreRol/].html">[r.NombreRol/]</a></li>
+[/for]
+</ol>
+
+HAY QUE ELIMINARLO TODO
+[for (r: Rol | aDataWebDesk.rol)]
+[for (p: Pagina | aDataWebDesk.pagina)]
+	[if (p.oclIsKindOf(PagCRUD))]
+	[generatePage(r,p)/]
+	[else]
+	[generatePage(p)/]
+	[/if]
+[/for]
+[/for]
+
+</body>
+</html>
+[/file]
+[/template]
+
+[template public generateRRSS (aPagina : Pagina)]
+<p>Redes sociales:</p>
+
+<ul>
+[for (rs: RedSocial | aPagina.muestra)]
+<li><a class="twitter-timeline" href="https://twitter.com/[rs.nombre/]?ref_src=twsrc%5Etfw">Tweets by [rs.nombre/]</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+[/for]
+</ul>
+
+<ul>
+[for (url: URLExterna | aPagina.urlexterna)]
+<li> <p>Web: Enlaces externos: <a href="[aPagina.urlexterna.Link/]">[aPagina.urlexterna.nombreWeb/]</a> </li>
+[/for]
+</ul>	
+[/template]
+
+[template public generate (aRol : Rol)]
+[file (aRol.NombreRol+'/index_'+aRol.NombreRol+'.html', false, 'UTF-8')]
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aRol.NombreRol/]</title>
+</head>
+
+<body>
+
+<p>Pantalla principal de Rol [aRol.NombreRol/]</p>
+
+<p>Listado de páginas a las que tiene acceso:</p>
+
+<ol type="1">
+	<li>Salir</li>
+[for (p: Pagina | aRol.tiene_acceso.oclAsType(Pagina)->closure(accede))]
+	[if(p.oclIsTypeOf(PagCRUD))]
+		[generatePage(aRol, p)/]
+		<li><a href="[p->selectByType(PagCRUD).tiene_asociada.nombreEntidad/].html">[p->selectByType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]</a></li>
+	[/if]
+[/for]
+[for (p: Pagina | aRol.tiene_acceso->closure(self.tiene_acceso.accede)->excluding(aRol.tiene_acceso->selectByType(PagCRUD)))]
+	<li><a href="">[p.TituloPag/]</a></li>
+	<br>
+[/for]
+</ol>
+
+
+</body>
+</html>
+[/file]
+[/template]
+
+[template public generatePage (aRol : Rol, aPagina : Pagina)]
+
+	[if (aPagina.oclIsKindOf(PagIndice))]
+		[generatePage(aPagina.oclAsType(PagIndice))/] 
+	[/if]
+	[if (aPagina.oclIsKindOf(PagLeer))]
+		[generatePage(aPagina.oclAsType(PagLeer))/] 
+	[/if]
+	[if (aPagina.oclIsKindOf(PagBorrar))]
+		[generatePage(aPagina.oclAsType(PagBorrar))/] 
+	[/if]
+	[if (aPagina.oclIsKindOf(PagCrear))]
+		[generatePage(aPagina.oclAsType(PagCrear))/] 
+	[/if]
+
+[/template]
+
+[template public generatePage (aIndice : PagIndice)]
+[file ('indice_'+aIndice.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aIndice.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aIndice.accedida_por.NombreRol/]</p>
+
+[generatePage(aIndice)/]
+
+<p>Listado de [aIndice.tiene_asociada.nombreEntidad/]</p>
+
+<ol>
+	<li>0.Salir</li>
+	[for (pgDetalles: PagLeer | aIndice.tiene_asociada.asociada->selectByType(PagLeer))]
+	<li><a href=""></a>[pgDetalles.tiene_asociada.nombreEntidad/]</li>
+	[/for]
+	<li>Volver</li>
+</ol>
+
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generatePage (aDetalle : PagLeer)]
+[file ('detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aDetalle.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla de detalle de [aDetalle.tiene_asociada.nombreEntidad/] </p>
+
+[generatePage(aDetalle)/]
+
+<p>Campos:</p>
+
+<ul>
+[for (c: CaracteristicaEntidad | aDetalle.tiene_asociada.caracteristica)]
+	<li>[c.nombreCaract/]: // ([c.TDato/])</li>
+[/for]
+[for (e: Entidad| aDetalle.tiene_asociada.relacionada)]
+	<li>Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
+[/for]
+</ul>
+
+<p>Listado de opciones:</p>
+
+<ol>
+	<li>Borrar [aDetalle.tiene_asociada.nombreEntidad/]</li>
+	[for (e: Entidad | aDetalle.tiene_asociada.relacionada)]
+	<li>Consultar detalles de [e.nombreEntidad/]</li>
+	[/for]
+	<li>Volver</li>
+</ol>
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generatePage (aBorrar : PagBorrar)]
+[file ('borrar'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aBorrar.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla de borrar [aBorrar.tiene_asociada.nombreEntidad/] </p>
+
+[generatePage(aBorrar)/]
+
+<p>Listado de : [aBorrar.tiene_asociada.nombreEntidad/]</p>
+
+<ol>
+	<li>Salir</li>
+</ol>
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generateConfirmacion (aBorrar : PagBorrar)]
+[file ('borrado'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aBorrar.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla de borrado de la asignatura [aBorrar.tiene_asociada.ID_Entidad/] </p>
+
+[generatePage(aBorrar)/]
+
+<p>>>Asignatura borrada!!</p>
+
+<p>Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.tiene_asociada.nombreEntidad/]</p>
+<ul>
+	[for (e: Entidad | aBorrar.tiene_asociada.relacionada)]
+	<li>Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
+	[/for]
+	<li>Salir</li>
+</ul>
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generatePage (aCrear : PagCrear)]
+[file ('crear'+aCrear.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aCrear.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla de detalle de [aCrear.tiene_asociada.nombreEntidad/] </p>
+
+[generatePage(aCrear)/]
+
+<p>Introduzca la información correspondiente a los siguientes campos:</p>
+
+<ul>
+[for (c: CaracteristicaEntidad | aCrear.tiene_asociada.caracteristica)]
+	<li>[c.nombreCaract/]: </li>
+[/for]
+</ul>
+
+<p>Listado de opciones:</p>
+
+<ol>
+	<li>Aceptar->Crear la asignatura->Salir</li>
+	<li>Cancelar->Salir</li>
+</ol>
+
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generatePage (aCRUD : CRUD)]
+[file ('crear'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aCRUD.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla CRUD de la entidad [aCRUD.tiene_asociada.nombreEntidad/] </p>
+
+[generatePage(aCRUD)/]
+
+<p>Listado de [aCRUD.tiene_asociada.nombreEntidad/]</p>
+
+<ol>
+	<li>Salir</li>
+	<li><a href="">Listar</a></li>
+	<li><a href="">Crear nuevo elemento</a></li>
+	<li><a href="">Borrar un elemento</a></li>
+</ol>
+
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generatePage (aPagina : Pagina)]
+[file (aPagina.TituloPag+'.html', false, 'UTF-8')]
+	<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aPagina.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla con contenido: [aPagina.TituloPag/] </p>
+
+	<p>Contenido multimedia: [aPagina.oclAsType(PaginasNormales).Multimedia/]</p>
+	<p>Contenido texto: [aPagina.oclAsType(PaginasNormales).Texto/]</p>
+	
+	[generateRRSS(self)/]
+</body>
+</html>
+[/file]
+[/template]

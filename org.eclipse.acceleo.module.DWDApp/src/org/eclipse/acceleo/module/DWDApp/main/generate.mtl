@@ -1,0 +1,120 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate.
+ */]
+[module generate('http://DataWebDeskDSL.com')]
+
+
+[**
+ * The documentation of the template generateDataWebDesk.
+ * @param aDataWebDesk
+ */]
+[template public generateDataWebDesk(aDataWebDesk : DataWebDesk)]
+[comment @main/]
+[file ('Main.java', false, 'UTF-8')]
+package default;
+
+[for (r:Rol | aDataWebDesk.rol)]
+import deafult.[r.NombreRol + '_rol'/].[r.NombreRol + '_rol'/];
+[/for]
+
+public class Main{
+	
+	public void generateDWD(){
+		System.out.println("Nombre de la aplicación: [aDataWebDesk.nombreAplicacion/]");
+		System.out.println("Roles de acceso a la información:");
+		int i=0;
+		System.out.println(i+". Salir");
+		i++;
+		[for(r : Rol | aDataWebDesk.rol)]
+		System.out.println(i+". [r.NombreRol/]")
+		i++;
+		[/for]
+		System.out.println("");
+		System.out.println("");
+
+ 		int keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-(i-1)]");
+
+		while(valorPulsado < 0 ||  valorPulsado > (i-1)) {
+			System.out.println("Error: Opción no encontrada");
+			keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-(i-1)]");
+		}
+
+		switch (valorPulsado) {
+			case 0:
+				System.out.println("Saliendo de la aplicación");
+	      	break;
+		[for(r : Rol | aDataWebDesk.rol)]
+			case [aDataWebDesk.rol->indexOf(r)/]:
+				[r.NombreRol/] r = new [r.NombreRol/]();
+			break;
+		[/for]
+		}
+	}
+	
+	public static void main(String['['/]] args) {
+		Main m = new Main();
+		m.generateDWD();
+
+	}
+}
+[/file]
+[/template]
+
+[template public generateRRSS(aPagina : Pagina)]
+System.out.println("Redes sociales:");
+
+[for (rs: RedSocial | aPagina.muestra)]
+System.out.println("[rs.nombre/] [rs.ID_RedSocial/]");
+[/for]
+
+[for (url: URLExterna | aPagina.urlexterna)]
+System.out.println("Web: [url.Link/]");
+[/for]
+	
+[/template]
+
+[template public generateRol(aRol : Rol)]
+[file (aRol.NombreRol+'.java', false, 'UTF-8')]
+	
+public class [aRol.NombreRol.toUpperFirst()/]{
+	public Rol() {
+		System.out.println("Pantalla principal de Rol [aRol.NombreRol/]");
+		System.out.println("Listado de páginas a las que tiene acceso:");
+		int i=0;
+		System.out.println(i+"Salir");
+		i++;
+		[for (p: PagCRUD | aRol.tiene_acceso->selectByType(PagCRUD))]
+			System.out.println(i+"[p.tiene_asociada.nombreEntidad/] [p.TituloPag/]");
+			i++;
+		[/for]
+		[for (p: Pagina | aRol.tiene_acceso->excluding(aRol.tiene_acceso->selectByType(PagCRUD)))]
+			System.out.println(i+" [p.TituloPag/]");
+			i++;
+		[/for]
+		System.out.println("");
+		System.out.println("");
+		System.out.println("Selecciona una opción ['['/]0-(i-1)]");
+	}
+}
+
+[/file]
+[/template]
+
+[template public generatePagina(aIndice : PagIndice)]
+[file ('Indice_'+aIndice.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+	
+public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
+	public Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
+		System.out.println("Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aIndice.accedida_por.NombreRol/]");
+		System.out.println("Listado de páginas a las que tiene acceso:");
+		int i=0;
+
+		System.out.println("");
+		System.out.println("");
+		System.out.println("Selecciona una opción ['['/]0-(i-1)]");
+	}
+}
+
+[/file]
+[/template]

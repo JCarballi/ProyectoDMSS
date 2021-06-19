@@ -1,0 +1,7 @@
+# Tracing options for the Proyecto_DMSS.diagram plug-in
+
+# Common issues
+Proyecto_DMSS.diagram/debug=false
+
+# Visual IDs
+Proyecto_DMSS.diagram/debug/visualID=false

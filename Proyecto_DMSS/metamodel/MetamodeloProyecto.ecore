@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="DataWebDeskDSL" nsURI="http://DataWebDeskDSL.com" nsPrefix="DataWebDeskDSL">
+  <eAnnotations source="gmf">
+    <details key="foo" value="bar"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="DataWebDesk">
+    <eAnnotations source="gmf.diagram">
+      <details key="foo" value="bar"/>
+      <details key="diagram.extension" value="DMSS"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="idRedSocialNombre idRedSocialID idPagina idRol idURLExterna idEntidadID idEntidadNombre unaPrincipalR1 algunaRSR5"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="idRedSocialNombre" value="self.redsocial->isUnique(nombre)"/>
+      <details key="idRedSocialID" value="self.redsocial->isUnique(ID_RedSocial)"/>
+      <details key="idPagina" value="self.pagina->isUnique(TituloPag)"/>
+      <details key="idRol" value="self.rol->isUnique(NombreRol)"/>
+      <details key="idURLExterna" value="self.urlexterna->isUnique(Link)"/>
+      <details key="idEntidadID" value="self.entidad->isUnique(ID_Entidad)"/>
+      <details key="idEntidadNombre" value="self.entidad->isUnique(nombreEntidad)"/>
+      <details key="unaPrincipalR1" value="self.pagina->selectByType(PaginaPrincipal)->size()=1"/>
+      <details key="algunaRSR5" value="self.pagina.muestra->size() > 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pagina" upperBound="-1"
+        eType="#//Pagina" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rol" upperBound="-1" eType="#//Rol"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entidad" upperBound="-1"
+        eType="#//Entidad" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreAplicacion" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paginasMediasAccesiblesD3"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="D03"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="if(self.rol->size()=0) then 0&#xA;&#x9;&#x9;&#x9;else self.rol.numeroPaginasAccesiblesD1->sum() / self.rol->size()&#xA;&#x9;&#x9;&#x9;endif"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="redsocial" upperBound="-1"
+        eType="#//RedSocial" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="urlexterna" upperBound="-1"
+        eType="#//URLExterna" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pagina" abstract="true">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="TituloPag"/>
+      <details key="figure" value="svg"/>
+      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/pagina.svg"/>
+      <details key="label.icon" value="false"/>
+      <details key="label.placement" value="external"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="noPagAisladaR2"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="noPagAisladaR2" value="self->closure(accede).accedida_por -> size() > 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accedida" upperBound="-1"
+        eType="#//Pagina" eOpposite="#//Pagina/accede"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accede" upperBound="-1"
+        eType="#//Pagina" eOpposite="#//Pagina/accedida">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="accede"/>
+        <details key="target" value="accedida"/>
+        <details key="label" value="accede"/>
+        <details key="target.decoration" value="arrow"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TituloPag" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="urlexterna" upperBound="-1"
+        eType="#//URLExterna" eOpposite="#//URLExterna/pagina"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="muestra" upperBound="-1"
+        eType="#//RedSocial" eOpposite="#//RedSocial/mostrada"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accedida_por" upperBound="-1"
+        eType="#//Rol" eOpposite="#//Rol/tiene_acceso"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PaginasNormales" eSuperTypes="#//Pagina">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Texto" lowerBound="1" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Multimedia" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PagCRUD" abstract="true" eSuperTypes="#//Pagina">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="TituloPag"/>
+      <details key="figure" value="svg"/>
+      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg"/>
+      <details key="label.icon" value="false"/>
+      <details key="label.placement" value="external"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="CRUDNoSuelta"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="CRUDNoSuelta" value="self.tiene_asociada->size()>0 or self.accede->selectByType(CRUD)->size()>0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tiene_asociada" eType="#//Entidad"
+        eOpposite="#//Entidad/asociada"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entidad">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="nombreEntidad"/>
+      <details key="border.color" value="0,0,0"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="idCaracteristica soloCRUDR3 indiceDetalleR4 detalleIndiceR4 noSelfRefR6 noBidireccionalRefR7"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="idCaracteristica" value="self.caracteristica->isUnique(nombreCaract)"/>
+      <details key="soloCRUDR3" value="self.asociada->select(p: PagCRUD | p.oclIsTypeOf(CRUD))->size() > 0 implies self.asociada->size()=1"/>
+      <details key="indiceDetalleR4" value="self.asociada->select(p: PagCRUD | p.oclIsTypeOf(PagIndice)) -> size() > 0 implies self.asociada->select(p: PagCRUD | p.oclIsTypeOf(PagLeer)) -> size() = 1 "/>
+      <details key="detalleIndiceR4" value="self.asociada->select(p: PagCRUD | p.oclIsTypeOf(PagLeer)) -> size() > 0 implies self.asociada->select(p: PagCRUD | p.oclIsTypeOf(PagIndice)) -> size() = 1 "/>
+      <details key="noSelfRefR6" value="self.esta_relacionada->excludes(self)"/>
+      <details key="noBidireccionalRefR7" value=" self.relacionada->closure(relacionada)->excludes(self)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="caracteristica" upperBound="-1"
+        eType="#//CaracteristicaEntidad" containment="true">
+      <eAnnotations source="gmf.compartment">
+        <details key="layout" value="list"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="asociada" upperBound="-1"
+        eType="#//PagCRUD" eOpposite="#//PagCRUD/tiene_asociada">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="tiene_asociada"/>
+        <details key="target" value="asociada"/>
+        <details key="label" value="CRUD asociada"/>
+        <details key="target.decoration" value="arrow"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID_Entidad" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clave_primaria" lowerBound="1"
+        eType="#//CaracteristicaEntidad" eOpposite="#//CaracteristicaEntidad/esta_en">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="esta_en"/>
+        <details key="target" value="clave_primaria"/>
+        <details key="label" value="clave_primaria"/>
+        <details key="target.decoration" value="arrow"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreEntidad" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relacionada" upperBound="-1"
+        eType="#//Entidad" eOpposite="#//Entidad/esta_relacionada">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="relacionada"/>
+        <details key="target" value="esta_relacionada"/>
+        <details key="label" value="relacionada"/>
+        <details key="target.decoration" value="arrow"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="esta_relacionada" upperBound="-1"
+        eType="#//Entidad" eOpposite="#//Entidad/relacionada"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CaracteristicaEntidad">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="nombreCaract"/>
+      <details key="figure" value="rectangle"/>
+      <details key="label.icon" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreCaract" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TDato" eType="#//TipoDato"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="esta_en" eType="#//Entidad"
+        eOpposite="#//Entidad/clave_primaria"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PagCrear" eSuperTypes="#//PagCRUD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PagLeer" eSuperTypes="#//PagCRUD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PagBorrar" eSuperTypes="#//PagCRUD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PagActualizar" eSuperTypes="#//PagCRUD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rol">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="NombreRol"/>
+      <details key="figure" value="svg"/>
+      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/rol.svg"/>
+      <details key="label.icon" value="false"/>
+      <details key="label.placement" value="external"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NombreRol" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeroPaginasAccesiblesD1"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="D01"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="self.tiene_acceso->closure(accede)->size()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeroEntidadesAccesiblesD2"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="D02"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="if(self.tiene_acceso->size() = 0) then 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else self.tiene_acceso->selectByType(PagCRUD).tiene_asociada->asSet()->size()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;endif"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tiene_acceso" upperBound="-1"
+        eType="#//Pagina" eOpposite="#//Pagina/accedida_por">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="accedida_por"/>
+        <details key="target" value="tiene_acceso"/>
+        <details key="label" value="tiene_acceso"/>
+        <details key="target.decoration" value="arrow"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RedSocial" abstract="true">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="nombre"/>
+      <details key="figure" value="svg"/>
+      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg"/>
+      <details key="label.icon" value="false"/>
+      <details key="label.placement" value="external"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TipoCont" eType="#//tipoContenido"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID_RedSocial" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mostrada" upperBound="-1"
+        eType="#//Pagina" eOpposite="#//Pagina/muestra">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="muestra"/>
+        <details key="target" value="mostrada"/>
+        <details key="label" value="mostrada_en"/>
+        <details key="target.decoration" value="arrow"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Twitter" eSuperTypes="#//RedSocial"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Facebook" eSuperTypes="#//RedSocial"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PagIndice" eSuperTypes="#//PagCRUD"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="TipoDato">
+    <eLiterals name="INTEGER"/>
+    <eLiterals name="BOOLEAN" value="1"/>
+    <eLiterals name="STRING" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CRUD" eSuperTypes="#//PagCRUD"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="tipoContenido">
+    <eLiterals name="TEXTO"/>
+    <eLiterals name="MULTIMEDIA" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="URLExterna">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="Link"/>
+      <details key="figure" value="svg"/>
+      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/link.svg"/>
+      <details key="label.icon" value="false"/>
+      <details key="label.placement" value="external"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pagina" upperBound="-1"
+        eType="#//Pagina" eOpposite="#//Pagina/urlexterna">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="urlexterna"/>
+        <details key="target" value="pagina"/>
+        <details key="label" value="enlazada_en"/>
+        <details key="target.decoration" value="arrow"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Link" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreWeb" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PaginaPrincipal" eSuperTypes="#//Pagina">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="TituloPag"/>
+      <details key="figure" value="svg"/>
+      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/home.svg"/>
+      <details key="label.icon" value="false"/>
+      <details key="label.placement" value="external"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RSS" eSuperTypes="#//RedSocial"/>
+</ecore:EPackage>

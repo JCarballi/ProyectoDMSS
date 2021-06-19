@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/Proyecto_DMSS/src" modelPluginID="Proyecto_DMSS"
+    modelName="DataWebDeskDSL" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>MetamodeloProyecto.emf</foreignModel>
+  <genPackages prefix="DataWebDeskDSL" disposableProviderFactory="true" ecorePackage="MetamodeloProyecto.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MetamodeloProyecto.ecore#//TipoDato">
+      <genEnumLiterals ecoreEnumLiteral="MetamodeloProyecto.ecore#//TipoDato/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="MetamodeloProyecto.ecore#//TipoDato/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="MetamodeloProyecto.ecore#//TipoDato/STRING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MetamodeloProyecto.ecore#//tipoContenido">
+      <genEnumLiterals ecoreEnumLiteral="MetamodeloProyecto.ecore#//tipoContenido/TEXTO"/>
+      <genEnumLiterals ecoreEnumLiteral="MetamodeloProyecto.ecore#//tipoContenido/MULTIMEDIA"/>
+    </genEnums>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//DataWebDesk">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//DataWebDesk/pagina"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//DataWebDesk/rol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//DataWebDesk/entidad"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//DataWebDesk/nombreAplicacion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//DataWebDesk/paginasMediasAccesiblesD3"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//DataWebDesk/redsocial"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//DataWebDesk/urlexterna"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="MetamodeloProyecto.ecore#//Pagina">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Pagina/accedida"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Pagina/accede"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Pagina/urlexterna"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Pagina/muestra"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Pagina/accedida_por"/>
+    </genClasses>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//PaginasNormales">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//PaginasNormales/Texto"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//PaginasNormales/Multimedia"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="MetamodeloProyecto.ecore#//PagCRUD">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//PagCRUD/tiene_asociada"/>
+    </genClasses>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//Entidad">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Entidad/caracteristica"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Entidad/asociada"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//Entidad/ID_Entidad"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Entidad/clave_primaria"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//Entidad/nombreEntidad"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Entidad/relacionada"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Entidad/esta_relacionada"/>
+    </genClasses>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//CaracteristicaEntidad">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//CaracteristicaEntidad/nombreCaract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//CaracteristicaEntidad/TDato"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//CaracteristicaEntidad/esta_en"/>
+    </genClasses>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//PagCrear"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//PagLeer"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//PagBorrar"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//PagActualizar"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//Rol">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//Rol/NombreRol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//Rol/numeroPaginasAccesiblesD1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//Rol/numeroEntidadesAccesiblesD2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//Rol/tiene_acceso"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="MetamodeloProyecto.ecore#//RedSocial">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//RedSocial/TipoCont"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//RedSocial/ID_RedSocial"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//RedSocial/mostrada"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//RedSocial/nombre"/>
+    </genClasses>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//Twitter"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//Facebook"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//PagIndice"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//CRUD"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//URLExterna">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MetamodeloProyecto.ecore#//URLExterna/pagina"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//URLExterna/Link"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetamodeloProyecto.ecore#//URLExterna/nombreWeb"/>
+    </genClasses>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//PaginaPrincipal"/>
+    <genClasses ecoreClass="MetamodeloProyecto.ecore#//RSS"/>
+  </genPackages>
+</genmodel:GenModel>
