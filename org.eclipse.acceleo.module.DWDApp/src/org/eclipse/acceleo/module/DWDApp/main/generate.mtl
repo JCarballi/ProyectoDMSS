@@ -27,6 +27,7 @@ public class Main{
 		System.out.println(i+". Salir");
 		i++;
 		[for(r : Rol | aDataWebDesk.rol)]
+		[generateRol(r)/]
 		System.out.println(i+". [r.NombreRol/]")
 		i++;
 		[/for]
@@ -76,25 +77,42 @@ System.out.println("Web: [url.Link/]");
 
 [template public generateRol(aRol : Rol)]
 [file (aRol.NombreRol+'.java', false, 'UTF-8')]
-	
+
+package default.[aRol.NombreRol + '_rol'/]; 	
+
 public class [aRol.NombreRol.toUpperFirst()/]{
 	public Rol() {
 		System.out.println("Pantalla principal de Rol [aRol.NombreRol/]");
 		System.out.println("Listado de páginas a las que tiene acceso:");
-		int i=0;
-		System.out.println(i+"Salir");
-		i++;
+		System.out.println("0 Salir");
+
 		[for (p: PagCRUD | aRol.tiene_acceso->selectByType(PagCRUD))]
-			System.out.println(i+"[p.tiene_asociada.nombreEntidad/] [p.TituloPag/]");
-			i++;
+			System.out.println( [aRol.tiene_acceso->selectByType(PagCRUD)->indexOf(p)/] +"[p.tiene_asociada.nombreEntidad/] [p.TituloPag/]");
 		[/for]
 		[for (p: Pagina | aRol.tiene_acceso->excluding(aRol.tiene_acceso->selectByType(PagCRUD)))]
-			System.out.println(i+" [p.TituloPag/]");
-			i++;
+			System.out.println([aRol.tiene_acceso->excluding(aRol.tiene_acceso->selectByType(PagCRUD))->asOrderedSet()->indexOf(p)/]+" [p.TituloPag/]");
 		[/for]
 		System.out.println("");
 		System.out.println("");
-		System.out.println("Selecciona una opción ['['/]0-(i-1)]");
+		System.out.println("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
+
+		int keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
+
+		while(valorPulsado < 0 ||  valorPulsado > [aRol.tiene_acceso->selectByType(PagCRUD)->size()/]) {
+			System.out.println("Error: Opción no encontrada");
+			keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
+		}
+
+		switch (valorPulsado) {
+			case 0:
+				System.out.println("Saliendo de la aplicación");
+	      	break;
+		[for (p: PagCRUD | aRol.tiene_acceso->selectByType(PagCRUD))]
+			case [aRol.tiene_acceso->selectByType(PagCRUD)->indexOf(p)/]:
+				[p.eGet('Class')/] p = new [p.eGet('Class')/]();
+			break;
+		[/for]
+		}
 	}
 }
 
@@ -107,12 +125,156 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
 		System.out.println("Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aIndice.accedida_por.NombreRol/]");
+
+		[generateRRSS(aIndice)/]
+
 		System.out.println("Listado de páginas a las que tiene acceso:");
-		int i=0;
 
 		System.out.println("");
 		System.out.println("");
-		System.out.println("Selecciona una opción ['['/]0-(i-1)]");
+		System.out.println("Selecciona una opción ['['/]0-[aIndice.oclAsType(Pagina)->closure(accede)->size()/]]");
+
+				int keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-[aIndice.oclAsType(Pagina)->closure(accede)->size()/]]");
+
+		while(valorPulsado < 0 ||  valorPulsado > [aIndice.oclAsType(Pagina)->closure(accede)->size()/]) {
+			System.out.println("Error: Opción no encontrada");
+			keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-[aIndice.oclAsType(Pagina)->closure(accede)->size()/]]");
+		}
+
+		switch (valorPulsado) {
+			case 0:
+				System.out.println("Saliendo de la aplicación");
+	      	break;
+		[for (p: Pagina | aIndice.oclAsType(Pagina)->closure(accede))]
+			case [aIndice.oclAsType(Pagina)->closure(accede)->indexOf(p)/]:
+				[p.eGet('Class')/] p = new [p.eGet('Class')/]();
+			break;
+		[/for]
+		}
+	}
+}
+
+[/file]
+[/template]
+
+[template public generatePagina(aDetalle : PagLeer)]
+[file ('Detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+	
+public class Detalle_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
+	public Detalle_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
+
+		System.out.println("Pantalla detalle de [aDetalle.tiene_asociada.nombreEntidad/] Rol [aDetalle.accedida_por.NombreRol/]");
+		
+		[generateRRSS(aDetalle)/]
+
+		System.out.println("Campos:");
+		[for(c : CaracteristicaEntidad | aDetalle.tiene_asociada.caracteristica)]
+		System.out.println("-[c.nombreCaract/]: valor // ([c.TDato/])");	
+		[/for]
+		[for(e : Entidad | aDetalle.tiene_asociada.esta_relacionada)]
+		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		[/for]
+
+		System.out.println("Listado de opciones:");
+		System.out.println("1. Borrar [aDetalle.tiene_asociada.nombreEntidad/]");
+		[for(e : Entidad | aDetalle.tiene_asociada.esta_relacionada)]
+		System.out.println("[aDetalle.tiene_asociada.esta_relacionada->indexOf(e)+2/]. Consultar detalles de [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		[/for]
+		System.out.println("4. Volver");
+	}
+}
+
+[/file]
+[/template]
+
+[template public generatePagina(aBorrar : PagBorrar)]
+[file ('Borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+	
+public class Borrar_[aBorrar.tiene_asociada.nombreEntidad.toUpperFirst()/]{
+	public Borrar_[aBorrar.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
+
+		System.out.println("Pantalla Borrar de [aBorrar.tiene_asociada.nombreEntidad/] Rol [aBorrar.accedida_por.NombreRol/]");
+		
+		[generateRRSS(aBorrar)/]
+
+		System.out.println("Listado de [aBorrar.tiene_asociada.nombreEntidad/]");
+		System.out.println("AQUI VAN LOS DATOS TODO");	
+		System.out.println("Salir");	
+	}
+}
+
+[/file]
+[/template]
+
+[template public generatePagina(aEntidad : Entidad, aBorrar : PagBorrar)]
+[file ('BorrarConfirmacion_'+aEntidad.nombreEntidad+'.java', false, 'UTF-8')]
+	
+public class BorrarConfirmacion_[aEntidad.nombreEntidad.toUpperFirst()/]{
+	public Borrar_[aEntidad.nombreEntidad.toUpperFirst()/]() {
+
+		System.out.println("Pantalla Borrar de [aEntidad.nombreEntidad/]");
+		
+		[generateRRSS(aBorrar)/]
+
+		System.out.println(">> Asignatura borrada");
+
+		System.out.println("Nota: No se eliminan los datos correspondiente a las referencias de [aEntidad.nombreEntidad/]:");
+
+		[for(e : Entidad | aEntidad.esta_relacionada)]
+		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		[/for]
+	
+		System.out.println("Pulsa 0 para salir");
+	}
+}
+
+[/file]
+[/template]
+
+[template public generatePagina(aCrear : PagCrear)]
+[file ('Crear_'+aCrear.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+	
+public class Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]{
+	public Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
+
+		System.out.println("Pantalla Crear de [aCrear.tiene_asociada.nombreEntidad/]");
+		
+		[generateRRSS(aCrear)/]
+
+		System.out.println("Introduzca la información correspondiente a los siguientes campos:");
+		[for(c : CaracteristicaEntidad | aCrear.tiene_asociada.caracteristica)]
+		System.out.println("-[c.nombreCaract/]: valor // ([c.TDato/])");	
+		[/for]
+		[for(e : Entidad | aCrear.tiene_asociada.esta_relacionada)]
+		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		[/for]
+
+		System.out.println("Listado de opciones:");
+		System.out.println("1. Aceptar -> Crear la asignatura -> Salir");
+		System.out.println("2. Cancelar -> Salir");
+	}
+}
+
+[/file]
+[/template]
+
+[template public generatePagina(aCRUD : CRUD)]
+[file ('CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+	
+public class CRUD_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
+	public CRUD_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
+
+		System.out.println("Pantalla CRUD de [aCRUD.tiene_asociada.nombreEntidad/]");
+		
+		[generateRRSS(aCRUD)/]
+
+		System.out.println("Listado de [aCRUD.tiene_asociada.nombreEntidad/]");
+		System.out.println("0. Salir");
+		System.out.println("1. Listar");
+		System.out.println("2. Crear un nuevo elemento");
+		System.out.println("3. Borrar un elemento");	
+		
+		System.out.println("Selecciona una opción ['['/]0-3]");	
 	}
 }
 
