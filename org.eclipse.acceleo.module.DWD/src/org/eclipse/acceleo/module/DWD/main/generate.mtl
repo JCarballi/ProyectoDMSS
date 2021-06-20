@@ -30,21 +30,20 @@
 <ol type="1">
 	<li>Salir</li>
 [for (r: Rol | aDataWebDesk.rol)]
-	[generate(r)/]
 	<li><a href="[r.NombreRol/]/index_[r.NombreRol/].html">[r.NombreRol/]</a></li>
+	[generate(r)/]
 [/for]
 </ol>
 
-HAY QUE ELIMINARLO TODO
+[comment]HAY QUE ELIMINARLO TODO
 [for (r: Rol | aDataWebDesk.rol)]
 [for (p: Pagina | aDataWebDesk.pagina)]
-	[if (p.oclIsKindOf(PagCRUD))]
 	[generatePage(r,p)/]
-	[else]
+	[if(p.oclIsTypeOf(PaginasNormales))]
 	[generatePage(p)/]
 	[/if]
 [/for]
-[/for]
+[/for][/comment]
 
 </body>
 </html>
@@ -59,6 +58,9 @@ HAY QUE ELIMINARLO TODO
 <li><a class="twitter-timeline" href="https://twitter.com/[rs.nombre/]?ref_src=twsrc%5Etfw">Tweets by [rs.nombre/]</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
 [/for]
 </ul>
+
+<br>
+<br>
 
 <ul>
 [for (url: URLExterna | aPagina.urlexterna)]
@@ -85,15 +87,15 @@ HAY QUE ELIMINARLO TODO
 
 <ol type="1">
 	<li>Salir</li>
-[for (p: Pagina | aRol.tiene_acceso.oclAsType(Pagina)->closure(accede))]
-	[if(p.oclIsTypeOf(PagCRUD))]
-		[generatePage(aRol, p)/]
-		<li><a href="[p->selectByType(PagCRUD).tiene_asociada.nombreEntidad/].html">[p->selectByType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]</a></li>
+[for (p: Pagina | aRol.tiene_acceso->closure(accede))]
+
+	[if(p.oclIsTypeOf(PaginasNormales))]
+	<li><a href="[p.TituloPag/].html">[p.TituloPag/]</a></li>
+	[generatePage(aRol, p.oclAsType(PaginasNormales))/]	
+	[else]
+	[generatePage(aRol, p)/]
 	[/if]
-[/for]
-[for (p: Pagina | aRol.tiene_acceso->closure(self.tiene_acceso.accede)->excluding(aRol.tiene_acceso->selectByType(PagCRUD)))]
-	<li><a href="">[p.TituloPag/]</a></li>
-	<br>
+
 [/for]
 </ol>
 
@@ -104,24 +106,29 @@ HAY QUE ELIMINARLO TODO
 [/template]
 
 [template public generatePage (aRol : Rol, aPagina : Pagina)]
-
+	
 	[if (aPagina.oclIsKindOf(PagIndice))]
 		[generatePage(aPagina.oclAsType(PagIndice))/] 
+		<li><a href="indice_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
 	[/if]
 	[if (aPagina.oclIsKindOf(PagLeer))]
-		[generatePage(aPagina.oclAsType(PagLeer))/] 
+[comment]		[generatePage(aPagina.oclAsType(PagLeer))/] [/comment]
 	[/if]
 	[if (aPagina.oclIsKindOf(PagBorrar))]
 		[generatePage(aPagina.oclAsType(PagBorrar))/] 
+		<li><a href="borrar_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
 	[/if]
 	[if (aPagina.oclIsKindOf(PagCrear))]
-		[generatePage(aPagina.oclAsType(PagCrear))/] 
+[comment]		[generatePage(aPagina.oclAsType(PagCrear))/] [/comment]
 	[/if]
-
+	[if (aPagina.oclIsKindOf(CRUD))]
+[comment]		[generatePage(aPagina.oclAsType(CRUD))/] [/comment]
+	[/if]
 [/template]
 
-[template public generatePage (aIndice : PagIndice)]
-[file ('indice_'+aIndice.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+[template public generatePage (aRol : Rol, aIndice : PagIndice)]
+[file (aRol.NombreRol+'/indice_'+aIndice.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html>
@@ -133,14 +140,16 @@ HAY QUE ELIMINARLO TODO
 
 <body>
 
-<p>Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aIndice.accedida_por.NombreRol/]</p>
+<p>Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]</p>
 
-[generatePage(aIndice)/]
+[if(aIndice.muestra->size() > 0)]
+[generateRRSS(aIndice)/]
+[/if]
 
 <p>Listado de [aIndice.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
-	<li>0.Salir</li>
+	<li><a href="../index.html">0.Salir</a></li>
 	[for (pgDetalles: PagLeer | aIndice.tiene_asociada.asociada->selectByType(PagLeer))]
 	<li><a href=""></a>[pgDetalles.tiene_asociada.nombreEntidad/]</li>
 	[/for]
@@ -154,6 +163,7 @@ HAY QUE ELIMINARLO TODO
 [/file]
 [/template]
 
+[comment]
 [template public generatePage (aDetalle : PagLeer)]
 [file ('detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
@@ -196,10 +206,10 @@ HAY QUE ELIMINARLO TODO
 </html>
 
 [/file]
-[/template]
+[/template][/comment]
 
-[template public generatePage (aBorrar : PagBorrar)]
-[file ('borrar'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[template public generatePage (aRol : Rol, aBorrar : PagBorrar)]
+[file (aRol.NombreRol+'/borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html>
@@ -227,7 +237,8 @@ HAY QUE ELIMINARLO TODO
 [/file]
 [/template]
 
-[template public generateConfirmacion (aBorrar : PagBorrar)]
+
+[comment][template public generateConfirmacion (aBorrar : PagBorrar)]
 [file ('borrado'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
@@ -330,10 +341,11 @@ HAY QUE ELIMINARLO TODO
 </html>
 
 [/file]
-[/template]
+[/template][/comment]
 
-[template public generatePage (aPagina : Pagina)]
-[file (aPagina.TituloPag+'.html', false, 'UTF-8')]
+
+[template public generatePage (aRol : Rol, aPagina : PaginasNormales)]
+[file (aRol.NombreRol+'/'+aPagina.TituloPag+'.html', false, 'UTF-8')]
 	<!DOCTYPE html>
 <html>
 
@@ -349,7 +361,7 @@ HAY QUE ELIMINARLO TODO
 	<p>Contenido multimedia: [aPagina.oclAsType(PaginasNormales).Multimedia/]</p>
 	<p>Contenido texto: [aPagina.oclAsType(PaginasNormales).Texto/]</p>
 	
-	[generateRRSS(self)/]
+	[generateRRSS(aPagina)/]
 </body>
 </html>
 [/file]
