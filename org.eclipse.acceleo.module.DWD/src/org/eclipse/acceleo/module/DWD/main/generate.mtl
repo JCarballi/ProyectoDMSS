@@ -35,16 +35,6 @@
 [/for]
 </ol>
 
-[comment]HAY QUE ELIMINARLO TODO
-[for (r: Rol | aDataWebDesk.rol)]
-[for (p: Pagina | aDataWebDesk.pagina)]
-	[generatePage(r,p)/]
-	[if(p.oclIsTypeOf(PaginasNormales))]
-	[generatePage(p)/]
-	[/if]
-[/for]
-[/for][/comment]
-
 </body>
 </html>
 [/file]
@@ -93,7 +83,7 @@
 	<li><a href="[p.TituloPag/].html">[p.TituloPag/]</a></li>
 	[generatePage(aRol, p.oclAsType(PaginasNormales))/]	
 	[else]
-	[generatePage(aRol, p)/]
+	[generatePageCRUD(aRol, p)/]
 	[/if]
 
 [/for]
@@ -105,24 +95,26 @@
 [/file]
 [/template]
 
-[template public generatePage (aRol : Rol, aPagina : Pagina)]
-	
+[template public generatePageCRUD (aRol : Rol, aPagina : Pagina)]
 	[if (aPagina.oclIsKindOf(PagIndice))]
-		[generatePage(aPagina.oclAsType(PagIndice))/] 
 		<li><a href="indice_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		[generatePage(aPagina.oclAsType(PagIndice))/] 
 	[/if]
 	[if (aPagina.oclIsKindOf(PagLeer))]
-[comment]		[generatePage(aPagina.oclAsType(PagLeer))/] [/comment]
+		<li><a href="detalles_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		[generatePage(aPagina.oclAsType(PagLeer))/]
 	[/if]
 	[if (aPagina.oclIsKindOf(PagBorrar))]
-		[generatePage(aPagina.oclAsType(PagBorrar))/] 
+		[generatePage(aRol, aPagina.oclAsType(PagBorrar))/] 
 		<li><a href="borrar_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
 	[/if]
 	[if (aPagina.oclIsKindOf(PagCrear))]
-[comment]		[generatePage(aPagina.oclAsType(PagCrear))/] [/comment]
+		<li><a href="crear_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		[generatePage(aPagina.oclAsType(PagCrear))/] 
 	[/if]
 	[if (aPagina.oclIsKindOf(CRUD))]
-[comment]		[generatePage(aPagina.oclAsType(CRUD))/] [/comment]
+		<li><a href="CRUD_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		[generatePage(aPagina.oclAsType(CRUD))/]
 	[/if]
 [/template]
 
@@ -163,9 +155,9 @@
 [/file]
 [/template]
 
-[comment]
-[template public generatePage (aDetalle : PagLeer)]
-[file ('detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+[template public generatePage (aRol : Rol, aDetalle : PagLeer)]
+[file (aRol.NombreRol+'detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html>
@@ -179,7 +171,9 @@
 
 <p>Pantalla de detalle de [aDetalle.tiene_asociada.nombreEntidad/] </p>
 
-[generatePage(aDetalle)/]
+[if(aDetalle.muestra->size() > 0)]
+[generateRRSS(aDetalle)/]
+[/if]
 
 <p>Campos:</p>
 
@@ -206,7 +200,7 @@
 </html>
 
 [/file]
-[/template][/comment]
+[/template]
 
 [template public generatePage (aRol : Rol, aBorrar : PagBorrar)]
 [file (aRol.NombreRol+'/borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
@@ -223,7 +217,9 @@
 
 <p>Pantalla de borrar [aBorrar.tiene_asociada.nombreEntidad/] </p>
 
-[generatePage(aBorrar)/]
+[if(aBorrar.muestra->size() > 0)]
+[generateRRSS(aBorrar)/]
+[/if]
 
 <p>Listado de : [aBorrar.tiene_asociada.nombreEntidad/]</p>
 
@@ -238,8 +234,8 @@
 [/template]
 
 
-[comment][template public generateConfirmacion (aBorrar : PagBorrar)]
-[file ('borrado'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[template public generateConfirmacion (aRol : Rol, aBorrar : PagBorrar)]
+[file (aRol.NombreRol+'/borradoConfirmacion_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html>
@@ -253,7 +249,9 @@
 
 <p>Pantalla de borrado de la asignatura [aBorrar.tiene_asociada.ID_Entidad/] </p>
 
-[generatePage(aBorrar)/]
+[if(aBorrar.muestra->size() > 0)]
+[generateRRSS(aBorrar)/]
+[/if]
 
 <p>>>Asignatura borrada!!</p>
 
@@ -271,8 +269,8 @@
 [/file]
 [/template]
 
-[template public generatePage (aCrear : PagCrear)]
-[file ('crear'+aCrear.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[template public generatePage (aRol : Rol, aCrear : PagCrear)]
+[file (aRol.NombreRol+'/crear_'+aCrear.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html>
@@ -286,7 +284,9 @@
 
 <p>Pantalla de detalle de [aCrear.tiene_asociada.nombreEntidad/] </p>
 
-[generatePage(aCrear)/]
+[if(aCrear.muestra->size() > 0)]
+[generateRRSS(aCrear)/]
+[/if]
 
 <p>Introduzca la información correspondiente a los siguientes campos:</p>
 
@@ -310,8 +310,8 @@
 [/file]
 [/template]
 
-[template public generatePage (aCRUD : CRUD)]
-[file ('crear'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[template public generatePage (aRol : Rol, aCRUD : CRUD)]
+[file (aRol.NombreRol+'/CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html>
@@ -325,7 +325,9 @@
 
 <p>Pantalla CRUD de la entidad [aCRUD.tiene_asociada.nombreEntidad/] </p>
 
-[generatePage(aCRUD)/]
+[if(aCRUD.muestra->size() > 0)]
+[generateRRSS(aCRUD)/]
+[/if]
 
 <p>Listado de [aCRUD.tiene_asociada.nombreEntidad/]</p>
 
@@ -341,7 +343,7 @@
 </html>
 
 [/file]
-[/template][/comment]
+[/template]
 
 
 [template public generatePage (aRol : Rol, aPagina : PaginasNormales)]
@@ -361,7 +363,10 @@
 	<p>Contenido multimedia: [aPagina.oclAsType(PaginasNormales).Multimedia/]</p>
 	<p>Contenido texto: [aPagina.oclAsType(PaginasNormales).Texto/]</p>
 	
+	[if(aPagina.muestra->size() > 0)]
 	[generateRRSS(aPagina)/]
+	[/if]
+
 </body>
 </html>
 [/file]

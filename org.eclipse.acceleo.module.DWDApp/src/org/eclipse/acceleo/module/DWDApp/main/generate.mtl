@@ -11,11 +11,14 @@
  */]
 [template public generateDataWebDesk(aDataWebDesk : DataWebDesk)]
 [comment @main/]
-[file ('Main.java', false, 'UTF-8')]
-package default;
+[file ('home/Main.java', false, 'UTF-8')]
 
+package home;
+
+import home.Keyin;
+[generateKeyin(aDataWebDesk)/]
 [for (r:Rol | aDataWebDesk.rol)]
-import deafult.[r.NombreRol + '_rol'/].[r.NombreRol + '_rol'/];
+import rol.[r.NombreRol/];
 [/for]
 
 public class Main{
@@ -28,20 +31,20 @@ public class Main{
 		i++;
 		[for(r : Rol | aDataWebDesk.rol)]
 		[generateRol(r)/]
-		System.out.println(i+". [r.NombreRol/]")
+		System.out.println(i+". [r.NombreRol/]");
 		i++;
 		[/for]
 		System.out.println("");
 		System.out.println("");
 
- 		int keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-(i-1)]");
+ 		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-(i-1)]");
 
-		while(valorPulsado < 0 ||  valorPulsado > (i-1)) {
+		while(keyPressed < 0 ||  keyPressed > (i-1)) {
 			System.out.println("Error: Opción no encontrada");
-			keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-(i-1)]");
+			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-(i-1)]");
 		}
 
-		switch (valorPulsado) {
+		switch (keyPressed) {
 			case 0:
 				System.out.println("Saliendo de la aplicación");
 	      	break;
@@ -76,12 +79,12 @@ System.out.println("Web: [url.Link/]");
 [/template]
 
 [template public generateRol(aRol : Rol)]
-[file (aRol.NombreRol+'.java', false, 'UTF-8')]
+[file ('rol/'+aRol.NombreRol+'.java', false, 'UTF-8')]
 
-package default.[aRol.NombreRol + '_rol'/]; 	
+package rol;
 
 public class [aRol.NombreRol.toUpperFirst()/]{
-	public Rol() {
+	public [aRol.NombreRol.toUpperFirst()/]() {
 		System.out.println("Pantalla principal de Rol [aRol.NombreRol/]");
 		System.out.println("Listado de páginas a las que tiene acceso:");
 		System.out.println("0 Salir");
@@ -96,14 +99,14 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 		System.out.println("");
 		System.out.println("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
 
-		int keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
+		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
 
-		while(valorPulsado < 0 ||  valorPulsado > [aRol.tiene_acceso->selectByType(PagCRUD)->size()/]) {
+		while(keyPressed < 0 ||  keyPressed > [aRol.tiene_acceso->selectByType(PagCRUD)->size()/]) {
 			System.out.println("Error: Opción no encontrada");
-			keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
+			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
 		}
 
-		switch (valorPulsado) {
+		switch (keyPressed) {
 			case 0:
 				System.out.println("Saliendo de la aplicación");
 	      	break;
@@ -121,7 +124,9 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 
 [template public generatePagina(aIndice : PagIndice)]
 [file ('Indice_'+aIndice.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
-	
+
+import home.Keyin;	
+
 public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
 		System.out.println("Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aIndice.accedida_por.NombreRol/]");
@@ -134,14 +139,14 @@ public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		System.out.println("");
 		System.out.println("Selecciona una opción ['['/]0-[aIndice.oclAsType(Pagina)->closure(accede)->size()/]]");
 
-				int keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-[aIndice.oclAsType(Pagina)->closure(accede)->size()/]]");
+				int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aIndice.oclAsType(Pagina)->closure(accede)->size()/]]");
 
-		while(valorPulsado < 0 ||  valorPulsado > [aIndice.oclAsType(Pagina)->closure(accede)->size()/]) {
+		while(keyPressed < 0 ||  keyPressed > [aIndice.oclAsType(Pagina)->closure(accede)->size()/]) {
 			System.out.println("Error: Opción no encontrada");
-			keyPressed; = Keyin.inInt("Selecciona una opción ['['/]0-[aIndice.oclAsType(Pagina)->closure(accede)->size()/]]");
+			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aIndice.oclAsType(Pagina)->closure(accede)->size()/]]");
 		}
 
-		switch (valorPulsado) {
+		switch (keyPressed) {
 			case 0:
 				System.out.println("Saliendo de la aplicación");
 	      	break;
@@ -276,6 +281,76 @@ public class CRUD_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		
 		System.out.println("Selecciona una opción ['['/]0-3]");	
 	}
+}
+
+[/file]
+[/template]
+
+[template public generateKeyin(aDataWebDesk : DataWebDesk)]
+[file ('home/Keyin.java', false, 'UTF-8')]
+	
+package home;
+
+public class Keyin {
+
+  //*******************************
+  //   support methods
+  //*******************************
+  //Method to display the user's prompt string
+  public static void printPrompt(String prompt) {
+    System.out.print(prompt + " ");
+    System.out.flush();
+  }
+
+  //Method to make sure no data is available in the
+  //input stream
+  public static void inputFlush() {
+    int dummy;
+    int bAvail;
+
+    try {
+      while ((System.in.available()) != 0)
+        dummy = System.in.read();
+    } catch (java.io.IOException e) {
+      System.out.println("Input error");
+    }
+  }
+  public static String inString() {
+    int aChar;
+    String s = "";
+    boolean finished = false;
+
+    while (!finished) {
+      try {
+        aChar = System.in.read();
+        if (aChar < 0 || (char) aChar == '\n')
+          finished = true;
+        else if ((char) aChar != '\r')
+          s = s + (char) aChar; // Enter into string
+      }
+
+      catch (java.io.IOException e) {
+        System.out.println("Input error");
+        finished = true;
+      }
+    }
+    return s;
+  }
+
+  public static int inInt(String prompt) {
+    while (true) {
+      inputFlush();
+      printPrompt(prompt);
+      try {
+        return Integer.valueOf(inString().trim()).intValue();
+      }
+
+      catch (NumberFormatException e) {
+        System.out.println("Invalid input. Not an integer");
+      }
+    }
+  }
+
 }
 
 [/file]
