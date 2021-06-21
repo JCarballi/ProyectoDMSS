@@ -12,10 +12,9 @@
 [template public generateDataWebDesk(aDataWebDesk : DataWebDesk)]
 [comment @main/]
 [file ('home/Main.java', false, 'UTF-8')]
-
 package home;
-
 import home.Keyin;
+
 [generateKeyin(aDataWebDesk)/]
 [for (r:Rol | aDataWebDesk.rol)]
 import rol.[r.NombreRol/];
@@ -69,19 +68,22 @@ public class Main{
 System.out.println("Redes sociales:");
 
 [for (rs: RedSocial | aPagina.muestra)]
-System.out.println("[rs.nombre/] [rs.ID_RedSocial/]");
+System.out.println("[rs.ID_RedSocial/]: [rs.nombre/]");
 [/for]
 
 [for (url: URLExterna | aPagina.urlexterna)]
-System.out.println("Web: [url.Link/]");
+System.out.println("Web: [url.nombreWeb/]: [url.Link/]");
 [/for]
 	
 [/template]
 
 [template public generateRol(aRol : Rol)]
 [file ('rol/'+aRol.NombreRol+'.java', false, 'UTF-8')]
-
 package rol;
+import home.Keyin;
+[for(e : Entidad | aRol.tiene_acceso->closure(accede)->selectByKind(PagCRUD).tiene_asociada->asSet())]
+import [e.nombreEntidad/].*;
+[/for]
 
 public class [aRol.NombreRol.toUpperFirst()/]{
 	public [aRol.NombreRol.toUpperFirst()/]() {
@@ -89,32 +91,42 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 		System.out.println("Listado de páginas a las que tiene acceso:");
 		System.out.println("0 Salir");
 
-		[for (p: PagCRUD | aRol.tiene_acceso->selectByType(PagCRUD))]
-			System.out.println( [aRol.tiene_acceso->selectByType(PagCRUD)->indexOf(p)/] +"[p.tiene_asociada.nombreEntidad/] [p.TituloPag/]");
+		[for (p: Pagina | aRol.tiene_acceso->closure(accede))]
+		[if(p.oclIsTypeOf(PaginasNormales))]
+		System.out.println([aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/]+" [p.TituloPag/]");			
+		[else]
+		[if(not p.oclIsTypeOf(PaginaPrincipal))]
+		System.out.println( [aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/] +"[p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]");
+		[/if]
+		[/if]		
 		[/for]
-		[for (p: Pagina | aRol.tiene_acceso->excluding(aRol.tiene_acceso->selectByType(PagCRUD)))]
-			System.out.println([aRol.tiene_acceso->excluding(aRol.tiene_acceso->selectByType(PagCRUD))->asOrderedSet()->indexOf(p)/]+" [p.TituloPag/]");
-		[/for]
+
 		System.out.println("");
 		System.out.println("");
-		System.out.println("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
+		System.out.println("Selecciona una opción ['['/]0-[aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal))->size()/]]");
 
-		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
+		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal))->size()/]]");
 
-		while(keyPressed < 0 ||  keyPressed > [aRol.tiene_acceso->selectByType(PagCRUD)->size()/]) {
+		while(keyPressed < 0 ||  keyPressed > [aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal))->size()/]) {
 			System.out.println("Error: Opción no encontrada");
-			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->selectByType(PagCRUD)->size()/]]");
+			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal))->size()/]]");
 		}
 
 		switch (keyPressed) {
 			case 0:
 				System.out.println("Saliendo de la aplicación");
 	      	break;
-		[for (p: PagCRUD | aRol.tiene_acceso->selectByType(PagCRUD))]
-			case [aRol.tiene_acceso->selectByType(PagCRUD)->indexOf(p)/]:
-				[p.eGet('Class')/] p = new [p.eGet('Class')/]();
+
+		[for (p: Pagina | aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal)))]
+			case [aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal))->asOrderedSet()->indexOf(p)/]:
+			[if(p.oclIsTypeOf(PaginasNormales))]
+				[p.TituloPag/] [p.TituloPag.toLowerCase()/] = new [p.TituloPag/](); 
+			[else]
+				[generatePaginaCRUD(aRol, p)/]
 			break;
+			[/if]
 		[/for]
+
 		}
 	}
 }
@@ -122,18 +134,51 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 [/file]
 [/template]
 
-[template public generatePagina(aIndice : PagIndice)]
-[file ('Indice_'+aIndice.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[template public generatePaginaCRUD (aRol : Rol, aPagina : Pagina)]
+[if (aPagina.oclIsKindOf(PagIndice))]
+Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/] p = new [aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/]();	
+[generatePagina(aRol, aPagina.oclAsType(PagIndice))/]	
+[/if]
+[if (aPagina.oclIsKindOf(PagLeer))]
+Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/] p = new [aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/]();	
+[generatePagina(aRol, aPagina.oclAsType(PagLeer))/]	
+[/if]
+[if (aPagina.oclIsKindOf(PagBorrar))]
+Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/] p = new [aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/]();	
+[generatePagina(aRol, aPagina.oclAsType(PagBorrar))/]	
+[/if]
+[if (aPagina.oclIsKindOf(PagCrear))]
+Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/] p = new [aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/]();	
+[generatePagina(aRol, aPagina.oclAsType(PagCrear))/]	
+[/if]
+[if (aPagina.oclIsKindOf(CRUD))]
+CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/] p = new [aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/]();	
+[generatePagina(aRol, aPagina.oclAsType(CRUD))/]	
+[/if]
+[/template]
 
-import home.Keyin;	
+[template public generatePagina(aRol : Rol, aIndice : PagIndice)]
+[file (aIndice.tiene_asociada.nombreEntidad+'/Indice_'+aIndice.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package [aIndice.tiene_asociada.nombreEntidad/];
+import home.Keyin;
 
 public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
-		System.out.println("Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aIndice.accedida_por.NombreRol/]");
+		System.out.println("Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]");
 
 		[generateRRSS(aIndice)/]
 
 		System.out.println("Listado de páginas a las que tiene acceso:");
+
+		[for (p: Pagina | aIndice.oclAsType(Pagina)->closure(accede))]
+		[if(p.oclIsTypeOf(PaginasNormales))]
+		System.out.println([aIndice.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/]+" [p.TituloPag/]");			
+		[else]
+		[if(not p.oclIsTypeOf(PaginaPrincipal))]
+		System.out.println( [aIndice.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/] +"[p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]");
+		[/if]
+		[/if]		
+		[/for]
 
 		System.out.println("");
 		System.out.println("");
@@ -162,8 +207,10 @@ public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/file]
 [/template]
 
-[template public generatePagina(aDetalle : PagLeer)]
-[file ('Detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[template public generatePagina(aRol : Rol, aDetalle : PagLeer)]
+[file (aDetalle.tiene_asociada.nombreEntidad+'/Detalle_'+aDetalle.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package [aDetalle.tiene_asociada.nombreEntidad/];
+import home.Keyin;
 	
 public class Detalle_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Detalle_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
@@ -192,8 +239,10 @@ public class Detalle_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/file]
 [/template]
 
-[template public generatePagina(aBorrar : PagBorrar)]
-[file ('Borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[template public generatePagina(aRol : Rol, aBorrar : PagBorrar)]
+[file (aBorrar.tiene_asociada.nombreEntidad+'/Borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package [aBorrar.tiene_asociada.nombreEntidad/];
+import home.Keyin;
 	
 public class Borrar_[aBorrar.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Borrar_[aBorrar.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
@@ -236,8 +285,10 @@ public class BorrarConfirmacion_[aEntidad.nombreEntidad.toUpperFirst()/]{
 [/file]
 [/template]
 
-[template public generatePagina(aCrear : PagCrear)]
-[file ('Crear_'+aCrear.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[template public generatePagina(aRol : Rol, aCrear : PagCrear)]
+[file (aCrear.tiene_asociada.nombreEntidad+'/Crear_'+aCrear.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package [aCrear.tiene_asociada.nombreEntidad/];
+import home.Keyin;
 	
 public class Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
@@ -263,8 +314,10 @@ public class Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/file]
 [/template]
 
-[template public generatePagina(aCRUD : CRUD)]
-[file ('CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[template public generatePagina(aRol : Rol, aCRUD : CRUD)]
+[file (aCRUD.tiene_asociada.nombreEntidad+'/CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package [aCRUD.tiene_asociada.nombreEntidad/];
+import home.Keyin;
 	
 public class CRUD_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public CRUD_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
