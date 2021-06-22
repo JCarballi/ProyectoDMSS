@@ -76,7 +76,7 @@
 <p>Listado de páginas a las que tiene acceso:</p>
 
 <ol type="1">
-	<li>Salir</li>
+	<li><a href="../index.html">Salir</li>
 [for (p: Pagina | aRol.tiene_acceso->closure(accede))]
 
 	[if(p.oclIsTypeOf(PaginasNormales))]
@@ -141,11 +141,11 @@
 <p>Listado de [aIndice.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
-	<li><a href="../index.html">0.Salir</a></li>
+	<li><a href="../index.html">Salir</a></li>
 	[for (pgDetalles: PagLeer | aIndice.tiene_asociada.asociada->selectByType(PagLeer))]
 	<li><a href=""></a>[pgDetalles.tiene_asociada.nombreEntidad/]</li>
 	[/for]
-	<li>Volver</li>
+	<li><a href="index_[aRol.NombreRol/].html">Volver</a></li>
 </ol>
 
 
@@ -193,7 +193,7 @@
 	[for (e: Entidad | aDetalle.tiene_asociada.relacionada)]
 	<li>Consultar detalles de [e.nombreEntidad/]</li>
 	[/for]
-	<li>Volver</li>
+	<li><a href="index_[aRol.NombreRol/].html">Volver</a></li>
 </ol>
 
 </body>
@@ -224,7 +224,7 @@
 <p>Listado de : [aBorrar.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
-	<li>Salir</li>
+	<li><a href="../index.html">Salir</a></li>
 </ol>
 
 </body>
@@ -260,7 +260,7 @@
 	[for (e: Entidad | aBorrar.tiene_asociada.relacionada)]
 	<li>Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
 	[/for]
-	<li>Salir</li>
+	<li><a href="../index.html">Salir</a></li>
 </ul>
 
 </body>
@@ -300,7 +300,7 @@
 
 <ol>
 	<li>Aceptar->Crear la asignatura->Salir</li>
-	<li>Cancelar->Salir</li>
+	<li><a href="../index.html">Cancelar->Salir</a></li>
 </ol>
 
 
@@ -332,7 +332,7 @@
 <p>Listado de [aCRUD.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
-	<li>Salir</li>
+	<li><a href="../index.html">Salir</a></li>
 	<li><a href="">Listar</a></li>
 	<li><a href="">Crear nuevo elemento</a></li>
 	<li><a href="">Borrar un elemento</a></li>
