@@ -247,7 +247,7 @@ public class PaginasNormalesEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated
 		 */
 		public PaginasNormalesFigure() {
-			this.setURI("platform:/plugin/ProyectoDMSS/iconos/pagina.svg");
+			this.setURI("platform:/plugin/Proyecto_DMSS/iconos/pagina.svg");
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 		}

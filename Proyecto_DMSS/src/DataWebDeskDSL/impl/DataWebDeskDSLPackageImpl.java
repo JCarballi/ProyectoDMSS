@@ -1184,7 +1184,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		  (getRol_NumeroPaginasAccesiblesD1(), 
 		   source, 
 		   new String[] {
-			 "derivation", "self.tiene_acceso->closure(accede)->size()"
+			 "derivation", "self.tiene_acceso->closure(accede)->asSet()->size()"
 		   });	
 		addAnnotation
 		  (getRol_NumeroEntidadesAccesiblesD2(), 
@@ -1208,7 +1208,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   new String[] {
 			 "label", "TituloPag",
 			 "figure", "svg",
-			 "svg.uri", "platform:/plugin/ProyectoDMSS/iconos/pagina.svg",
+			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/pagina.svg",
 			 "label.icon", "false",
 			 "label.placement", "external"
 		   });	
@@ -1218,7 +1218,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   new String[] {
 			 "label", "TituloPag",
 			 "figure", "svg",
-			 "svg.uri", "platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg",
+			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg",
 			 "label.icon", "false",
 			 "label.placement", "external"
 		   });	
@@ -1243,7 +1243,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   new String[] {
 			 "label", "NombreRol",
 			 "figure", "svg",
-			 "svg.uri", "platform:/plugin/ProyectoDMSS/iconos/rol.svg",
+			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/rol.svg",
 			 "label.icon", "false",
 			 "label.placement", "external"
 		   });	
@@ -1253,7 +1253,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   new String[] {
 			 "label", "nombre",
 			 "figure", "svg",
-			 "svg.uri", "platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg",
+			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/socialMedia.svg",
 			 "label.icon", "false",
 			 "label.placement", "external"
 		   });	
@@ -1263,7 +1263,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   new String[] {
 			 "label", "Link",
 			 "figure", "svg",
-			 "svg.uri", "platform:/plugin/ProyectoDMSS/iconos/link.svg",
+			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/link.svg",
 			 "label.icon", "false",
 			 "label.placement", "external"
 		   });	
@@ -1273,7 +1273,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   new String[] {
 			 "label", "TituloPag",
 			 "figure", "svg",
-			 "svg.uri", "platform:/plugin/ProyectoDMSS/iconos/home.svg",
+			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/home.svg",
 			 "label.icon", "false",
 			 "label.placement", "external"
 		   });

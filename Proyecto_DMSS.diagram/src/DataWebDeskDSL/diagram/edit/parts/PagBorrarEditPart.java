@@ -247,7 +247,7 @@ public class PagBorrarEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated
 		 */
 		public PagBorrarFigure() {
-			this.setURI("platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg");
+			this.setURI("platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg");
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 		}

@@ -58,7 +58,7 @@
     <eAnnotations source="gmf.node">
       <details key="label" value="TituloPag"/>
       <details key="figure" value="svg"/>
-      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/pagina.svg"/>
+      <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/pagina.svg"/>
       <details key="label.icon" value="false"/>
       <details key="label.placement" value="external"/>
     </eAnnotations>
@@ -98,7 +98,7 @@
     <eAnnotations source="gmf.node">
       <details key="label" value="TituloPag"/>
       <details key="figure" value="svg"/>
-      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg"/>
+      <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg"/>
       <details key="label.icon" value="false"/>
       <details key="label.placement" value="external"/>
     </eAnnotations>
@@ -187,7 +187,7 @@
     <eAnnotations source="gmf.node">
       <details key="label" value="NombreRol"/>
       <details key="figure" value="svg"/>
-      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/rol.svg"/>
+      <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/rol.svg"/>
       <details key="label.icon" value="false"/>
       <details key="label.placement" value="external"/>
     </eAnnotations>
@@ -227,7 +227,7 @@
     <eAnnotations source="gmf.node">
       <details key="label" value="nombre"/>
       <details key="figure" value="svg"/>
-      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg"/>
+      <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/socialMedia.svg"/>
       <details key="label.icon" value="false"/>
       <details key="label.placement" value="external"/>
     </eAnnotations>
@@ -263,7 +263,7 @@
     <eAnnotations source="gmf.node">
       <details key="label" value="Link"/>
       <details key="figure" value="svg"/>
-      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/link.svg"/>
+      <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/link.svg"/>
       <details key="label.icon" value="false"/>
       <details key="label.placement" value="external"/>
     </eAnnotations>
@@ -284,7 +284,7 @@
     <eAnnotations source="gmf.node">
       <details key="label" value="TituloPag"/>
       <details key="figure" value="svg"/>
-      <details key="svg.uri" value="platform:/plugin/ProyectoDMSS/iconos/home.svg"/>
+      <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/home.svg"/>
       <details key="label.icon" value="false"/>
       <details key="label.placement" value="external"/>
     </eAnnotations>

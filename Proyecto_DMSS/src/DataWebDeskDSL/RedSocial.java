@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see DataWebDeskDSL.DataWebDeskDSLPackage#getRedSocial()
  * @model abstract="true"
- *        annotation="gmf.node label='nombre' figure='svg' svg.uri='platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg' label.icon='false' label.placement='external'"
+ *        annotation="gmf.node label='nombre' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/socialMedia.svg' label.icon='false' label.placement='external'"
  * @generated
  */
 public interface RedSocial extends EObject {

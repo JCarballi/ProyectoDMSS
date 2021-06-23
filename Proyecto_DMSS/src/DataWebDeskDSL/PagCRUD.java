@@ -17,7 +17,7 @@ package DataWebDeskDSL;
  *
  * @see DataWebDeskDSL.DataWebDeskDSLPackage#getPagCRUD()
  * @model abstract="true"
- *        annotation="gmf.node label='TituloPag' figure='svg' svg.uri='platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg' label.icon='false' label.placement='external'"
+ *        annotation="gmf.node label='TituloPag' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg' label.icon='false' label.placement='external'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='CRUDNoSuelta'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot CRUDNoSuelta='self.tiene_asociada->size()>0 or self.accede->selectByType(CRUD)->size()>0'"
  * @generated

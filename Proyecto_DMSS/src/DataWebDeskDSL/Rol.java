@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see DataWebDeskDSL.DataWebDeskDSLPackage#getRol()
- * @model annotation="gmf.node label='NombreRol' figure='svg' svg.uri='platform:/plugin/ProyectoDMSS/iconos/rol.svg' label.icon='false' label.placement='external'"
+ * @model annotation="gmf.node label='NombreRol' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/rol.svg' label.icon='false' label.placement='external'"
  * @generated
  */
 public interface Rol extends EObject {
@@ -63,7 +63,7 @@ public interface Rol extends EObject {
 	 * @see #setNumeroPaginasAccesiblesD1(int)
 	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getRol_NumeroPaginasAccesiblesD1()
 	 * @model required="true" transient="true" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='self.tiene_acceso->closure(accede)->size()'"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='self.tiene_acceso->closure(accede)->asSet()->size()'"
 	 * @generated
 	 */
 	int getNumeroPaginasAccesiblesD1();

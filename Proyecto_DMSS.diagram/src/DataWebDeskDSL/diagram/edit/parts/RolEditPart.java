@@ -247,7 +247,7 @@ public class RolEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated
 		 */
 		public RolFigure() {
-			this.setURI("platform:/plugin/ProyectoDMSS/iconos/rol.svg");
+			this.setURI("platform:/plugin/Proyecto_DMSS/iconos/rol.svg");
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 		}

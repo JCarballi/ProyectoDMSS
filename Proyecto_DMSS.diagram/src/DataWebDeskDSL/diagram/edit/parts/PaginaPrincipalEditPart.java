@@ -247,7 +247,7 @@ public class PaginaPrincipalEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated
 		 */
 		public PaginaPrincipalFigure() {
-			this.setURI("platform:/plugin/ProyectoDMSS/iconos/home.svg");
+			this.setURI("platform:/plugin/Proyecto_DMSS/iconos/home.svg");
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 		}

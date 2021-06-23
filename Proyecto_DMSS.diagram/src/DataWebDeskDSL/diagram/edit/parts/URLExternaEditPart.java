@@ -247,7 +247,7 @@ public class URLExternaEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated
 		 */
 		public URLExternaFigure() {
-			this.setURI("platform:/plugin/ProyectoDMSS/iconos/link.svg");
+			this.setURI("platform:/plugin/Proyecto_DMSS/iconos/link.svg");
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 		}

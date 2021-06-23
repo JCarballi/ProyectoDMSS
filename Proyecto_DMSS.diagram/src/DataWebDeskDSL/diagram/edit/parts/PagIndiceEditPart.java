@@ -247,7 +247,7 @@ public class PagIndiceEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated
 		 */
 		public PagIndiceFigure() {
-			this.setURI("platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg");
+			this.setURI("platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg");
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 		}

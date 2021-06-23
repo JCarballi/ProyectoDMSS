@@ -247,7 +247,7 @@ public class PagLeerEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated
 		 */
 		public PagLeerFigure() {
-			this.setURI("platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg");
+			this.setURI("platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg");
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 		}

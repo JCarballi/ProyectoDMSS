@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see DataWebDeskDSL.DataWebDeskDSLPackage#getURLExterna()
- * @model annotation="gmf.node label='Link' figure='svg' svg.uri='platform:/plugin/ProyectoDMSS/iconos/link.svg' label.icon='false' label.placement='external'"
+ * @model annotation="gmf.node label='Link' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/link.svg' label.icon='false' label.placement='external'"
  * @generated
  */
 public interface URLExterna extends EObject {

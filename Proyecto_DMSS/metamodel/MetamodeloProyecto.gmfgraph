@@ -9,7 +9,7 @@
     <figures xsi:type="gmfgraph:PolylineDecoration" name="RedSocialMostradaFigureTargetDecoration"/>
     <figures xsi:type="gmfgraph:PolylineDecoration" name="URLExternaPaginaFigureTargetDecoration"/>
     <descriptors name="PaginasNormalesFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PaginasNormalesFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/pagina.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PaginasNormalesFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/pagina.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -42,7 +42,7 @@
       <accessors accessor="getFigureCaracteristicaEntidadLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors name="PagCrearFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagCrearFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagCrearFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -52,7 +52,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="PagCrearLabelFigure" text="PagCrear"/>
     </descriptors>
     <descriptors name="PagLeerFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagLeerFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagLeerFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -62,7 +62,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="PagLeerLabelFigure" text="PagLeer"/>
     </descriptors>
     <descriptors name="PagBorrarFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagBorrarFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagBorrarFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -72,7 +72,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="PagBorrarLabelFigure" text="PagBorrar"/>
     </descriptors>
     <descriptors name="PagActualizarFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagActualizarFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagActualizarFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -82,7 +82,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="PagActualizarLabelFigure" text="PagActualizar"/>
     </descriptors>
     <descriptors name="RolFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="RolFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/rol.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="RolFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/rol.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -92,7 +92,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="RolLabelFigure" text="Rol"/>
     </descriptors>
     <descriptors name="TwitterFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="TwitterFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="TwitterFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/socialMedia.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -102,7 +102,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="TwitterLabelFigure" text="Twitter"/>
     </descriptors>
     <descriptors name="FacebookFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="FacebookFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="FacebookFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/socialMedia.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -112,7 +112,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="FacebookLabelFigure" text="Facebook"/>
     </descriptors>
     <descriptors name="PagIndiceFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagIndiceFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PagIndiceFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -122,7 +122,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="PagIndiceLabelFigure" text="PagIndice"/>
     </descriptors>
     <descriptors name="CRUDFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="CRUDFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="CRUDFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -132,7 +132,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="CRUDLabelFigure" text="CRUD"/>
     </descriptors>
     <descriptors name="URLExternaFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="URLExternaFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/link.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="URLExternaFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/link.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -142,7 +142,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="URLExternaLabelFigure" text="URLExterna"/>
     </descriptors>
     <descriptors name="PaginaPrincipalFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PaginaPrincipalFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/home.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="PaginaPrincipalFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/home.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
@@ -152,7 +152,7 @@
       <actualFigure xsi:type="gmfgraph:Label" name="PaginaPrincipalLabelFigure" text="PaginaPrincipal"/>
     </descriptors>
     <descriptors name="RSSFigure">
-      <actualFigure xsi:type="gmfgraph:SVGFigure" name="RSSFigure" documentURI="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg">
+      <actualFigure xsi:type="gmfgraph:SVGFigure" name="RSSFigure" documentURI="platform:/plugin/Proyecto_DMSS/iconos/socialMedia.svg">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>

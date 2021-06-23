@@ -22,7 +22,7 @@ class DataWebDesk {
 	val URLExterna[*] urlexterna;
 }
 
-@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/pagina.svg", label.icon="false", label.placement="external")
+@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/Proyecto_DMSS/iconos/pagina.svg", label.icon="false", label.placement="external")
 @Ecore(constraints="noPagAisladaR2")
 @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(noPagAisladaR2="self->closure(accede).accedida_por -> size() > 0")
 abstract class Pagina {
@@ -41,7 +41,7 @@ class PaginasNormales extends Pagina {
 	attr String[*] Multimedia;
 }
 
-@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/paginaCRUD.svg", label.icon="false", label.placement="external")
+@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg", label.icon="false", label.placement="external")
 @Ecore(constraints="CRUDNoSuelta")
 @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(CRUDNoSuelta="self.tiene_asociada->size()>0 or self.accede->selectByType(CRUD)->size()>0")
 abstract class PagCRUD extends Pagina {
@@ -88,12 +88,12 @@ class PagBorrar extends PagCRUD {
 class PagActualizar extends PagCRUD {
 }
 
-@gmf.node(label="NombreRol", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/rol.svg", label.icon="false", label.placement="external")
+@gmf.node(label="NombreRol", figure="svg", svg.uri="platform:/plugin/Proyecto_DMSS/iconos/rol.svg", label.icon="false", label.placement="external")
 class Rol {
 	attr String[1] NombreRol;
 
 	@GenModel(documentation="D01")
-	@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(derivation="self.tiene_acceso->closure(accede)->size()")
+	@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(derivation="self.tiene_acceso->closure(accede)->asSet()->size()")
 	volatile transient derived attr int[1] numeroPaginasAccesiblesD1;
 
 	@GenModel(documentation="D02")
@@ -106,7 +106,7 @@ class Rol {
 	ref Pagina[*]#accedida_por tiene_acceso;
 }
 
-@gmf.node(label="nombre", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/socialMedia.svg", label.icon="false", label.placement="external")
+@gmf.node(label="nombre", figure="svg", svg.uri="platform:/plugin/Proyecto_DMSS/iconos/socialMedia.svg", label.icon="false", label.placement="external")
 abstract class RedSocial {
 	attr tipoContenido TipoCont;
 	attr int[1] ID_RedSocial;
@@ -139,7 +139,7 @@ enum tipoContenido {
 	MULTIMEDIA = 1;
 }
 
-@gmf.node(label="Link", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/link.svg", label.icon="false", label.placement="external")
+@gmf.node(label="Link", figure="svg", svg.uri="platform:/plugin/Proyecto_DMSS/iconos/link.svg", label.icon="false", label.placement="external")
 class URLExterna {
 
 	@gmf.link(source="urlexterna", target="pagina", label="enlazada_en", target.decoration="arrow")
@@ -148,7 +148,7 @@ class URLExterna {
 	attr String[1] nombreWeb;
 }
 
-@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/ProyectoDMSS/iconos/home.svg", label.icon="false", label.placement="external")
+@gmf.node(label="TituloPag", figure="svg", svg.uri="platform:/plugin/Proyecto_DMSS/iconos/home.svg", label.icon="false", label.placement="external")
 class PaginaPrincipal extends Pagina {
 }
 

@@ -10,7 +10,7 @@ package DataWebDeskDSL;
  *
  *
  * @see DataWebDeskDSL.DataWebDeskDSLPackage#getPaginaPrincipal()
- * @model annotation="gmf.node label='TituloPag' figure='svg' svg.uri='platform:/plugin/ProyectoDMSS/iconos/home.svg' label.icon='false' label.placement='external'"
+ * @model annotation="gmf.node label='TituloPag' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/home.svg' label.icon='false' label.placement='external'"
  * @generated
  */
 public interface PaginaPrincipal extends Pagina {
