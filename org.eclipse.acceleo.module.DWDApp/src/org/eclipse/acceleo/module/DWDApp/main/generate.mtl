@@ -144,7 +144,7 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 			[else]
 				[generatePaginaCRUD(aRol, p)/]
 			break;
-			[/if]
+			[/if]	
 		[/for]
 
 		}
@@ -226,6 +226,17 @@ public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 				System.out.println("Volviendo al Rol");
 				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
 			break;
+[comment]			[for (p: Pagina | aIndice.oclAsType(Pagina)->closure(accede))]
+			case [aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal))->asOrderedSet()->indexOf(p)/]:
+			[if(p.oclIsTypeOf(PaginasNormales))]
+				[generatePagina(aRol, p.oclAsType(PaginasNormales))/]
+				[p.TituloPag.replaceAll(' ', '_')/] [p.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new [p.TituloPag.replaceAll(' ', '_')/](); 
+			[else]
+				[generatePaginaCRUD(aRol, p)/]
+			break;
+			[/if]	
+			[/for][/comment]
+			
 		}
 
 	}
@@ -286,6 +297,12 @@ public class Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 				System.out.println("Volviendo al Rol");
 				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
 			break;
+			case 1:
+			break;
+[comment]			[for (e : Entidad | aDetalle.tiene_asociada->closure(esta_relacionada))]
+			case [aDetalle.tiene_asociada->closure(esta_relacionada)->indexOf(e) + 2/]
+				[e.nombreEntidad/] [e.nombreEntidad.toLowerCase()/] = new [e.nombreEntidad/]();
+			[/for][/comment]
 		}
 
 	}
@@ -496,8 +513,192 @@ public class CRUD_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 				System.out.println("Volviendo al Rol");
 				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
 			break;
+
+			case 1:
+				[generateIndexCRUD(aRol, aCRUD)/]
+				Indice_[aCRUD.tiene_asociada.nombreEntidad/] indice[aCRUD.tiene_asociada.nombreEntidad/] = new Indice_[aCRUD.tiene_asociada.nombreEntidad/]();	
+			break;
+
+			case 2:
+				[generateCreateCRUD(aRol, aCRUD)/]
+				Crear_[aCRUD.tiene_asociada.nombreEntidad/] crear[aCRUD.tiene_asociada.nombreEntidad/] = new Crear_[aCRUD.tiene_asociada.nombreEntidad/]();	
+			break;
+
+			case 3:
+				[generateRemoveCRUD(aRol, aCRUD)/]
+				Borrar_[aCRUD.tiene_asociada.nombreEntidad/] borrar[aCRUD.tiene_asociada.nombreEntidad/] = new Borrar_[aCRUD.tiene_asociada.nombreEntidad/]();	
+			break;
 		}
 
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateIndexCRUD (aRol : Rol, aCRUD : CRUD)]
+[file (aCRUD.tiene_asociada.nombreEntidad+'/Indice_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package [aCRUD.tiene_asociada.nombreEntidad/];
+import home.Keyin;
+import rol.[aRol.NombreRol/];
+import entidad.[aCRUD.tiene_asociada.nombreEntidad/];
+import dao.[aCRUD.tiene_asociada.nombreEntidad/]Dao;
+import daoImpl.[aCRUD.tiene_asociada.nombreEntidad/]DaoImpl;
+
+public class Indice_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
+	public Indice_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
+
+		System.out.println("\n\n\n");
+		System.out.println("---------------------------------------------------------------------------------");
+
+		System.out.println("Pantalla índice de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]");
+		
+		System.out.println("");
+		[generateRRSS(aCRUD)/]
+		System.out.println("");
+
+		System.out.println("Listado de páginas a las que tiene acceso:");
+
+		[for (p: Pagina | aCRUD.oclAsType(Pagina)->closure(accede))]
+		[if(p.oclIsTypeOf(PaginasNormales))]
+		System.out.println([aCRUD.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/]+" [p.TituloPag/]");			
+		[else]
+		[if(not p.oclIsTypeOf(PaginaPrincipal))]
+		System.out.println( [aCRUD.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/] +"[p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]");
+		[/if]
+		[/if]		
+		[/for]
+
+		System.out.println("");
+
+		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-0]");
+
+		while(keyPressed < 0 ||  keyPressed > [aCRUD.oclAsType(Pagina)->closure(accede)->size()/]) {
+			System.out.println("");
+			System.out.println("Error: Opción no encontrada");
+			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aCRUD.oclAsType(Pagina)->closure(accede)->size()/]]");
+		}
+
+		switch (keyPressed) {
+			case 0:
+				System.out.println("Volviendo al menú CRUD");
+				CRUD_[aCRUD.tiene_asociada.nombreEntidad/] crud = new CRUD_[aCRUD.tiene_asociada.nombreEntidad/]();
+			break;
+[comment]			[for (p: Pagina | aCRUD.oclAsType(Pagina)->closure(accede))]
+			[if(p.oclIsTypeOf(PaginasNormales))]
+				[generatePagina(aRol, p.oclAsType(PaginasNormales))/]
+				[p.TituloPag.replaceAll(' ', '_')/] [p.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new [p.TituloPag.replaceAll(' ', '_')/](); 
+			[else]
+				[generatePaginaCRUD(aRol, p)/]
+			break;
+			[/if]
+			[/for][/comment]
+		}
+
+	}
+}
+[/file]
+[/template]
+
+[template public generateCreateCRUD (aRol : Rol, aCRUD : CRUD)]
+[file (aCRUD.tiene_asociada.nombreEntidad+'/Crear_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package [aCRUD.tiene_asociada.nombreEntidad/];
+import home.Keyin;
+import rol.[aRol.NombreRol/];
+import entidad.[aCRUD.tiene_asociada.nombreEntidad/];
+import dao.[aCRUD.tiene_asociada.nombreEntidad/]Dao;
+import daoImpl.[aCRUD.tiene_asociada.nombreEntidad/]DaoImpl;
+	
+public class Crear_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
+	public Crear_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
+
+		System.out.println("\n\n\n");
+		System.out.println("---------------------------------------------------------------------------------");
+
+		System.out.println("Pantalla Crear de [aCRUD.tiene_asociada.nombreEntidad/]");
+		
+		System.out.println("");
+		[generateRRSS(aCRUD)/]
+		System.out.println("");
+
+		System.out.println("Introduzca la información correspondiente a los siguientes campos:");
+		[for(c : CaracteristicaEntidad | aCRUD.tiene_asociada.caracteristica)]
+		System.out.println("-[c.nombreCaract/]: valor // ([c.TDato/])");	
+		[/for]
+		[for(e : Entidad | aCRUD.tiene_asociada.esta_relacionada)]
+		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		[/for]
+		System.out.println("");
+
+		System.out.println("Listado de opciones:");
+
+		System.out.println("1. Aceptar -> Crear la asignatura -> Salir");
+		System.out.println("2. Cancelar -> Salir");
+		System.out.println("");
+
+		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-0]");
+
+		while(keyPressed < 0 ||  keyPressed > [aCRUD.oclAsType(Pagina)->closure(accede)->size()/]) {
+			System.out.println("");
+			System.out.println("Error: Opción no encontrada");
+			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aCRUD.oclAsType(Pagina)->closure(accede)->size()/]]");
+		}
+
+		switch (keyPressed) {
+			case 2:
+				System.out.println("Volviendo al menú CRUD");
+				CRUD_[aCRUD.tiene_asociada.nombreEntidad/] crud = new CRUD_[aCRUD.tiene_asociada.nombreEntidad/]();
+			break;
+		}
+
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateRemoveCRUD (aRol : Rol, aCRUD : CRUD)]
+[file (aCRUD.tiene_asociada.nombreEntidad+'/Borrar_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package [aCRUD.tiene_asociada.nombreEntidad/];
+import home.Keyin;
+import rol.[aRol.NombreRol/];
+import entidad.[aCRUD.tiene_asociada.nombreEntidad/];
+import dao.[aCRUD.tiene_asociada.nombreEntidad/]Dao;
+import daoImpl.[aCRUD.tiene_asociada.nombreEntidad/]DaoImpl;
+	
+public class Borrar_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
+	public Borrar_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
+
+		System.out.println("\n\n\n");
+		System.out.println("---------------------------------------------------------------------------------");
+
+		System.out.println("Pantalla Borrar de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aCRUD.accedida_por.NombreRol/]");
+		
+		System.out.println("");
+		[generateRRSS(aCRUD)/]
+		System.out.println("");
+
+		System.out.println("Listado de [aCRUD.tiene_asociada.nombreEntidad/]");
+
+		System.out.println("AQUI VAN LOS DATOS TODO");	
+		System.out.println("Salir");
+		System.out.println("");
+
+		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-0]");
+
+		while(keyPressed < 0 ||  keyPressed > [aCRUD.oclAsType(Pagina)->closure(accede)->size()/]) {
+			System.out.println("");
+			System.out.println("Error: Opción no encontrada");
+			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aCRUD.oclAsType(Pagina)->closure(accede)->size()/]]");
+		}
+
+		switch (keyPressed) {
+			case 0:
+				System.out.println("Volviendo al menú CRUD");
+				CRUD_[aCRUD.tiene_asociada.nombreEntidad/] crud = new CRUD_[aCRUD.tiene_asociada.nombreEntidad/]();
+			break;
+		}
+	
 	}
 }
 

@@ -234,7 +234,7 @@
 [/template]
 
 
-[template public generateConfirmacion (aRol : Rol, aBorrar : PagBorrar)]
+[template public generateConfirmacion (aRol : Rol, aBorrar : PagCRUD)]
 [file (aRol.NombreRol+'/borradoConfirmacion_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
@@ -333,9 +333,12 @@
 
 <ol>
 	<li><a href="index_[aRol.NombreRol/].html">Salir al Rol</a></li>
-	<li><a href="">Listar</a></li>
-	<li><a href="">Crear nuevo elemento</a></li>
-	<li><a href="">Borrar un elemento</a></li>
+	[generateIndexCRUD(aRol, aCRUD)/]
+	<li><a href="Indice_[aCRUD.tiene_asociada.nombreEntidad/].html">Listar</a></li>
+	[generateCreateCRUD(aRol, aCRUD)/]
+	<li><a href="Crear_[aCRUD.tiene_asociada.nombreEntidad/].html">Crear nuevo elemento</a></li>
+	[generateRemoveCRUD(aRol, aCRUD)/]
+	<li><a href="Borrar_[aCRUD.tiene_asociada.nombreEntidad/].html">Borrar un elemento</a></li>
 </ol>
 
 
@@ -377,5 +380,113 @@
 
 </body>
 </html>
+[/file]
+[/template]
+
+[template public generateIndexCRUD (aRol : Rol, aCRUD : CRUD)]
+[file (aRol.NombreRol+'/indice_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aCRUD.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla índice de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]</p>
+
+[if(aCRUD.muestra->size() > 0)]
+[generateRRSS(aCRUD)/]
+[/if]
+
+<p>Listado de [aCRUD.tiene_asociada.nombreEntidad/]</p>
+
+<ol>
+	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Salir al menú CRUD</a></li>
+	[for (pgDetalles: PagLeer | aCRUD.tiene_asociada.asociada->selectByType(PagLeer))]
+	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/]">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.TituloPag/]</a></li>
+	[/for]
+	<li><a href="index_[aRol.NombreRol/].html">Volver al Rol</a></li>
+</ol>
+
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generateCreateCRUD (aRol : Rol, aCRUD : CRUD)]
+[file (aRol.NombreRol+'/crear_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aCRUD.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla de detalle de [aCRUD.tiene_asociada.nombreEntidad/] </p>
+
+[if(aCRUD.muestra->size() > 0)]
+[generateRRSS(aCRUD)/]
+[/if]
+
+<p>Introduzca la información correspondiente a los siguientes campos:</p>
+
+<ul>
+[for (c: CaracteristicaEntidad | aCRUD.tiene_asociada.caracteristica)]
+	<li>[c.nombreCaract/]: </li>
+[/for]
+</ul>
+
+<p>Listado de opciones:</p>
+
+<ol>
+	<li>Aceptar->Crear la asignatura->Salir al Rol</li>
+	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Cancelar->Salir al menú CRUD</a></li>
+</ol>
+
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generateRemoveCRUD (aRol : Rol, aCRUD : CRUD)]
+[file (aRol.NombreRol+'/borrar_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[aCRUD.TituloPag/]</title>
+</head>
+
+<body>
+
+<p>Pantalla de borrar [aCRUD.tiene_asociada.nombreEntidad/] </p>
+
+[if(aCRUD.muestra->size() > 0)]
+[generateRRSS(aCRUD)/]
+[/if]
+
+<p>Listado de : [aCRUD.tiene_asociada.nombreEntidad/]</p>
+
+<ol>
+	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Salir al menú CRUD</a></li>
+</ol>
+
+</body>
+</html>
+
 [/file]
 [/template]
