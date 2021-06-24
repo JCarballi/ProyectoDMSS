@@ -74,15 +74,28 @@ public class Main{
 [/template]
 
 [template public generateRRSS(aPagina : Pagina)]
+[if(aPagina.muestra->size()>0)]
 System.out.println("Redes sociales:");
 [for (rs: RedSocial | aPagina.muestra)]
-System.out.println("[rs.ID_RedSocial/]: [rs.nombre/]");
+[if(rs.oclIsTypeOf(Twitter))]
+System.out.println("Twitter: [rs.nombre/]");
+[else]
+[if(rs.oclIsTypeOf(Facebook))]
+System.out.println("Facebook: [rs.nombre/]");
+[else]
+System.out.println("RSS: [rs.nombre/]");
+[/if]
+[/if]
 [/for]
+System.out.println("");
+[/if]
 
+[if(aPagina.urlexterna->size()>0)]
 System.out.println("Páginas externas:");
 [for (url: URLExterna | aPagina.urlexterna)]
-System.out.println("Web: [url.nombreWeb/]: [url.Link/]");
+System.out.println("[url.nombreWeb/]: [url.Link/]");
 [/for]
+[/if]
 	
 [/template]
 
@@ -111,10 +124,10 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 		System.out.println("0. Volver a inicio");
 		[for (p: Pagina | aRol.tiene_acceso->closure(accede))]
 		[if(p.oclIsTypeOf(PaginasNormales))]
-		System.out.println([aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/]+" [p.TituloPag.replaceAll(' ', '_')/]");			
+		System.out.println([aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/]+". [p.TituloPag.replaceAll(' ', '_')/]");			
 		[else]
 		[if(not p.oclIsTypeOf(PaginaPrincipal))]
-		System.out.println( [aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/] +"[p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag.replaceAll(' ', '_')/]");
+		System.out.println( [aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/] +". [p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag.replaceAll(' ', '_')/]");
 		[/if]
 		[/if]		
 		[/for]
@@ -178,6 +191,24 @@ CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.
 [/if]
 [/template]
 
+[template public generateEnlaceCRUD (aRol : Rol, aPagina : Pagina)]
+[if (aPagina.oclIsKindOf(PagIndice))]
+Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/]();	
+[/if]
+[if (aPagina.oclIsKindOf(PagLeer))]
+Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/]();	
+[/if]
+[if (aPagina.oclIsKindOf(PagBorrar))]
+Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/]();	
+[/if]
+[if (aPagina.oclIsKindOf(PagCrear))]
+Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/]();	
+[/if]
+[if (aPagina.oclIsKindOf(CRUD))]
+CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/]();	
+[/if]
+[/template]
+
 [template public generatePagina(aRol : Rol, aIndice : PagIndice)]
 [file (aIndice.tiene_asociada.nombreEntidad+'/Indice_'+aIndice.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
 package [aIndice.tiene_asociada.nombreEntidad/];
@@ -186,6 +217,11 @@ import rol.[aRol.NombreRol/];
 import entidad.[aIndice.tiene_asociada.nombreEntidad/];
 import dao.[aIndice.tiene_asociada.nombreEntidad/]Dao;
 import daoImpl.[aIndice.tiene_asociada.nombreEntidad/]DaoImpl;
+[for(p : Pagina | aIndice.oclAsType(Pagina)->closure(accede))]
+[if(p.oclIsTypeOf(PaginasNormales))]
+import paginasContenido.[p.TituloPag/];
+[/if]
+[/for]
 
 public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
@@ -201,12 +237,13 @@ public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 
 		System.out.println("Listado de páginas a las que tiene acceso:");
 
+		System.out.println("0. Salir al rol");
 		[for (p: Pagina | aIndice.oclAsType(Pagina)->closure(accede))]
 		[if(p.oclIsTypeOf(PaginasNormales))]
-		System.out.println([aIndice.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/]+" [p.TituloPag/]");			
+		System.out.println([aIndice.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/]+". [p.TituloPag/]");			
 		[else]
 		[if(not p.oclIsTypeOf(PaginaPrincipal))]
-		System.out.println( [aIndice.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/] +"[p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]");
+		System.out.println( [aIndice.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/] +". [p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]");
 		[/if]
 		[/if]		
 		[/for]
@@ -226,16 +263,17 @@ public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 				System.out.println("Volviendo al Rol");
 				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
 			break;
-[comment]			[for (p: Pagina | aIndice.oclAsType(Pagina)->closure(accede))]
-			case [aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal))->asOrderedSet()->indexOf(p)/]:
+			[for (p: Pagina | aIndice.oclAsType(Pagina)->closure(accede))]
+			case [aIndice.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/]:
 			[if(p.oclIsTypeOf(PaginasNormales))]
-				[generatePagina(aRol, p.oclAsType(PaginasNormales))/]
 				[p.TituloPag.replaceAll(' ', '_')/] [p.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new [p.TituloPag.replaceAll(' ', '_')/](); 
 			[else]
-				[generatePaginaCRUD(aRol, p)/]
+			[if(not p.oclIsTypeOf(PaginaPrincipal))]
+				[generateEnlaceCRUD(aRol, p)/]
 			break;
+			[/if]
 			[/if]	
-			[/for][/comment]
+			[/for]
 			
 		}
 
@@ -252,7 +290,9 @@ import rol.[aRol.NombreRol/];
 import entidad.[aDetalle.tiene_asociada.nombreEntidad/];
 import dao.[aDetalle.tiene_asociada.nombreEntidad/]Dao;
 import daoImpl.[aDetalle.tiene_asociada.nombreEntidad/]DaoImpl;
-	
+[for(e : Entidad | aDetalle.tiene_asociada.esta_relacionada)]
+import [e.nombreEntidad/].Indice_[e.nombreEntidad/];
+[/for]	
 public class Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
 
@@ -279,26 +319,33 @@ public class Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 
 		System.out.println("1. Borrar [aDetalle.tiene_asociada.nombreEntidad/]");
 		[for(e : Entidad | aDetalle.tiene_asociada.esta_relacionada)]
-		System.out.println("[aDetalle.tiene_asociada.esta_relacionada->indexOf(e)+2/]. Consultar detalles de [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		System.out.println("[aDetalle.tiene_asociada.esta_relacionada->indexOf(e)+1/]. Consultar detalles de [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
 		[/for]
-		System.out.println("4. Volver");
+		System.out.println("[aDetalle.tiene_asociada.esta_relacionada->size()+2/]. Volver");
 
 		System.out.println("");
-		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-0]");
+		int keyPressed = Keyin.inInt("Selecciona una opción ['['/]1-[aDetalle.tiene_asociada.esta_relacionada->size()+2/]]");
 
-		while(keyPressed < 0 ||  keyPressed > 0) {
+		while(keyPressed < 1 ||  keyPressed > [aDetalle.tiene_asociada.esta_relacionada->size()+2/]) {
 			System.out.println("");
 			System.out.println("Error: Opción no encontrada");
-			keyPressed = Keyin.inInt("Selecciona una opción ['['/]0-[aDetalle.oclAsType(Pagina)->closure(accede)->size()/]]");
+			keyPressed = Keyin.inInt("Selecciona una opción ['['/]1-[aDetalle.tiene_asociada.esta_relacionada->size()+2/]]");
 		}
 
 		switch (keyPressed) {
-			case 0:
+			case [aDetalle.tiene_asociada.esta_relacionada->size()+2/]:
 				System.out.println("Volviendo al Rol");
 				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
 			break;
 			case 1:
+				Borrar_[aDetalle.tiene_asociada.nombreEntidad/] [aDetalle.tiene_asociada.nombreEntidad.toLowerCase()/] = new Borrar_[aDetalle.tiene_asociada.nombreEntidad/]();
 			break;
+			[for(e : Entidad | aDetalle.tiene_asociada.esta_relacionada)]
+			case [aDetalle.tiene_asociada.esta_relacionada->indexOf(e)+1/]:
+				Indice_[e.nombreEntidad/] [e.nombreEntidad.toLowerCase()/] = new Indice_[e.nombreEntidad/]();
+			break;
+			[/for]
+
 [comment]			[for (e : Entidad | aDetalle.tiene_asociada->closure(esta_relacionada))]
 			case [aDetalle.tiene_asociada->closure(esta_relacionada)->indexOf(e) + 2/]
 				[e.nombreEntidad/] [e.nombreEntidad.toLowerCase()/] = new [e.nombreEntidad/]();
@@ -544,6 +591,11 @@ import rol.[aRol.NombreRol/];
 import entidad.[aCRUD.tiene_asociada.nombreEntidad/];
 import dao.[aCRUD.tiene_asociada.nombreEntidad/]Dao;
 import daoImpl.[aCRUD.tiene_asociada.nombreEntidad/]DaoImpl;
+[for(p : Pagina | aCRUD.oclAsType(Pagina)->closure(accede))]
+[if(p.oclIsTypeOf(PaginasNormales))]
+import paginasContenido.[p.TituloPag/];
+[/if]
+[/for]
 
 public class Indice_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 	public Indice_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]() {
@@ -559,12 +611,13 @@ public class Indice_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 
 		System.out.println("Listado de páginas a las que tiene acceso:");
 
+		System.out.println("0. Salir al rol");
 		[for (p: Pagina | aCRUD.oclAsType(Pagina)->closure(accede))]
 		[if(p.oclIsTypeOf(PaginasNormales))]
-		System.out.println([aCRUD.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/]+" [p.TituloPag/]");			
+		System.out.println([aCRUD.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/]+". [p.TituloPag/]");			
 		[else]
 		[if(not p.oclIsTypeOf(PaginaPrincipal))]
-		System.out.println( [aCRUD.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/] +"[p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]");
+		System.out.println( [aCRUD.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/] +". [p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag/]");
 		[/if]
 		[/if]		
 		[/for]
@@ -584,15 +637,17 @@ public class Indice_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 				System.out.println("Volviendo al menú CRUD");
 				CRUD_[aCRUD.tiene_asociada.nombreEntidad/] crud = new CRUD_[aCRUD.tiene_asociada.nombreEntidad/]();
 			break;
-[comment]			[for (p: Pagina | aCRUD.oclAsType(Pagina)->closure(accede))]
+			[for (p: Pagina | aCRUD.oclAsType(Pagina)->closure(accede))]
+			case [aCRUD.oclAsType(Pagina)->closure(accede)->asOrderedSet()->indexOf(p)/]:
 			[if(p.oclIsTypeOf(PaginasNormales))]
-				[generatePagina(aRol, p.oclAsType(PaginasNormales))/]
 				[p.TituloPag.replaceAll(' ', '_')/] [p.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new [p.TituloPag.replaceAll(' ', '_')/](); 
 			[else]
-				[generatePaginaCRUD(aRol, p)/]
+			[if(not p.oclIsTypeOf(PaginaPrincipal))]
+				[generateEnlaceCRUD(aRol, p)/]
 			break;
 			[/if]
-			[/for][/comment]
+			[/if]	
+			[/for]
 		}
 
 	}
@@ -724,9 +779,17 @@ public class [aPagina.TituloPag/]{
 		[generateRRSS(aPagina)/]
 		System.out.println("");	
 	
+		[if(aPagina.Texto->size() > 0)]
+		System.out.println("Texto:");
 		System.out.println("[aPagina.Texto/]");
+		System.out.println("");	
+		System.out.println("");	
+		[/if]
+		[if(aPagina.Multimedia->size() > 0)]
+		System.out.println("Multimedia:");	
 		System.out.println("[aPagina.Multimedia/]");	
 		System.out.println("");	
+		[/if]
 	
 		int keyPressed = Keyin.inInt("Pulse 0 para volver a la pantalla de Rol [aRol.NombreRol/]");
 
@@ -913,5 +976,23 @@ boolean
 [/if]
 [if(c.TDato = TipoDato::STRING)]
 String
+[/if]
+[/template]
+
+[template public generateData(aEntidad : Entidad)]
+[aEntidad.nombreEntidad/]Dao [aEntidad.nombreEntidad/]Dao = new [aEntidad.nombreEntidad/]DaoImpl();
+[aEntidad.nombreEntidad/] [aEntidad.nombreEntidad.toLowerCase()/] = new [aEntidad.nombreEntidad/]([for(c : CaracteristicaEntidad | aEntidad.caracteristica) separator(', ')] [generateAtributos(c)/] [/for]);
+[aEntidad.nombreEntidad/]Dao.save[aEntidad.nombreEntidad/]([aEntidad.nombreEntidad.toLowerCase()/]);
+[/template]
+
+[template public generateAtributos(aCaracteristica : CaracteristicaEntidad)]
+[if(aCaracteristica.TDato = TipoDato::INTEGER)]
+int [aCaracteristica.nombreCaract/] = 3
+[/if]
+[if(aCaracteristica.TDato = TipoDato::BOOLEAN)]
+boolean [aCaracteristica.nombreCaract/] = false
+[/if]
+[if(aCaracteristica.TDato = TipoDato::STRING)]
+String [aCaracteristica.nombreCaract/] = "hello world"
 [/if]
 [/template]
