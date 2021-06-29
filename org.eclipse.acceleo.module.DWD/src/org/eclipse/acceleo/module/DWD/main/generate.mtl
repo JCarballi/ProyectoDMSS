@@ -54,7 +54,7 @@
 [if(rs.oclIsTypeOf(Facebook))]
 <li><a href="https://www.facebook.com/[rs.nombre/]">Facebook de [rs.nombre/]</a></li>
 [else]
-<li><a href="">RSS [rs.nombre/]</a></li>
+<li>RSS [rs.nombre/]</li>
 [/if]
 [/if]
 [/for]
