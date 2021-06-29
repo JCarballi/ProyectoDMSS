@@ -26,10 +26,9 @@
 
 <body>
 
-<p>Nombre de la aplicación: [aDataWebDesk.nombreAplicacion/]</p>
-<br>
+<h1>Nombre de la aplicación: [aDataWebDesk.nombreAplicacion/]</h1>
+
 <p>Roles de acceso a la información:</p>
-<br>
 
 <ol type="1">
 	<li>Salir</li>
@@ -62,8 +61,6 @@
 </ul>
 [/if]
 
-<br>
-
 [if(aPagina.urlexterna->size()>0)]
 <p>Enlaces externos:</p>
 <ul>
@@ -87,10 +84,11 @@
 
 <body>
 
-<p>Pantalla principal de Rol [aRol.NombreRol/]</p>
+<h1>Pantalla principal de Rol [aRol.NombreRol/]</h1>
 
 <p>Listado de páginas a las que tiene acceso:</p>
 
+<footer>
 <ol type="1">
 	<li><a href="../index.html">Salir</li>
 [for (p: Pagina | aRol.tiene_acceso->closure(accede))]
@@ -104,6 +102,7 @@
 
 [/for]
 </ol>
+</footer>
 
 
 </body>
@@ -149,15 +148,15 @@
 
 <body>
 
-<p>Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]</p>
+<h1>Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]</h1>
 
 [if(aIndice.muestra->size() > 0)]
 [generateRRSS(aIndice)/]
 [/if]
 
+<footer>
 <p>Listado de [aIndice.tiene_asociada.nombreEntidad/]</p>
 
-<footer>
 <ol>
 	<li><a href="../index.html">Salir al menú</a></li>
 	[for (pgDetalles: PagLeer | aIndice.tiene_asociada.asociada->selectByType(PagLeer))]
@@ -189,7 +188,7 @@
 
 <body>
 
-<p>Pantalla de detalle de [aDetalle.tiene_asociada.nombreEntidad/] </p>
+<h1>Pantalla de detalle de [aDetalle.tiene_asociada.nombreEntidad/] </h1>
 
 [if(aDetalle.muestra->size() > 0)]
 [generateRRSS(aDetalle)/]
@@ -206,6 +205,7 @@
 [/for]
 </ul>
 
+<footer>
 <p>Listado de opciones:</p>
 
 <ol>
@@ -215,6 +215,7 @@
 	[/for]
 	<li><a href="index_[aRol.NombreRol/].html">Volver al Rol</a></li>
 </ol>
+</footer>
 
 </body>
 </html>
@@ -236,7 +237,7 @@
 
 <body>
 
-<p>Pantalla de borrar [aBorrar.tiene_asociada.nombreEntidad/] </p>
+<h1>Pantalla de borrar [aBorrar.tiene_asociada.nombreEntidad/] </h1>
 
 [if(aBorrar.muestra->size() > 0)]
 [generateRRSS(aBorrar)/]
@@ -269,21 +270,23 @@
 
 <body>
 
-<p>Pantalla de borrado de la asignatura [aBorrar.tiene_asociada.ID_Entidad/] </p>
+<h1>Pantalla de borrado de la asignatura [aBorrar.tiene_asociada.ID_Entidad/] </h1>
 
 [if(aBorrar.muestra->size() > 0)]
 [generateRRSS(aBorrar)/]
 [/if]
 
-<p>>>Asignatura borrada!!</p>
+<p>>>Asignatura borrada!!<br><br>
+Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.tiene_asociada.nombreEntidad/]</p>
 
-<p>Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.tiene_asociada.nombreEntidad/]</p>
+<footer>
 <ul>
 	[for (e: Entidad | aBorrar.tiene_asociada.relacionada)]
 	<li>Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
 	[/for]
 	<li><a href="index_[aRol.NombreRol/].html">Salir al Rol</a></li>
 </ul>
+</footer>
 
 </body>
 </html>
@@ -305,7 +308,7 @@
 
 <body>
 
-<p>Pantalla de detalle de [aCrear.tiene_asociada.nombreEntidad/] </p>
+<h1>Pantalla de detalle de [aCrear.tiene_asociada.nombreEntidad/] </h1>
 
 [if(aCrear.muestra->size() > 0)]
 [generateRRSS(aCrear)/]
@@ -319,13 +322,14 @@
 [/for]
 </ul>
 
+<footer>
 <p>Listado de opciones:</p>
 
 <ol>
 	<li>Aceptar->Crear la asignatura->Salir al Rol</li>
 	<li><a href="index_[aRol.NombreRol/].html">Cancelar->Salir al Rol</a></li>
 </ol>
-
+</footer>
 
 </body>
 </html>
@@ -347,12 +351,13 @@
 
 <body>
 
-<p>Pantalla CRUD de la entidad [aCRUD.tiene_asociada.nombreEntidad/] </p>
+<h1>Pantalla CRUD de la entidad [aCRUD.tiene_asociada.nombreEntidad/] </h1>
 
 [if(aCRUD.muestra->size() > 0)]
 [generateRRSS(aCRUD)/]
 [/if]
 
+<footer>
 <p>Listado de [aCRUD.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
@@ -364,7 +369,7 @@
 	[generateRemoveCRUD(aRol, aCRUD)/]
 	<li><a href="Borrar_[aCRUD.tiene_asociada.nombreEntidad/].html">Borrar un elemento</a></li>
 </ol>
-
+</footer>
 
 </body>
 </html>
@@ -386,24 +391,20 @@
 
 <body>
 
-<p>Pantalla con contenido: [aPagina.TituloPag/] </p>
+<h1>Pantalla con contenido: [aPagina.TituloPag/] </h1>
 
-	<br>
 	[if(aPagina.muestra->size() > 0)]
 	[generateRRSS(aPagina)/]
 	[/if]
-	<br>
 
 	[if(aPagina.Multimedia->size()>0)]
-	<p>Contenido multimedia:</p>
-	<p>[aPagina.oclAsType(PaginasNormales).Multimedia/]</p>
-	<br>
+	<p>Contenido multimedia:<br><br>
+	[aPagina.oclAsType(PaginasNormales).Multimedia/]</p>
 	[/if]
 
 	[if(aPagina.Texto->size()>0)]
-	<p>Contenido texto:</p>
-	<p>[aPagina.oclAsType(PaginasNormales).Texto/]</p>
-	<br>
+	<p>Contenido texto:<br><br>
+	[aPagina.oclAsType(PaginasNormales).Texto/]</p>
 	[/if]
 
 	<footer>
@@ -433,12 +434,14 @@
 
 <body>
 
-<p>Pantalla índice de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]</p>
+<h1>Pantalla índice de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]</h1>
 
 [if(aCRUD.muestra->size() > 0)]
 [generateRRSS(aCRUD)/]
 [/if]
 
+
+<footer>
 <p>Listado de [aCRUD.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
@@ -448,7 +451,7 @@
 	[/for]
 	<li><a href="index_[aRol.NombreRol/].html">Volver al Rol</a></li>
 </ol>
-
+</footer>
 
 </body>
 </html>
@@ -470,7 +473,7 @@
 
 <body>
 
-<p>Pantalla de detalle de [aCRUD.tiene_asociada.nombreEntidad/] </p>
+<h1>Pantalla de detalle de [aCRUD.tiene_asociada.nombreEntidad/] </h1>
 
 [if(aCRUD.muestra->size() > 0)]
 [generateRRSS(aCRUD)/]
@@ -484,13 +487,14 @@
 [/for]
 </ul>
 
+<footer>
 <p>Listado de opciones:</p>
 
 <ol>
 	<li>Aceptar->Crear la asignatura->Salir al Rol</li>
 	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Cancelar->Salir al menú CRUD</a></li>
 </ol>
-
+</footer>
 
 </body>
 </html>
@@ -512,17 +516,21 @@
 
 <body>
 
-<p>Pantalla de borrar [aCRUD.tiene_asociada.nombreEntidad/] </p>
+<h1>Pantalla de borrar [aCRUD.tiene_asociada.nombreEntidad/] </h1>
 
 [if(aCRUD.muestra->size() > 0)]
 [generateRRSS(aCRUD)/]
 [/if]
+
+<footer>
 
 <p>Listado de : [aCRUD.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
 	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Salir al menú CRUD</a></li>
 </ol>
+
+</footer>
 
 </body>
 </html>
@@ -532,17 +540,43 @@
 
 [template public generateCSS (aDataWebDesk : DataWebDesk)]
 [file('stylesheet.css', false, 'UTF-8')]
-html { 
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  
 }
 
-#footer{
-	position: relative;
-	margin-bottom: 100px;
-	background-color: light-grey;
+p{
+  margin: 50px;
+  margin-left:0px;
+  background-color:light-grey;
 }
 
-h1 {
-
+h1{
+	background-color: #f1f1ff;
+    font-family: "Times New Roman", Times, serif;
+     padding: 20px;
+     text-align: center;
+     text-decoration: underline;
+     outline-style: dotted;
 }
+
+footer {
+  background-color: #fff1f1;
+  padding: 10px;
+ font-family: 'Courier New', monospace;
+ outline-style: solid;
+  
+}
+
+ol{
+ margin: 5px;
+}
+
+ul{
+ margin : 5px;
+}
+
 [/file]
 [/template]
