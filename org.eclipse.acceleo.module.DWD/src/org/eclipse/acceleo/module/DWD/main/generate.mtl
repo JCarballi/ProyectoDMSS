@@ -13,7 +13,7 @@
 [comment @main/]
 [file ('index.html', false, 'UTF-8')]
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 [generateCSS(aDataWebDesk)/]
 
@@ -77,7 +77,7 @@
 [template public generate (aRol : Rol)]
 [file (aRol.NombreRol+'/index_'+aRol.NombreRol+'.html', false, 'UTF-8')]
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -139,7 +139,7 @@
 [file (aRol.NombreRol+'/indice_'+aIndice.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -179,7 +179,7 @@
 [file (aRol.NombreRol+'/detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -226,7 +226,7 @@
 [file (aRol.NombreRol+'/borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -259,7 +259,7 @@
 [file (aRol.NombreRol+'/borradoConfirmacion_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -295,7 +295,7 @@
 [file (aRol.NombreRol+'/crear_'+aCrear.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -337,7 +337,7 @@
 [file (aRol.NombreRol+'/CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -376,7 +376,7 @@
 [template public generatePage (aRol : Rol, aPagina : PaginasNormales)]
 [file (aRol.NombreRol+'/'+aPagina.TituloPag+'.html', false, 'UTF-8')]
 	<!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -423,7 +423,7 @@
 [file (aRol.NombreRol+'/indice_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -460,7 +460,7 @@
 [file (aRol.NombreRol+'/crear_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
@@ -502,7 +502,7 @@
 [file (aRol.NombreRol+'/borrar_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
-<html>
+<html lang=es>
 
 <head>
 	<meta charset="utf-8">
