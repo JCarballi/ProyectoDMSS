@@ -195,7 +195,7 @@ public class DataWebDeskDSLValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String DATA_WEB_DESK__ID_RED_SOCIAL_ID__EEXPRESSION = "self.redsocial->isUnique(ID_RedSocial)";
+	protected static final String DATA_WEB_DESK__ID_RED_SOCIAL_ID__EEXPRESSION = "self.redsocial->isUnique(id_RedSocial)";
 
 	/**
 	 * Validates the idRedSocialID constraint of '<em>Data Web Desk</em>'.
@@ -224,7 +224,7 @@ public class DataWebDeskDSLValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String DATA_WEB_DESK__ID_PAGINA__EEXPRESSION = "self.pagina->isUnique(TituloPag)";
+	protected static final String DATA_WEB_DESK__ID_PAGINA__EEXPRESSION = "self.pagina->isUnique(tituloPag)";
 
 	/**
 	 * Validates the idPagina constraint of '<em>Data Web Desk</em>'.
@@ -253,7 +253,7 @@ public class DataWebDeskDSLValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String DATA_WEB_DESK__ID_ROL__EEXPRESSION = "self.rol->isUnique(NombreRol)";
+	protected static final String DATA_WEB_DESK__ID_ROL__EEXPRESSION = "self.rol->isUnique(nombreRol)";
 
 	/**
 	 * Validates the idRol constraint of '<em>Data Web Desk</em>'.
@@ -282,7 +282,7 @@ public class DataWebDeskDSLValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String DATA_WEB_DESK__ID_URL_EXTERNA__EEXPRESSION = "self.urlexterna->isUnique(Link)";
+	protected static final String DATA_WEB_DESK__ID_URL_EXTERNA__EEXPRESSION = "self.urlexterna->isUnique(link)";
 
 	/**
 	 * Validates the idURLExterna constraint of '<em>Data Web Desk</em>'.
@@ -311,7 +311,7 @@ public class DataWebDeskDSLValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String DATA_WEB_DESK__ID_ENTIDAD_ID__EEXPRESSION = "self.entidad->isUnique(ID_Entidad)";
+	protected static final String DATA_WEB_DESK__ID_ENTIDAD_ID__EEXPRESSION = "self.entidad->isUnique(id_Entidad)";
 
 	/**
 	 * Validates the idEntidadID constraint of '<em>Data Web Desk</em>'.
@@ -446,7 +446,7 @@ public class DataWebDeskDSLValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PAGINA__NO_PAG_AISLADA_R2__EEXPRESSION = "self->closure(accede).accedida_por -> size() > 0";
+	protected static final String PAGINA__NO_PAG_AISLADA_R2__EEXPRESSION = "self->closure(accedida).accedida_por -> size() > 0";
 
 	/**
 	 * Validates the noPagAisladaR2 constraint of '<em>Pagina</em>'.

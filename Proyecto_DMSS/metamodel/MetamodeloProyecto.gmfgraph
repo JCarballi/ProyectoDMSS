@@ -171,13 +171,13 @@
       <actualFigure xsi:type="gmfgraph:PolylineConnection" name="EntidadAsociadaFigure" targetDecoration="//@figures.0/@figures.1"/>
     </descriptors>
     <descriptors name="EntidadAsociadaExternalLabelFigure">
-      <actualFigure xsi:type="gmfgraph:Label" name="EntidadAsociadaExternalLabel" text="CRUD asociada"/>
+      <actualFigure xsi:type="gmfgraph:Label" name="EntidadAsociadaExternalLabel" text="CRUD_asociada"/>
     </descriptors>
     <descriptors name="EntidadClave_primariaFigure">
-      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="EntidadClave_primariaFigure" targetDecoration="//@figures.0/@figures.2"/>
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="EntidadClave_primariaFigure" lineKind="LINE_DOT" targetDecoration="//@figures.0/@figures.2"/>
     </descriptors>
     <descriptors name="EntidadClave_primariaExternalLabelFigure">
-      <actualFigure xsi:type="gmfgraph:Label" name="EntidadClave_primariaExternalLabel" text="clave_primaria"/>
+      <actualFigure xsi:type="gmfgraph:Label" name="EntidadClave_primariaExternalLabel" text="primary_key"/>
     </descriptors>
     <descriptors name="EntidadRelacionadaFigure">
       <actualFigure xsi:type="gmfgraph:PolylineConnection" name="EntidadRelacionadaFigure" targetDecoration="//@figures.0/@figures.3"/>

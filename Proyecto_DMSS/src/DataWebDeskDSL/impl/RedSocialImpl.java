@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link DataWebDeskDSL.impl.RedSocialImpl#getTipoCont <em>Tipo Cont</em>}</li>
- *   <li>{@link DataWebDeskDSL.impl.RedSocialImpl#getID_RedSocial <em>ID Red Social</em>}</li>
+ *   <li>{@link DataWebDeskDSL.impl.RedSocialImpl#getId_RedSocial <em>Id Red Social</em>}</li>
  *   <li>{@link DataWebDeskDSL.impl.RedSocialImpl#getMostrada <em>Mostrada</em>}</li>
  *   <li>{@link DataWebDeskDSL.impl.RedSocialImpl#getNombre <em>Nombre</em>}</li>
  * </ul>
@@ -61,24 +61,24 @@ public abstract class RedSocialImpl extends EObjectImpl implements RedSocial {
 	protected tipoContenido tipoCont = TIPO_CONT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getID_RedSocial() <em>ID Red Social</em>}' attribute.
+	 * The default value of the '{@link #getId_RedSocial() <em>Id Red Social</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getID_RedSocial()
+	 * @see #getId_RedSocial()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int ID_RED_SOCIAL_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getID_RedSocial() <em>ID Red Social</em>}' attribute.
+	 * The cached value of the '{@link #getId_RedSocial() <em>Id Red Social</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getID_RedSocial()
+	 * @see #getId_RedSocial()
 	 * @generated
 	 * @ordered
 	 */
-	protected int iD_RedSocial = ID_RED_SOCIAL_EDEFAULT;
+	protected int id_RedSocial = ID_RED_SOCIAL_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getMostrada() <em>Mostrada</em>}' reference list.
@@ -155,8 +155,8 @@ public abstract class RedSocialImpl extends EObjectImpl implements RedSocial {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getID_RedSocial() {
-		return iD_RedSocial;
+	public int getId_RedSocial() {
+		return id_RedSocial;
 	}
 
 	/**
@@ -164,11 +164,11 @@ public abstract class RedSocialImpl extends EObjectImpl implements RedSocial {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setID_RedSocial(int newID_RedSocial) {
-		int oldID_RedSocial = iD_RedSocial;
-		iD_RedSocial = newID_RedSocial;
+	public void setId_RedSocial(int newId_RedSocial) {
+		int oldId_RedSocial = id_RedSocial;
+		id_RedSocial = newId_RedSocial;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataWebDeskDSLPackage.RED_SOCIAL__ID_RED_SOCIAL, oldID_RedSocial, iD_RedSocial));
+			eNotify(new ENotificationImpl(this, Notification.SET, DataWebDeskDSLPackage.RED_SOCIAL__ID_RED_SOCIAL, oldId_RedSocial, id_RedSocial));
 	}
 
 	/**
@@ -244,7 +244,7 @@ public abstract class RedSocialImpl extends EObjectImpl implements RedSocial {
 			case DataWebDeskDSLPackage.RED_SOCIAL__TIPO_CONT:
 				return getTipoCont();
 			case DataWebDeskDSLPackage.RED_SOCIAL__ID_RED_SOCIAL:
-				return getID_RedSocial();
+				return getId_RedSocial();
 			case DataWebDeskDSLPackage.RED_SOCIAL__MOSTRADA:
 				return getMostrada();
 			case DataWebDeskDSLPackage.RED_SOCIAL__NOMBRE:
@@ -266,7 +266,7 @@ public abstract class RedSocialImpl extends EObjectImpl implements RedSocial {
 				setTipoCont((tipoContenido)newValue);
 				return;
 			case DataWebDeskDSLPackage.RED_SOCIAL__ID_RED_SOCIAL:
-				setID_RedSocial((Integer)newValue);
+				setId_RedSocial((Integer)newValue);
 				return;
 			case DataWebDeskDSLPackage.RED_SOCIAL__MOSTRADA:
 				getMostrada().clear();
@@ -291,7 +291,7 @@ public abstract class RedSocialImpl extends EObjectImpl implements RedSocial {
 				setTipoCont(TIPO_CONT_EDEFAULT);
 				return;
 			case DataWebDeskDSLPackage.RED_SOCIAL__ID_RED_SOCIAL:
-				setID_RedSocial(ID_RED_SOCIAL_EDEFAULT);
+				setId_RedSocial(ID_RED_SOCIAL_EDEFAULT);
 				return;
 			case DataWebDeskDSLPackage.RED_SOCIAL__MOSTRADA:
 				getMostrada().clear();
@@ -314,7 +314,7 @@ public abstract class RedSocialImpl extends EObjectImpl implements RedSocial {
 			case DataWebDeskDSLPackage.RED_SOCIAL__TIPO_CONT:
 				return tipoCont != TIPO_CONT_EDEFAULT;
 			case DataWebDeskDSLPackage.RED_SOCIAL__ID_RED_SOCIAL:
-				return iD_RedSocial != ID_RED_SOCIAL_EDEFAULT;
+				return id_RedSocial != ID_RED_SOCIAL_EDEFAULT;
 			case DataWebDeskDSLPackage.RED_SOCIAL__MOSTRADA:
 				return mostrada != null && !mostrada.isEmpty();
 			case DataWebDeskDSLPackage.RED_SOCIAL__NOMBRE:
@@ -333,10 +333,10 @@ public abstract class RedSocialImpl extends EObjectImpl implements RedSocial {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (TipoCont: ");
+		result.append(" (tipoCont: ");
 		result.append(tipoCont);
-		result.append(", ID_RedSocial: ");
-		result.append(iD_RedSocial);
+		result.append(", id_RedSocial: ");
+		result.append(id_RedSocial);
 		result.append(", nombre: ");
 		result.append(nombre);
 		result.append(')');

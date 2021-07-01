@@ -62,7 +62,7 @@ public class RedSocialItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTipoContPropertyDescriptor(object);
-			addID_RedSocialPropertyDescriptor(object);
+			addId_RedSocialPropertyDescriptor(object);
 			addMostradaPropertyDescriptor(object);
 			addNombrePropertyDescriptor(object);
 		}
@@ -80,8 +80,8 @@ public class RedSocialItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_RedSocial_TipoCont_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_RedSocial_TipoCont_feature", "_UI_RedSocial_type"),
+				 getString("_UI_RedSocial_tipoCont_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RedSocial_tipoCont_feature", "_UI_RedSocial_type"),
 				 DataWebDeskDSLPackage.Literals.RED_SOCIAL__TIPO_CONT,
 				 true,
 				 false,
@@ -92,18 +92,18 @@ public class RedSocialItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the ID Red Social feature.
+	 * This adds a property descriptor for the Id Red Social feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addID_RedSocialPropertyDescriptor(Object object) {
+	protected void addId_RedSocialPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_RedSocial_ID_RedSocial_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_RedSocial_ID_RedSocial_feature", "_UI_RedSocial_type"),
+				 getString("_UI_RedSocial_id_RedSocial_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RedSocial_id_RedSocial_feature", "_UI_RedSocial_type"),
 				 DataWebDeskDSLPackage.Literals.RED_SOCIAL__ID_RED_SOCIAL,
 				 true,
 				 false,

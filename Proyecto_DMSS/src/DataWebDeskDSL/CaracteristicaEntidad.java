@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link DataWebDeskDSL.CaracteristicaEntidad#getNombreCaract <em>Nombre Caract</em>}</li>
- *   <li>{@link DataWebDeskDSL.CaracteristicaEntidad#getTDato <em>TDato</em>}</li>
+ *   <li>{@link DataWebDeskDSL.CaracteristicaEntidad#getTipoDato <em>Tipo Dato</em>}</li>
  *   <li>{@link DataWebDeskDSL.CaracteristicaEntidad#getEsta_en <em>Esta en</em>}</li>
  * </ul>
  *
@@ -50,33 +50,34 @@ public interface CaracteristicaEntidad extends EObject {
 	void setNombreCaract(String value);
 
 	/**
-	 * Returns the value of the '<em><b>TDato</b></em>' attribute.
+	 * Returns the value of the '<em><b>Tipo Dato</b></em>' attribute.
+	 * The default value is <code>"INTEGER"</code>.
 	 * The literals are from the enumeration {@link DataWebDeskDSL.TipoDato}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>TDato</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Tipo Dato</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>TDato</em>' attribute.
+	 * @return the value of the '<em>Tipo Dato</em>' attribute.
 	 * @see DataWebDeskDSL.TipoDato
-	 * @see #setTDato(TipoDato)
-	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getCaracteristicaEntidad_TDato()
-	 * @model
+	 * @see #setTipoDato(TipoDato)
+	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getCaracteristicaEntidad_TipoDato()
+	 * @model default="INTEGER"
 	 * @generated
 	 */
-	TipoDato getTDato();
+	TipoDato getTipoDato();
 
 	/**
-	 * Sets the value of the '{@link DataWebDeskDSL.CaracteristicaEntidad#getTDato <em>TDato</em>}' attribute.
+	 * Sets the value of the '{@link DataWebDeskDSL.CaracteristicaEntidad#getTipoDato <em>Tipo Dato</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>TDato</em>' attribute.
+	 * @param value the new value of the '<em>Tipo Dato</em>' attribute.
 	 * @see DataWebDeskDSL.TipoDato
-	 * @see #getTDato()
+	 * @see #getTipoDato()
 	 * @generated
 	 */
-	void setTDato(TipoDato value);
+	void setTipoDato(TipoDato value);
 
 	/**
 	 * Returns the value of the '<em><b>Esta en</b></em>' reference.

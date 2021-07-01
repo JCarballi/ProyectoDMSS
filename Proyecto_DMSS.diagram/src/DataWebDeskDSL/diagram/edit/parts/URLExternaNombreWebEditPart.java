@@ -6,10 +6,10 @@ package DataWebDeskDSL.diagram.edit.parts;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RunnableWithResult;
@@ -18,15 +18,16 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gef.tools.DirectEditManager;
-import org.eclipse.gmf.runtime.common.ui.services.parser.CommonParserHint;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserOptions;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.LabelDirectEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramColorRegistry;
 import org.eclipse.gmf.runtime.diagram.ui.label.ILabelDelegate;
 import org.eclipse.gmf.runtime.diagram.ui.label.WrappingLabelDelegate;
@@ -39,7 +40,6 @@ import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.draw2d.labels.SimpleLabelDelegate;
-import org.eclipse.gmf.tooling.runtime.edit.policies.DefaultLinkLabelDragPolicy;
 import org.eclipse.gmf.tooling.runtime.edit.policies.labels.IRefreshableFeedbackEditPolicy;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.viewers.ICellEditorValidator;
@@ -52,12 +52,12 @@ import org.eclipse.swt.graphics.Image;
 /**
  * @generated
  */
-public class EntidadAsociadaExternalLabelEditPart extends LabelEditPart implements ITextAwareEditPart {
+public class URLExternaNombreWebEditPart extends LabelEditPart implements ITextAwareEditPart, IBorderItemEditPart {
 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 6002;
+	public static final int VISUAL_ID = 5015;
 
 	/**
 	* @generated
@@ -88,16 +88,14 @@ public class EntidadAsociadaExternalLabelEditPart extends LabelEditPart implemen
 	* @generated
 	*/
 	static {
-		registerSnapBackPosition(
-				DataWebDeskDSL.diagram.part.DataWebDeskDSLVisualIDRegistry
-						.getType(DataWebDeskDSL.diagram.edit.parts.EntidadAsociadaExternalLabelEditPart.VISUAL_ID),
-				new Point(0, 40));
+		registerSnapBackPosition(DataWebDeskDSL.diagram.part.DataWebDeskDSLVisualIDRegistry
+				.getType(DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID), new Point(0, 0));
 	}
 
 	/**
 	* @generated
 	*/
-	public EntidadAsociadaExternalLabelEditPart(View view) {
+	public URLExternaNombreWebEditPart(View view) {
 		super(view);
 	}
 
@@ -109,14 +107,29 @@ public class EntidadAsociadaExternalLabelEditPart extends LabelEditPart implemen
 		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new LabelDirectEditPolicy());
 		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
 				new DataWebDeskDSL.diagram.edit.policies.DataWebDeskDSLTextSelectionEditPolicy());
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new DefaultLinkLabelDragPolicy());
 	}
 
 	/**
 	* @generated
 	*/
-	public int getKeyPoint() {
-		return ConnectionLocator.MIDDLE;
+	public IBorderItemLocator getBorderItemLocator() {
+		IFigure parentFigure = getFigure().getParent();
+		if (parentFigure != null && parentFigure.getLayoutManager() != null) {
+			Object constraint = parentFigure.getLayoutManager().getConstraint(getFigure());
+			return (IBorderItemLocator) constraint;
+		}
+		return null;
+	}
+
+	/**
+	* @generated
+	*/
+	public void refreshBounds() {
+		int x = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_X())).intValue();
+		int y = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_Y())).intValue();
+		int width = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width())).intValue();
+		int height = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
+		getBorderItemLocator().setConstraint(new Rectangle(x, y, width, height));
 	}
 
 	/**
@@ -203,7 +216,7 @@ public class EntidadAsociadaExternalLabelEditPart extends LabelEditPart implemen
 	* @generated
 	*/
 	protected EObject getParserElement() {
-		return (View) getModel();
+		return resolveSemanticElement();
 	}
 
 	/**
@@ -250,7 +263,7 @@ public class EntidadAsociadaExternalLabelEditPart extends LabelEditPart implemen
 	* @generated
 	*/
 	protected boolean isEditable() {
-		return false;
+		return getParser() != null;
 	}
 
 	/**
@@ -307,8 +320,9 @@ public class EntidadAsociadaExternalLabelEditPart extends LabelEditPart implemen
 	public IParser getParser() {
 		if (parser == null) {
 			parser = DataWebDeskDSL.diagram.providers.DataWebDeskDSLParserProvider.getParser(
-					DataWebDeskDSL.diagram.providers.DataWebDeskDSLElementTypes.EntidadAsociada_4002,
-					getParserElement(), CommonParserHint.DESCRIPTION);
+					DataWebDeskDSL.diagram.providers.DataWebDeskDSLElementTypes.URLExterna_2014, getParserElement(),
+					DataWebDeskDSL.diagram.part.DataWebDeskDSLVisualIDRegistry
+							.getType(DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID));
 		}
 		return parser;
 	}
@@ -591,19 +605,19 @@ public class EntidadAsociadaExternalLabelEditPart extends LabelEditPart implemen
 	* @generated
 	*/
 	protected IFigure createFigurePrim() {
-		return new EntidadAsociadaExternalLabelFigure();
+		return new URLExternaLabelFigure();
 	}
 
 	/**
 	 * @generated
 	 */
-	public class EntidadAsociadaExternalLabelFigure extends WrappingLabel {
+	public class URLExternaLabelFigure extends WrappingLabel {
 
 		/**
 		 * @generated
 		 */
-		public EntidadAsociadaExternalLabelFigure() {
-			this.setText("CRUD_asociada");
+		public URLExternaLabelFigure() {
+			this.setText("URLExterna");
 		}
 
 	}

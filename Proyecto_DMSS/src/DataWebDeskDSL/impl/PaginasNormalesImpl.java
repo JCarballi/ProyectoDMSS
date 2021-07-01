@@ -172,9 +172,9 @@ public class PaginasNormalesImpl extends PaginaImpl implements PaginasNormales {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (Texto: ");
+		result.append(" (texto: ");
 		result.append(texto);
-		result.append(", Multimedia: ");
+		result.append(", multimedia: ");
 		result.append(multimedia);
 		result.append(')');
 		return result.toString();

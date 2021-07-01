@@ -17,7 +17,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#PagCrearLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+            href="MetamodeloProyecto.ecore#//Pagina/tituloPag"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -37,7 +37,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#PagLeerLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+            href="MetamodeloProyecto.ecore#//Pagina/tituloPag"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -57,7 +57,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#PagBorrarLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+            href="MetamodeloProyecto.ecore#//Pagina/tituloPag"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -77,7 +77,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#PagActualizarLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+            href="MetamodeloProyecto.ecore#//Pagina/tituloPag"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -97,7 +97,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#PagIndiceLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+            href="MetamodeloProyecto.ecore#//Pagina/tituloPag"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -117,7 +117,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#CRUDLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+            href="MetamodeloProyecto.ecore#//Pagina/tituloPag"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -137,7 +137,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#PaginasNormalesLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+            href="MetamodeloProyecto.ecore#//Pagina/tituloPag"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -157,7 +157,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#PaginaPrincipalLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Pagina/TituloPag"/>
+            href="MetamodeloProyecto.ecore#//Pagina/tituloPag"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -237,7 +237,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#RolLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//Rol/NombreRol"/>
+            href="MetamodeloProyecto.ecore#//Rol/nombreRol"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -304,7 +304,7 @@
         <diagramLabel
             href="MetamodeloProyecto.gmfgraph#URLExternaLabel"/>
         <features
-            href="MetamodeloProyecto.ecore#//URLExterna/Link"/>
+            href="MetamodeloProyecto.ecore#//URLExterna/nombreWeb"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"

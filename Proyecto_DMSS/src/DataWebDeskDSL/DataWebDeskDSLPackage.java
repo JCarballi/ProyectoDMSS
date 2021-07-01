@@ -416,7 +416,7 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	int ENTIDAD__ASOCIADA = 1;
 
 	/**
-	 * The feature id for the '<em><b>ID Entidad</b></em>' attribute.
+	 * The feature id for the '<em><b>Id Entidad</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -489,13 +489,13 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	int CARACTERISTICA_ENTIDAD__NOMBRE_CARACT = 0;
 
 	/**
-	 * The feature id for the '<em><b>TDato</b></em>' attribute.
+	 * The feature id for the '<em><b>Tipo Dato</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CARACTERISTICA_ENTIDAD__TDATO = 1;
+	int CARACTERISTICA_ENTIDAD__TIPO_DATO = 1;
 
 	/**
 	 * The feature id for the '<em><b>Esta en</b></em>' reference.
@@ -918,7 +918,7 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	int RED_SOCIAL__TIPO_CONT = 0;
 
 	/**
-	 * The feature id for the '<em><b>ID Red Social</b></em>' attribute.
+	 * The feature id for the '<em><b>Id Red Social</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -973,7 +973,7 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	int TWITTER__TIPO_CONT = RED_SOCIAL__TIPO_CONT;
 
 	/**
-	 * The feature id for the '<em><b>ID Red Social</b></em>' attribute.
+	 * The feature id for the '<em><b>Id Red Social</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1028,7 +1028,7 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	int FACEBOOK__TIPO_CONT = RED_SOCIAL__TIPO_CONT;
 
 	/**
-	 * The feature id for the '<em><b>ID Red Social</b></em>' attribute.
+	 * The feature id for the '<em><b>Id Red Social</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1366,7 +1366,7 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	int RSS__TIPO_CONT = RED_SOCIAL__TIPO_CONT;
 
 	/**
-	 * The feature id for the '<em><b>ID Red Social</b></em>' attribute.
+	 * The feature id for the '<em><b>Id Red Social</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1671,15 +1671,15 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	EReference getEntidad_Asociada();
 
 	/**
-	 * Returns the meta object for the attribute '{@link DataWebDeskDSL.Entidad#getID_Entidad <em>ID Entidad</em>}'.
+	 * Returns the meta object for the attribute '{@link DataWebDeskDSL.Entidad#getId_Entidad <em>Id Entidad</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>ID Entidad</em>'.
-	 * @see DataWebDeskDSL.Entidad#getID_Entidad()
+	 * @return the meta object for the attribute '<em>Id Entidad</em>'.
+	 * @see DataWebDeskDSL.Entidad#getId_Entidad()
 	 * @see #getEntidad()
 	 * @generated
 	 */
-	EAttribute getEntidad_ID_Entidad();
+	EAttribute getEntidad_Id_Entidad();
 
 	/**
 	 * Returns the meta object for the reference '{@link DataWebDeskDSL.Entidad#getClave_primaria <em>Clave primaria</em>}'.
@@ -1747,15 +1747,15 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	EAttribute getCaracteristicaEntidad_NombreCaract();
 
 	/**
-	 * Returns the meta object for the attribute '{@link DataWebDeskDSL.CaracteristicaEntidad#getTDato <em>TDato</em>}'.
+	 * Returns the meta object for the attribute '{@link DataWebDeskDSL.CaracteristicaEntidad#getTipoDato <em>Tipo Dato</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>TDato</em>'.
-	 * @see DataWebDeskDSL.CaracteristicaEntidad#getTDato()
+	 * @return the meta object for the attribute '<em>Tipo Dato</em>'.
+	 * @see DataWebDeskDSL.CaracteristicaEntidad#getTipoDato()
 	 * @see #getCaracteristicaEntidad()
 	 * @generated
 	 */
-	EAttribute getCaracteristicaEntidad_TDato();
+	EAttribute getCaracteristicaEntidad_TipoDato();
 
 	/**
 	 * Returns the meta object for the reference '{@link DataWebDeskDSL.CaracteristicaEntidad#getEsta_en <em>Esta en</em>}'.
@@ -1884,15 +1884,15 @@ public interface DataWebDeskDSLPackage extends EPackage {
 	EAttribute getRedSocial_TipoCont();
 
 	/**
-	 * Returns the meta object for the attribute '{@link DataWebDeskDSL.RedSocial#getID_RedSocial <em>ID Red Social</em>}'.
+	 * Returns the meta object for the attribute '{@link DataWebDeskDSL.RedSocial#getId_RedSocial <em>Id Red Social</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>ID Red Social</em>'.
-	 * @see DataWebDeskDSL.RedSocial#getID_RedSocial()
+	 * @return the meta object for the attribute '<em>Id Red Social</em>'.
+	 * @see DataWebDeskDSL.RedSocial#getId_RedSocial()
 	 * @see #getRedSocial()
 	 * @generated
 	 */
-	EAttribute getRedSocial_ID_RedSocial();
+	EAttribute getRedSocial_Id_RedSocial();
 
 	/**
 	 * Returns the meta object for the reference list '{@link DataWebDeskDSL.RedSocial#getMostrada <em>Mostrada</em>}'.
@@ -2256,12 +2256,12 @@ public interface DataWebDeskDSLPackage extends EPackage {
 		EReference ENTIDAD__ASOCIADA = eINSTANCE.getEntidad_Asociada();
 
 		/**
-		 * The meta object literal for the '<em><b>ID Entidad</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Id Entidad</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ENTIDAD__ID_ENTIDAD = eINSTANCE.getEntidad_ID_Entidad();
+		EAttribute ENTIDAD__ID_ENTIDAD = eINSTANCE.getEntidad_Id_Entidad();
 
 		/**
 		 * The meta object literal for the '<em><b>Clave primaria</b></em>' reference feature.
@@ -2314,12 +2314,12 @@ public interface DataWebDeskDSLPackage extends EPackage {
 		EAttribute CARACTERISTICA_ENTIDAD__NOMBRE_CARACT = eINSTANCE.getCaracteristicaEntidad_NombreCaract();
 
 		/**
-		 * The meta object literal for the '<em><b>TDato</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Tipo Dato</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CARACTERISTICA_ENTIDAD__TDATO = eINSTANCE.getCaracteristicaEntidad_TDato();
+		EAttribute CARACTERISTICA_ENTIDAD__TIPO_DATO = eINSTANCE.getCaracteristicaEntidad_TipoDato();
 
 		/**
 		 * The meta object literal for the '<em><b>Esta en</b></em>' reference feature.
@@ -2430,12 +2430,12 @@ public interface DataWebDeskDSLPackage extends EPackage {
 		EAttribute RED_SOCIAL__TIPO_CONT = eINSTANCE.getRedSocial_TipoCont();
 
 		/**
-		 * The meta object literal for the '<em><b>ID Red Social</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Id Red Social</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RED_SOCIAL__ID_RED_SOCIAL = eINSTANCE.getRedSocial_ID_RedSocial();
+		EAttribute RED_SOCIAL__ID_RED_SOCIAL = eINSTANCE.getRedSocial_Id_RedSocial();
 
 		/**
 		 * The meta object literal for the '<em><b>Mostrada</b></em>' reference list feature.

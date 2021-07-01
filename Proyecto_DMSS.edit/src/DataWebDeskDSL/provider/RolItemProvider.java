@@ -79,8 +79,8 @@ public class RolItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Rol_NombreRol_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Rol_NombreRol_feature", "_UI_Rol_type"),
+				 getString("_UI_Rol_nombreRol_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Rol_nombreRol_feature", "_UI_Rol_type"),
 				 DataWebDeskDSLPackage.Literals.ROL__NOMBRE_ROL,
 				 true,
 				 false,

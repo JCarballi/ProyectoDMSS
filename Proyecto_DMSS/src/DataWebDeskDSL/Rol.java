@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see DataWebDeskDSL.DataWebDeskDSLPackage#getRol()
- * @model annotation="gmf.node label='NombreRol' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/rol.svg' label.icon='false' label.placement='external'"
+ * @model annotation="gmf.node label='nombreRol' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/rol.svg' label.icon='false' label.placement='external'"
  * @generated
  */
 public interface Rol extends EObject {
@@ -89,7 +89,7 @@ public interface Rol extends EObject {
 	 * @see #setNumeroEntidadesAccesiblesD2(int)
 	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getRol_NumeroEntidadesAccesiblesD2()
 	 * @model required="true" transient="true" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='if(self.tiene_acceso->size() = 0) then 0\n\t\t\t\t\telse self.tiene_acceso->selectByType(PagCRUD).tiene_asociada->asSet()->size()\n\t\t\t\t\tendif'"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='if(self.tiene_acceso->size() = 0) then 0\n\t\t\t\t\telse self.tiene_acceso->closure(accede)->selectByKind(PagCRUD).tiene_asociada->asSet()->size() + self.tiene_acceso->selectByKind(PagCRUD).tiene_asociada->asSet()->size()\n\t\t\t\t\tendif'"
 	 * @generated
 	 */
 	int getNumeroEntidadesAccesiblesD2();

@@ -107,8 +107,8 @@ public class DataWebDeskDSLEditPartFactory implements EditPartFactory {
 			case DataWebDeskDSL.diagram.edit.parts.URLExternaEditPart.VISUAL_ID:
 				return new DataWebDeskDSL.diagram.edit.parts.URLExternaEditPart(view);
 
-			case DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart.VISUAL_ID:
-				return new DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart(view);
+			case DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID:
+				return new DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart(view);
 
 			case DataWebDeskDSL.diagram.edit.parts.CaracteristicaEntidadEditPart.VISUAL_ID:
 				return new DataWebDeskDSL.diagram.edit.parts.CaracteristicaEntidadEditPart(view);

@@ -471,7 +471,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEntidad_ID_Entidad() {
+	public EAttribute getEntidad_Id_Entidad() {
 		return (EAttribute)entidadEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -534,7 +534,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCaracteristicaEntidad_TDato() {
+	public EAttribute getCaracteristicaEntidad_TipoDato() {
 		return (EAttribute)caracteristicaEntidadEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -651,7 +651,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRedSocial_ID_RedSocial() {
+	public EAttribute getRedSocial_Id_RedSocial() {
 		return (EAttribute)redSocialEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -844,7 +844,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 
 		caracteristicaEntidadEClass = createEClass(CARACTERISTICA_ENTIDAD);
 		createEAttribute(caracteristicaEntidadEClass, CARACTERISTICA_ENTIDAD__NOMBRE_CARACT);
-		createEAttribute(caracteristicaEntidadEClass, CARACTERISTICA_ENTIDAD__TDATO);
+		createEAttribute(caracteristicaEntidadEClass, CARACTERISTICA_ENTIDAD__TIPO_DATO);
 		createEReference(caracteristicaEntidadEClass, CARACTERISTICA_ENTIDAD__ESTA_EN);
 
 		pagCrearEClass = createEClass(PAG_CREAR);
@@ -943,14 +943,14 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		initEClass(paginaEClass, Pagina.class, "Pagina", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPagina_Accedida(), this.getPagina(), this.getPagina_Accede(), "accedida", null, 0, -1, Pagina.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPagina_Accede(), this.getPagina(), this.getPagina_Accedida(), "accede", null, 0, -1, Pagina.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPagina_TituloPag(), ecorePackage.getEString(), "TituloPag", null, 1, 1, Pagina.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPagina_TituloPag(), ecorePackage.getEString(), "tituloPag", null, 1, 1, Pagina.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPagina_Urlexterna(), this.getURLExterna(), this.getURLExterna_Pagina(), "urlexterna", null, 0, -1, Pagina.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPagina_Muestra(), this.getRedSocial(), this.getRedSocial_Mostrada(), "muestra", null, 0, -1, Pagina.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPagina_Accedida_por(), this.getRol(), this.getRol_Tiene_acceso(), "accedida_por", null, 0, -1, Pagina.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(paginasNormalesEClass, PaginasNormales.class, "PaginasNormales", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPaginasNormales_Texto(), ecorePackage.getEString(), "Texto", null, 1, -1, PaginasNormales.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPaginasNormales_Multimedia(), ecorePackage.getEString(), "Multimedia", null, 0, -1, PaginasNormales.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPaginasNormales_Texto(), ecorePackage.getEString(), "texto", null, 1, -1, PaginasNormales.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPaginasNormales_Multimedia(), ecorePackage.getEString(), "multimedia", null, 0, -1, PaginasNormales.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pagCRUDEClass, PagCRUD.class, "PagCRUD", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPagCRUD_Tiene_asociada(), this.getEntidad(), this.getEntidad_Asociada(), "tiene_asociada", null, 0, 1, PagCRUD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -958,7 +958,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		initEClass(entidadEClass, Entidad.class, "Entidad", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntidad_Caracteristica(), this.getCaracteristicaEntidad(), null, "caracteristica", null, 0, -1, Entidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntidad_Asociada(), this.getPagCRUD(), this.getPagCRUD_Tiene_asociada(), "asociada", null, 0, -1, Entidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEntidad_ID_Entidad(), ecorePackage.getEInt(), "ID_Entidad", null, 1, 1, Entidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEntidad_Id_Entidad(), ecorePackage.getEInt(), "id_Entidad", null, 1, 1, Entidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntidad_Clave_primaria(), this.getCaracteristicaEntidad(), this.getCaracteristicaEntidad_Esta_en(), "clave_primaria", null, 1, 1, Entidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEntidad_NombreEntidad(), ecorePackage.getEString(), "nombreEntidad", null, 1, 1, Entidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntidad_Relacionada(), this.getEntidad(), this.getEntidad_Esta_relacionada(), "relacionada", null, 0, -1, Entidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -966,7 +966,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 
 		initEClass(caracteristicaEntidadEClass, CaracteristicaEntidad.class, "CaracteristicaEntidad", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCaracteristicaEntidad_NombreCaract(), ecorePackage.getEString(), "nombreCaract", null, 1, 1, CaracteristicaEntidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCaracteristicaEntidad_TDato(), this.getTipoDato(), "TDato", null, 0, 1, CaracteristicaEntidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCaracteristicaEntidad_TipoDato(), this.getTipoDato(), "tipoDato", "INTEGER", 0, 1, CaracteristicaEntidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCaracteristicaEntidad_Esta_en(), this.getEntidad(), this.getEntidad_Clave_primaria(), "esta_en", null, 0, 1, CaracteristicaEntidad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pagCrearEClass, PagCrear.class, "PagCrear", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -978,14 +978,14 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		initEClass(pagActualizarEClass, PagActualizar.class, "PagActualizar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(rolEClass, Rol.class, "Rol", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRol_NombreRol(), ecorePackage.getEString(), "NombreRol", null, 1, 1, Rol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRol_NombreRol(), ecorePackage.getEString(), "nombreRol", null, 1, 1, Rol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRol_NumeroPaginasAccesiblesD1(), ecorePackage.getEInt(), "numeroPaginasAccesiblesD1", null, 1, 1, Rol.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRol_NumeroEntidadesAccesiblesD2(), ecorePackage.getEInt(), "numeroEntidadesAccesiblesD2", null, 1, 1, Rol.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getRol_Tiene_acceso(), this.getPagina(), this.getPagina_Accedida_por(), "tiene_acceso", null, 0, -1, Rol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(redSocialEClass, RedSocial.class, "RedSocial", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRedSocial_TipoCont(), this.gettipoContenido(), "TipoCont", null, 0, 1, RedSocial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRedSocial_ID_RedSocial(), ecorePackage.getEInt(), "ID_RedSocial", null, 1, 1, RedSocial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRedSocial_TipoCont(), this.gettipoContenido(), "tipoCont", "TEXTO", 0, 1, RedSocial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRedSocial_Id_RedSocial(), ecorePackage.getEInt(), "id_RedSocial", null, 1, 1, RedSocial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRedSocial_Mostrada(), this.getPagina(), this.getPagina_Muestra(), "mostrada", null, 0, -1, RedSocial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRedSocial_Nombre(), ecorePackage.getEString(), "nombre", null, 1, 1, RedSocial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -999,7 +999,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 
 		initEClass(urlExternaEClass, URLExterna.class, "URLExterna", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getURLExterna_Pagina(), this.getPagina(), this.getPagina_Urlexterna(), "pagina", null, 0, -1, URLExterna.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getURLExterna_Link(), ecorePackage.getEString(), "Link", null, 1, 1, URLExterna.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getURLExterna_Link(), ecorePackage.getEString(), "link", null, 1, 1, URLExterna.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getURLExterna_NombreWeb(), ecorePackage.getEString(), "nombreWeb", null, 1, 1, URLExterna.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(paginaPrincipalEClass, PaginaPrincipal.class, "PaginaPrincipal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1125,7 +1125,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   source, 
 		   new String[] {
 			 "foo", "bar",
-			 "diagram.extension", "DMSS"
+			 "diagram.extension", "datawebwesk"
 		   });
 	}
 
@@ -1142,11 +1142,11 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   source, 
 		   new String[] {
 			 "idRedSocialNombre", "self.redsocial->isUnique(nombre)",
-			 "idRedSocialID", "self.redsocial->isUnique(ID_RedSocial)",
-			 "idPagina", "self.pagina->isUnique(TituloPag)",
-			 "idRol", "self.rol->isUnique(NombreRol)",
-			 "idURLExterna", "self.urlexterna->isUnique(Link)",
-			 "idEntidadID", "self.entidad->isUnique(ID_Entidad)",
+			 "idRedSocialID", "self.redsocial->isUnique(id_RedSocial)",
+			 "idPagina", "self.pagina->isUnique(tituloPag)",
+			 "idRol", "self.rol->isUnique(nombreRol)",
+			 "idURLExterna", "self.urlexterna->isUnique(link)",
+			 "idEntidadID", "self.entidad->isUnique(id_Entidad)",
 			 "idEntidadNombre", "self.entidad->isUnique(nombreEntidad)",
 			 "unaPrincipalR1", "self.pagina->selectByType(PaginaPrincipal)->size()=1",
 			 "algunaRSR5", "self.pagina.muestra->size() > 0"
@@ -1161,7 +1161,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		  (paginaEClass, 
 		   source, 
 		   new String[] {
-			 "noPagAisladaR2", "self->closure(accede).accedida_por -> size() > 0"
+			 "noPagAisladaR2", "self->closure(accedida).accedida_por -> size() > 0"
 		   });	
 		addAnnotation
 		  (pagCRUDEClass, 
@@ -1190,7 +1190,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		  (getRol_NumeroEntidadesAccesiblesD2(), 
 		   source, 
 		   new String[] {
-			 "derivation", "if(self.tiene_acceso->size() = 0) then 0\n\t\t\t\t\telse self.tiene_acceso->selectByType(PagCRUD).tiene_asociada->asSet()->size()\n\t\t\t\t\tendif"
+			 "derivation", "if(self.tiene_acceso->size() = 0) then 0\n\t\t\t\t\telse self.tiene_acceso->closure(accede)->selectByKind(PagCRUD).tiene_asociada->asSet()->size() + self.tiene_acceso->selectByKind(PagCRUD).tiene_asociada->asSet()->size()\n\t\t\t\t\tendif"
 		   });
 	}
 
@@ -1206,7 +1206,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		  (paginaEClass, 
 		   source, 
 		   new String[] {
-			 "label", "TituloPag",
+			 "label", "tituloPag",
 			 "figure", "svg",
 			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/pagina.svg",
 			 "label.icon", "false",
@@ -1216,7 +1216,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		  (pagCRUDEClass, 
 		   source, 
 		   new String[] {
-			 "label", "TituloPag",
+			 "label", "tituloPag",
 			 "figure", "svg",
 			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg",
 			 "label.icon", "false",
@@ -1241,7 +1241,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		  (rolEClass, 
 		   source, 
 		   new String[] {
-			 "label", "NombreRol",
+			 "label", "nombreRol",
 			 "figure", "svg",
 			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/rol.svg",
 			 "label.icon", "false",
@@ -1261,7 +1261,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		  (urlExternaEClass, 
 		   source, 
 		   new String[] {
-			 "label", "Link",
+			 "label", "nombreWeb",
 			 "figure", "svg",
 			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/link.svg",
 			 "label.icon", "false",
@@ -1271,7 +1271,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		  (paginaPrincipalEClass, 
 		   source, 
 		   new String[] {
-			 "label", "TituloPag",
+			 "label", "tituloPag",
 			 "figure", "svg",
 			 "svg.uri", "platform:/plugin/Proyecto_DMSS/iconos/home.svg",
 			 "label.icon", "false",
@@ -1302,7 +1302,7 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   new String[] {
 			 "source", "tiene_asociada",
 			 "target", "asociada",
-			 "label", "CRUD asociada",
+			 "label", "CRUD_asociada",
 			 "target.decoration", "arrow"
 		   });	
 		addAnnotation
@@ -1311,8 +1311,9 @@ public class DataWebDeskDSLPackageImpl extends EPackageImpl implements DataWebDe
 		   new String[] {
 			 "source", "esta_en",
 			 "target", "clave_primaria",
-			 "label", "clave_primaria",
-			 "target.decoration", "arrow"
+			 "label", "primary_key",
+			 "target.decoration", "arrow",
+			 "style", "dot"
 		   });	
 		addAnnotation
 		  (getEntidad_Relacionada(), 

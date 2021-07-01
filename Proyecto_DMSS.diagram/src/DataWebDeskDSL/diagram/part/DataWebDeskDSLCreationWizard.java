@@ -104,7 +104,7 @@ public class DataWebDeskDSLCreationWizard extends Wizard implements INewWizard {
 	*/
 	public void addPages() {
 		diagramModelFilePage = new DataWebDeskDSL.diagram.part.DataWebDeskDSLCreationWizardPage("DiagramModelFile", //$NON-NLS-1$
-				getSelection(), "DMSS"); //$NON-NLS-1$
+				getSelection(), "datawebwesk"); //$NON-NLS-1$
 		diagramModelFilePage
 				.setTitle(DataWebDeskDSL.diagram.part.Messages.DataWebDeskDSLCreationWizard_DiagramModelFilePageTitle);
 		diagramModelFilePage.setDescription(
@@ -117,7 +117,7 @@ public class DataWebDeskDSLCreationWizard extends Wizard implements INewWizard {
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0, fileName.length() - ".DMSS".length()); //$NON-NLS-1$
+					fileName = fileName.substring(0, fileName.length() - ".datawebwesk".length()); //$NON-NLS-1$
 					setFileName(DataWebDeskDSL.diagram.part.DataWebDeskDSLDiagramEditorUtil
 							.getUniqueFileName(getContainerFullPath(), fileName, "datawebdeskdsl")); //$NON-NLS-1$
 				}

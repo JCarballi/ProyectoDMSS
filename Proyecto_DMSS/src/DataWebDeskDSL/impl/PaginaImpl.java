@@ -382,7 +382,7 @@ public abstract class PaginaImpl extends EObjectImpl implements Pagina {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (TituloPag: ");
+		result.append(" (tituloPag: ");
 		result.append(tituloPag);
 		result.append(')');
 		return result.toString();

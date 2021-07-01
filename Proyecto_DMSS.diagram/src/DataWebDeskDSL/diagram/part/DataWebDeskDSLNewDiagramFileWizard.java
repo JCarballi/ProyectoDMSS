@@ -80,7 +80,7 @@ public class DataWebDeskDSLNewDiagramFileWizard extends Wizard {
 		}
 		myFileCreationPage.setContainerFullPath(filePath);
 		myFileCreationPage.setFileName(DataWebDeskDSL.diagram.part.DataWebDeskDSLDiagramEditorUtil
-				.getUniqueFileName(filePath, fileName, "DMSS")); //$NON-NLS-1$
+				.getUniqueFileName(filePath, fileName, "datawebwesk")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				DataWebDeskDSL.diagram.part.Messages.DataWebDeskDSLNewDiagramFileWizard_RootSelectionPageName);

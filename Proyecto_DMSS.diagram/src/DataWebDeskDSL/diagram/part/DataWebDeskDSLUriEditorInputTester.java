@@ -19,7 +19,7 @@ public class DataWebDeskDSLUriEditorInputTester extends PropertyTester {
 			return false;
 		}
 		URIEditorInput editorInput = (URIEditorInput) receiver;
-		return "DMSS".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
+		return "datawebwesk".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
 	}
 
 }

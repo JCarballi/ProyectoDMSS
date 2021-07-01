@@ -64,7 +64,7 @@ public class EntidadItemProvider
 			super.getPropertyDescriptors(object);
 
 			addAsociadaPropertyDescriptor(object);
-			addID_EntidadPropertyDescriptor(object);
+			addId_EntidadPropertyDescriptor(object);
 			addClave_primariaPropertyDescriptor(object);
 			addNombreEntidadPropertyDescriptor(object);
 			addRelacionadaPropertyDescriptor(object);
@@ -96,18 +96,18 @@ public class EntidadItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the ID Entidad feature.
+	 * This adds a property descriptor for the Id Entidad feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addID_EntidadPropertyDescriptor(Object object) {
+	protected void addId_EntidadPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Entidad_ID_Entidad_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Entidad_ID_Entidad_feature", "_UI_Entidad_type"),
+				 getString("_UI_Entidad_id_Entidad_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Entidad_id_Entidad_feature", "_UI_Entidad_type"),
 				 DataWebDeskDSLPackage.Literals.ENTIDAD__ID_ENTIDAD,
 				 true,
 				 false,
@@ -255,7 +255,7 @@ public class EntidadItemProvider
 	@Override
 	public String getText(Object object) {
 		Entidad entidad = (Entidad)object;
-		return getString("_UI_Entidad_type") + " " + entidad.getID_Entidad();
+		return getString("_UI_Entidad_type") + " " + entidad.getId_Entidad();
 	}
 	
 

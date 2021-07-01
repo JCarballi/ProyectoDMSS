@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link DataWebDeskDSL.impl.EntidadImpl#getCaracteristica <em>Caracteristica</em>}</li>
  *   <li>{@link DataWebDeskDSL.impl.EntidadImpl#getAsociada <em>Asociada</em>}</li>
- *   <li>{@link DataWebDeskDSL.impl.EntidadImpl#getID_Entidad <em>ID Entidad</em>}</li>
+ *   <li>{@link DataWebDeskDSL.impl.EntidadImpl#getId_Entidad <em>Id Entidad</em>}</li>
  *   <li>{@link DataWebDeskDSL.impl.EntidadImpl#getClave_primaria <em>Clave primaria</em>}</li>
  *   <li>{@link DataWebDeskDSL.impl.EntidadImpl#getNombreEntidad <em>Nombre Entidad</em>}</li>
  *   <li>{@link DataWebDeskDSL.impl.EntidadImpl#getRelacionada <em>Relacionada</em>}</li>
@@ -65,24 +65,24 @@ public class EntidadImpl extends EObjectImpl implements Entidad {
 	protected EList<PagCRUD> asociada;
 
 	/**
-	 * The default value of the '{@link #getID_Entidad() <em>ID Entidad</em>}' attribute.
+	 * The default value of the '{@link #getId_Entidad() <em>Id Entidad</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getID_Entidad()
+	 * @see #getId_Entidad()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int ID_ENTIDAD_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getID_Entidad() <em>ID Entidad</em>}' attribute.
+	 * The cached value of the '{@link #getId_Entidad() <em>Id Entidad</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getID_Entidad()
+	 * @see #getId_Entidad()
 	 * @generated
 	 * @ordered
 	 */
-	protected int iD_Entidad = ID_ENTIDAD_EDEFAULT;
+	protected int id_Entidad = ID_ENTIDAD_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getClave_primaria() <em>Clave primaria</em>}' reference.
@@ -182,8 +182,8 @@ public class EntidadImpl extends EObjectImpl implements Entidad {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getID_Entidad() {
-		return iD_Entidad;
+	public int getId_Entidad() {
+		return id_Entidad;
 	}
 
 	/**
@@ -191,11 +191,11 @@ public class EntidadImpl extends EObjectImpl implements Entidad {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setID_Entidad(int newID_Entidad) {
-		int oldID_Entidad = iD_Entidad;
-		iD_Entidad = newID_Entidad;
+	public void setId_Entidad(int newId_Entidad) {
+		int oldId_Entidad = id_Entidad;
+		id_Entidad = newId_Entidad;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataWebDeskDSLPackage.ENTIDAD__ID_ENTIDAD, oldID_Entidad, iD_Entidad));
+			eNotify(new ENotificationImpl(this, Notification.SET, DataWebDeskDSLPackage.ENTIDAD__ID_ENTIDAD, oldId_Entidad, id_Entidad));
 	}
 
 	/**
@@ -361,7 +361,7 @@ public class EntidadImpl extends EObjectImpl implements Entidad {
 			case DataWebDeskDSLPackage.ENTIDAD__ASOCIADA:
 				return getAsociada();
 			case DataWebDeskDSLPackage.ENTIDAD__ID_ENTIDAD:
-				return getID_Entidad();
+				return getId_Entidad();
 			case DataWebDeskDSLPackage.ENTIDAD__CLAVE_PRIMARIA:
 				if (resolve) return getClave_primaria();
 				return basicGetClave_primaria();
@@ -393,7 +393,7 @@ public class EntidadImpl extends EObjectImpl implements Entidad {
 				getAsociada().addAll((Collection<? extends PagCRUD>)newValue);
 				return;
 			case DataWebDeskDSLPackage.ENTIDAD__ID_ENTIDAD:
-				setID_Entidad((Integer)newValue);
+				setId_Entidad((Integer)newValue);
 				return;
 			case DataWebDeskDSLPackage.ENTIDAD__CLAVE_PRIMARIA:
 				setClave_primaria((CaracteristicaEntidad)newValue);
@@ -428,7 +428,7 @@ public class EntidadImpl extends EObjectImpl implements Entidad {
 				getAsociada().clear();
 				return;
 			case DataWebDeskDSLPackage.ENTIDAD__ID_ENTIDAD:
-				setID_Entidad(ID_ENTIDAD_EDEFAULT);
+				setId_Entidad(ID_ENTIDAD_EDEFAULT);
 				return;
 			case DataWebDeskDSLPackage.ENTIDAD__CLAVE_PRIMARIA:
 				setClave_primaria((CaracteristicaEntidad)null);
@@ -459,7 +459,7 @@ public class EntidadImpl extends EObjectImpl implements Entidad {
 			case DataWebDeskDSLPackage.ENTIDAD__ASOCIADA:
 				return asociada != null && !asociada.isEmpty();
 			case DataWebDeskDSLPackage.ENTIDAD__ID_ENTIDAD:
-				return iD_Entidad != ID_ENTIDAD_EDEFAULT;
+				return id_Entidad != ID_ENTIDAD_EDEFAULT;
 			case DataWebDeskDSLPackage.ENTIDAD__CLAVE_PRIMARIA:
 				return clave_primaria != null;
 			case DataWebDeskDSLPackage.ENTIDAD__NOMBRE_ENTIDAD:
@@ -482,8 +482,8 @@ public class EntidadImpl extends EObjectImpl implements Entidad {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (ID_Entidad: ");
-		result.append(iD_Entidad);
+		result.append(" (id_Entidad: ");
+		result.append(id_Entidad);
 		result.append(", nombreEntidad: ");
 		result.append(nombreEntidad);
 		result.append(')');

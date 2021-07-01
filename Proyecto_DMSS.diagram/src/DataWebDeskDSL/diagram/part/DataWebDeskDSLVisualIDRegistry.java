@@ -302,7 +302,7 @@ public class DataWebDeskDSLVisualIDRegistry {
 			}
 			break;
 		case DataWebDeskDSL.diagram.edit.parts.URLExternaEditPart.VISUAL_ID:
-			if (DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart.VISUAL_ID == nodeVisualID) {
+			if (DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

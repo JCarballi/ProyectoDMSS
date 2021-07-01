@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmfgen:GenEditorGenerator xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel" diagramFileExtension="DMSS" copyrightText="">
+<gmfgen:GenEditorGenerator xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel" diagramFileExtension="datawebwesk" copyrightText="">
   <diagram visualID="1000" editPartClassName="DataWebDeskEditPart" itemSemanticEditPolicyClassName="DataWebDeskItemSemanticEditPolicy" canonicalEditPolicyClassName="DataWebDeskCanonicalEditPolicy" iconProviderPriority="Low" validationProviderPriority="Low" validationEnabled="true" validationDecorators="true" liveValidationUIFeedback="true">
     <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
     <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="DataWebDeskEditHelper"/>
@@ -37,7 +37,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="PagCrearLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PagCrearLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PagCrearLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;PagCrear&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/TituloPag"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/tituloPag"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -54,7 +54,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="PagLeerLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PagLeerLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PagLeerLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;PagLeer&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/TituloPag"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/tituloPag"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -71,7 +71,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="PagBorrarLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PagBorrarLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PagBorrarLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;PagBorrar&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/TituloPag"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/tituloPag"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -88,7 +88,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="PagActualizarLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PagActualizarLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PagActualizarLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;PagActualizar&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/TituloPag"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/tituloPag"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -105,7 +105,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="PagIndiceLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PagIndiceLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PagIndiceLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;PagIndice&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/TituloPag"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/tituloPag"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -122,7 +122,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="CRUDLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class CRUDLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public CRUDLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;CRUD&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/TituloPag"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/tituloPag"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -139,7 +139,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="PaginasNormalesLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PaginasNormalesLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PaginasNormalesLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;PaginasNormales&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/TituloPag"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/tituloPag"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -156,7 +156,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="PaginaPrincipalLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PaginaPrincipalLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PaginaPrincipalLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;PaginaPrincipal&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/TituloPag"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Pagina/tituloPag"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -224,7 +224,7 @@
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="RolLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RolLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RolLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;Rol&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Rol/NombreRol"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Rol/nombreRol"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -257,11 +257,11 @@
         <containmentMetaFeature href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/DataWebDesk/urlexterna"/>
         <childMetaFeature href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/DataWebDesk/urlexterna"/>
       </modelFacet>
-      <labels xsi:type="gmfgen:GenExternalNodeLabel" visualID="5015" editPartClassName="URLExternaLinkEditPart" itemSemanticEditPolicyClassName="URLExternaLinkItemSemanticEditPolicy">
+      <labels xsi:type="gmfgen:GenExternalNodeLabel" visualID="5015" editPartClassName="URLExternaNombreWebEditPart" itemSemanticEditPolicyClassName="URLExternaNombreWebItemSemanticEditPolicy">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap xsi:type="gmfgen:InnerClassViewmap" className="URLExternaLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class URLExternaLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public URLExternaLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;URLExterna&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/URLExterna/Link"/>
+          <metaFeatures href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/URLExterna/nombreWeb"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -289,7 +289,7 @@
       </modelFacet>
       <labels visualID="6002" editPartClassName="EntidadAsociadaExternalLabelEditPart" itemSemanticEditPolicyClassName="EntidadAsociadaExternalLabelItemSemanticEditPolicy" readOnly="true">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:InnerClassViewmap" className="EntidadAsociadaExternalLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntidadAsociadaExternalLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntidadAsociadaExternalLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;CRUD asociada&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <viewmap xsi:type="gmfgen:InnerClassViewmap" className="EntidadAsociadaExternalLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntidadAsociadaExternalLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntidadAsociadaExternalLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;CRUD_asociada&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
           <attributes xsi:type="gmfgen:LabelOffsetAttributes" y="40"/>
         </viewmap>
         <modelFacet xsi:type="gmfgen:DesignLabelModelFacet" parser="//@labelParsers/@implementations.1"/>
@@ -298,13 +298,13 @@
     <links visualID="4003" editPartClassName="EntidadClave_primariaEditPart" itemSemanticEditPolicyClassName="EntidadClave_primariaItemSemanticEditPolicy" createCommandClassName="EntidadClave_primariaCreateCommand" reorientCommandClassName="EntidadClave_primariaReorientCommand">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
       <elementType xsi:type="gmfgen:SpecializationType"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="EntidadClave_primariaFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntidadClave_primariaFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntidadClave_primariaFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="EntidadClave_primariaFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntidadClave_primariaFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntidadClave_primariaFigure() {&#xA;&#x9;&#x9;this.setLineStyle(org.eclipse.draw2d.Graphics.LINE_DOT);&#xA;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature href="MetamodeloProyecto.genmodel#//DataWebDeskDSL/Entidad/clave_primaria"/>
       </modelFacet>
       <labels visualID="6003" editPartClassName="EntidadClave_primariaExternalLabelEditPart" itemSemanticEditPolicyClassName="EntidadClave_primariaExternalLabelItemSemanticEditPolicy" readOnly="true">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:InnerClassViewmap" className="EntidadClave_primariaExternalLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntidadClave_primariaExternalLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntidadClave_primariaExternalLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;clave_primaria&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <viewmap xsi:type="gmfgen:InnerClassViewmap" className="EntidadClave_primariaExternalLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntidadClave_primariaExternalLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntidadClave_primariaExternalLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;primary_key&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
           <attributes xsi:type="gmfgen:LabelOffsetAttributes" y="40"/>
         </viewmap>
         <modelFacet xsi:type="gmfgen:DesignLabelModelFacet" parser="//@labelParsers/@implementations.1"/>

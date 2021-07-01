@@ -532,7 +532,7 @@ public class DataWebDeskDSLNavigatorLabelProvider extends LabelProvider
 				DataWebDeskDSL.diagram.providers.DataWebDeskDSLElementTypes.URLExterna_2014,
 				view.getElement() != null ? view.getElement() : view,
 				DataWebDeskDSL.diagram.part.DataWebDeskDSLVisualIDRegistry
-						.getType(DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart.VISUAL_ID));
+						.getType(DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());

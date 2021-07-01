@@ -4,6 +4,7 @@
 package DataWebDeskDSL.diagram.edit.parts;
 
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
@@ -67,6 +68,7 @@ public class EntidadClave_primariaEditPart extends ConnectionNodeEditPart implem
 		 * @generated
 		 */
 		public EntidadClave_primariaFigure() {
+			this.setLineStyle(Graphics.LINE_DOT);
 
 			setTargetDecoration(createTargetDecoration());
 		}

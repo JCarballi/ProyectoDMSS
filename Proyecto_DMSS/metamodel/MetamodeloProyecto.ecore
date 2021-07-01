@@ -15,18 +15,18 @@
   <eClassifiers xsi:type="ecore:EClass" name="DataWebDesk">
     <eAnnotations source="gmf.diagram">
       <details key="foo" value="bar"/>
-      <details key="diagram.extension" value="DMSS"/>
+      <details key="diagram.extension" value="datawebwesk"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="idRedSocialNombre idRedSocialID idPagina idRol idURLExterna idEntidadID idEntidadNombre unaPrincipalR1 algunaRSR5"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="idRedSocialNombre" value="self.redsocial->isUnique(nombre)"/>
-      <details key="idRedSocialID" value="self.redsocial->isUnique(ID_RedSocial)"/>
-      <details key="idPagina" value="self.pagina->isUnique(TituloPag)"/>
-      <details key="idRol" value="self.rol->isUnique(NombreRol)"/>
-      <details key="idURLExterna" value="self.urlexterna->isUnique(Link)"/>
-      <details key="idEntidadID" value="self.entidad->isUnique(ID_Entidad)"/>
+      <details key="idRedSocialID" value="self.redsocial->isUnique(id_RedSocial)"/>
+      <details key="idPagina" value="self.pagina->isUnique(tituloPag)"/>
+      <details key="idRol" value="self.rol->isUnique(nombreRol)"/>
+      <details key="idURLExterna" value="self.urlexterna->isUnique(link)"/>
+      <details key="idEntidadID" value="self.entidad->isUnique(id_Entidad)"/>
       <details key="idEntidadNombre" value="self.entidad->isUnique(nombreEntidad)"/>
       <details key="unaPrincipalR1" value="self.pagina->selectByType(PaginaPrincipal)->size()=1"/>
       <details key="algunaRSR5" value="self.pagina.muestra->size() > 0"/>
@@ -56,7 +56,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pagina" abstract="true">
     <eAnnotations source="gmf.node">
-      <details key="label" value="TituloPag"/>
+      <details key="label" value="tituloPag"/>
       <details key="figure" value="svg"/>
       <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/pagina.svg"/>
       <details key="label.icon" value="false"/>
@@ -66,7 +66,7 @@
       <details key="constraints" value="noPagAisladaR2"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="noPagAisladaR2" value="self->closure(accede).accedida_por -> size() > 0"/>
+      <details key="noPagAisladaR2" value="self->closure(accedida).accedida_por -> size() > 0"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="accedida" upperBound="-1"
         eType="#//Pagina" eOpposite="#//Pagina/accede"/>
@@ -79,7 +79,7 @@
         <details key="target.decoration" value="arrow"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TituloPag" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tituloPag" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="urlexterna" upperBound="-1"
         eType="#//URLExterna" eOpposite="#//URLExterna/pagina"/>
@@ -89,14 +89,14 @@
         eType="#//Rol" eOpposite="#//Rol/tiene_acceso"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PaginasNormales" eSuperTypes="#//Pagina">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Texto" lowerBound="1" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="texto" lowerBound="1" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Multimedia" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multimedia" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PagCRUD" abstract="true" eSuperTypes="#//Pagina">
     <eAnnotations source="gmf.node">
-      <details key="label" value="TituloPag"/>
+      <details key="label" value="tituloPag"/>
       <details key="figure" value="svg"/>
       <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/paginaCRUD.svg"/>
       <details key="label.icon" value="false"/>
@@ -138,19 +138,20 @@
       <eAnnotations source="gmf.link">
         <details key="source" value="tiene_asociada"/>
         <details key="target" value="asociada"/>
-        <details key="label" value="CRUD asociada"/>
+        <details key="label" value="CRUD_asociada"/>
         <details key="target.decoration" value="arrow"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID_Entidad" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Entidad" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clave_primaria" lowerBound="1"
         eType="#//CaracteristicaEntidad" eOpposite="#//CaracteristicaEntidad/esta_en">
       <eAnnotations source="gmf.link">
         <details key="source" value="esta_en"/>
         <details key="target" value="clave_primaria"/>
-        <details key="label" value="clave_primaria"/>
+        <details key="label" value="primary_key"/>
         <details key="target.decoration" value="arrow"/>
+        <details key="style" value="dot"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreEntidad" lowerBound="1"
@@ -175,7 +176,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreCaract" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TDato" eType="#//TipoDato"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipoDato" eType="#//TipoDato"
+        defaultValueLiteral="INTEGER"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="esta_en" eType="#//Entidad"
         eOpposite="#//Entidad/clave_primaria"/>
   </eClassifiers>
@@ -185,13 +187,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="PagActualizar" eSuperTypes="#//PagCRUD"/>
   <eClassifiers xsi:type="ecore:EClass" name="Rol">
     <eAnnotations source="gmf.node">
-      <details key="label" value="NombreRol"/>
+      <details key="label" value="nombreRol"/>
       <details key="figure" value="svg"/>
       <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/rol.svg"/>
       <details key="label.icon" value="false"/>
       <details key="label.placement" value="external"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NombreRol" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreRol" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeroPaginasAccesiblesD1"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -210,7 +212,7 @@
         <details key="documentation" value="D02"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="derivation" value="if(self.tiene_acceso->size() = 0) then 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else self.tiene_acceso->selectByType(PagCRUD).tiene_asociada->asSet()->size()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;endif"/>
+        <details key="derivation" value="if(self.tiene_acceso->size() = 0) then 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else self.tiene_acceso->closure(accede)->selectByKind(PagCRUD).tiene_asociada->asSet()->size() + self.tiene_acceso->selectByKind(PagCRUD).tiene_asociada->asSet()->size()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;endif"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tiene_acceso" upperBound="-1"
@@ -231,8 +233,9 @@
       <details key="label.icon" value="false"/>
       <details key="label.placement" value="external"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TipoCont" eType="#//tipoContenido"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID_RedSocial" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipoCont" eType="#//tipoContenido"
+        defaultValueLiteral="TEXTO"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_RedSocial" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mostrada" upperBound="-1"
         eType="#//Pagina" eOpposite="#//Pagina/muestra">
@@ -261,7 +264,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="URLExterna">
     <eAnnotations source="gmf.node">
-      <details key="label" value="Link"/>
+      <details key="label" value="nombreWeb"/>
       <details key="figure" value="svg"/>
       <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/link.svg"/>
       <details key="label.icon" value="false"/>
@@ -276,13 +279,13 @@
         <details key="target.decoration" value="arrow"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Link" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="link" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreWeb" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PaginaPrincipal" eSuperTypes="#//Pagina">
     <eAnnotations source="gmf.node">
-      <details key="label" value="TituloPag"/>
+      <details key="label" value="tituloPag"/>
       <details key="figure" value="svg"/>
       <details key="svg.uri" value="platform:/plugin/Proyecto_DMSS/iconos/home.svg"/>
       <details key="label.icon" value="false"/>

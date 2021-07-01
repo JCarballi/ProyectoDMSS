@@ -100,8 +100,8 @@ public class URLExternaItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_URLExterna_Link_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_URLExterna_Link_feature", "_UI_URLExterna_type"),
+				 getString("_UI_URLExterna_link_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_URLExterna_link_feature", "_UI_URLExterna_type"),
 				 DataWebDeskDSLPackage.Literals.URL_EXTERNA__LINK,
 				 true,
 				 false,

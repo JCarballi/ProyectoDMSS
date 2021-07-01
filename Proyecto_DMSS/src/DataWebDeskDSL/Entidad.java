@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link DataWebDeskDSL.Entidad#getCaracteristica <em>Caracteristica</em>}</li>
  *   <li>{@link DataWebDeskDSL.Entidad#getAsociada <em>Asociada</em>}</li>
- *   <li>{@link DataWebDeskDSL.Entidad#getID_Entidad <em>ID Entidad</em>}</li>
+ *   <li>{@link DataWebDeskDSL.Entidad#getId_Entidad <em>Id Entidad</em>}</li>
  *   <li>{@link DataWebDeskDSL.Entidad#getClave_primaria <em>Clave primaria</em>}</li>
  *   <li>{@link DataWebDeskDSL.Entidad#getNombreEntidad <em>Nombre Entidad</em>}</li>
  *   <li>{@link DataWebDeskDSL.Entidad#getRelacionada <em>Relacionada</em>}</li>
@@ -62,36 +62,36 @@ public interface Entidad extends EObject {
 	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getEntidad_Asociada()
 	 * @see DataWebDeskDSL.PagCRUD#getTiene_asociada
 	 * @model opposite="tiene_asociada"
-	 *        annotation="gmf.link source='tiene_asociada' target='asociada' label='CRUD asociada' target.decoration='arrow'"
+	 *        annotation="gmf.link source='tiene_asociada' target='asociada' label='CRUD_asociada' target.decoration='arrow'"
 	 * @generated
 	 */
 	EList<PagCRUD> getAsociada();
 
 	/**
-	 * Returns the value of the '<em><b>ID Entidad</b></em>' attribute.
+	 * Returns the value of the '<em><b>Id Entidad</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>ID Entidad</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Id Entidad</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>ID Entidad</em>' attribute.
-	 * @see #setID_Entidad(int)
-	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getEntidad_ID_Entidad()
+	 * @return the value of the '<em>Id Entidad</em>' attribute.
+	 * @see #setId_Entidad(int)
+	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getEntidad_Id_Entidad()
 	 * @model required="true"
 	 * @generated
 	 */
-	int getID_Entidad();
+	int getId_Entidad();
 
 	/**
-	 * Sets the value of the '{@link DataWebDeskDSL.Entidad#getID_Entidad <em>ID Entidad</em>}' attribute.
+	 * Sets the value of the '{@link DataWebDeskDSL.Entidad#getId_Entidad <em>Id Entidad</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>ID Entidad</em>' attribute.
-	 * @see #getID_Entidad()
+	 * @param value the new value of the '<em>Id Entidad</em>' attribute.
+	 * @see #getId_Entidad()
 	 * @generated
 	 */
-	void setID_Entidad(int value);
+	void setId_Entidad(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Clave primaria</b></em>' reference.
@@ -107,7 +107,7 @@ public interface Entidad extends EObject {
 	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getEntidad_Clave_primaria()
 	 * @see DataWebDeskDSL.CaracteristicaEntidad#getEsta_en
 	 * @model opposite="esta_en" required="true"
-	 *        annotation="gmf.link source='esta_en' target='clave_primaria' label='clave_primaria' target.decoration='arrow'"
+	 *        annotation="gmf.link source='esta_en' target='clave_primaria' label='primary_key' target.decoration='arrow' style='dot'"
 	 * @generated
 	 */
 	CaracteristicaEntidad getClave_primaria();

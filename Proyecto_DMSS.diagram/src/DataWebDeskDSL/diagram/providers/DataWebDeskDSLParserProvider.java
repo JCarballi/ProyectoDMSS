@@ -271,20 +271,20 @@ public class DataWebDeskDSLParserProvider extends AbstractProvider implements IP
 	/**
 	* @generated
 	*/
-	private IParser uRLExternaLink_5015Parser;
+	private IParser uRLExternaNombreWeb_5015Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getURLExternaLink_5015Parser() {
-		if (uRLExternaLink_5015Parser == null) {
+	private IParser getURLExternaNombreWeb_5015Parser() {
+		if (uRLExternaNombreWeb_5015Parser == null) {
 			EAttribute[] features = new EAttribute[] {
-					DataWebDeskDSL.DataWebDeskDSLPackage.eINSTANCE.getURLExterna_Link() };
+					DataWebDeskDSL.DataWebDeskDSLPackage.eINSTANCE.getURLExterna_NombreWeb() };
 			DataWebDeskDSL.diagram.parsers.MessageFormatParser parser = new DataWebDeskDSL.diagram.parsers.MessageFormatParser(
 					features);
-			uRLExternaLink_5015Parser = parser;
+			uRLExternaNombreWeb_5015Parser = parser;
 		}
-		return uRLExternaLink_5015Parser;
+		return uRLExternaNombreWeb_5015Parser;
 	}
 
 	/**
@@ -337,8 +337,8 @@ public class DataWebDeskDSLParserProvider extends AbstractProvider implements IP
 			return getRolNombreRol_5012Parser();
 		case DataWebDeskDSL.diagram.edit.parts.EntidadNombreEntidadEditPart.VISUAL_ID:
 			return getEntidadNombreEntidad_5014Parser();
-		case DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart.VISUAL_ID:
-			return getURLExternaLink_5015Parser();
+		case DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID:
+			return getURLExternaNombreWeb_5015Parser();
 		case DataWebDeskDSL.diagram.edit.parts.CaracteristicaEntidadNombreCaractEditPart.VISUAL_ID:
 			return getCaracteristicaEntidadNombreCaract_5013Parser();
 		}

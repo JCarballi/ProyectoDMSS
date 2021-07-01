@@ -280,7 +280,7 @@ public class URLExternaImpl extends EObjectImpl implements URLExterna {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (Link: ");
+		result.append(" (link: ");
 		result.append(link);
 		result.append(", nombreWeb: ");
 		result.append(nombreWeb);

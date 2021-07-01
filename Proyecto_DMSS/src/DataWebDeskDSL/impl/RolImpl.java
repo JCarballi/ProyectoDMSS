@@ -307,7 +307,7 @@ public class RolImpl extends EObjectImpl implements Rol {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (NombreRol: ");
+		result.append(" (nombreRol: ");
 		result.append(nombreRol);
 		result.append(')');
 		return result.toString();

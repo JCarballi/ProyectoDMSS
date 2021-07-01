@@ -74,10 +74,10 @@ public class DataWebDeskDSLViewProvider extends AbstractProvider implements IVie
 	*/
 	protected boolean provides(CreateViewForKindOperation op) {
 		/*
-				if (op.getViewKind() == Node.class)
-					return getNodeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
-				if (op.getViewKind() == Edge.class)
-					return getEdgeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
+		    if (op.getViewKind() == Node.class)
+		      return getNodeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
+		    if (op.getViewKind() == Edge.class)
+		      return getEdgeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
 		*/
 		return true;
 	}
@@ -877,7 +877,7 @@ public class DataWebDeskDSLViewProvider extends AbstractProvider implements IVie
 		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
 		Node label5015 = createLabel(node, DataWebDeskDSL.diagram.part.DataWebDeskDSLVisualIDRegistry
-				.getType(DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart.VISUAL_ID));
+				.getType(DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID));
 		label5015.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
 		Location location5015 = (Location) label5015.getLayoutConstraint();
 		location5015.setX(0);

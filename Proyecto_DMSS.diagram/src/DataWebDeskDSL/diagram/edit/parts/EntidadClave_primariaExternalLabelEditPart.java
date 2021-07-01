@@ -603,7 +603,7 @@ public class EntidadClave_primariaExternalLabelEditPart extends LabelEditPart im
 		 * @generated
 		 */
 		public EntidadClave_primariaExternalLabelFigure() {
-			this.setText("clave_primaria");
+			this.setText("primary_key");
 		}
 
 	}

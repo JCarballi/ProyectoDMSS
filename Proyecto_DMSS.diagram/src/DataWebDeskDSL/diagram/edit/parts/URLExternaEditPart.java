@@ -82,7 +82,7 @@ public class URLExternaEditPart extends AbstractBorderedShapeEditPart {
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				View childView = (View) child.getModel();
 				switch (DataWebDeskDSL.diagram.part.DataWebDeskDSLVisualIDRegistry.getVisualID(childView)) {
-				case DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart.VISUAL_ID:
+				case DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy() {
 
 						protected List createSelectionHandles() {
@@ -128,7 +128,7 @@ public class URLExternaEditPart extends AbstractBorderedShapeEditPart {
 	* @generated
 	*/
 	protected void addBorderItem(IFigure borderItemContainer, IBorderItemEditPart borderItemEditPart) {
-		if (borderItemEditPart instanceof DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart) {
+		if (borderItemEditPart instanceof DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart) {
 			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.SOUTH);
 			locator.setBorderItemOffset(new Dimension(-20, -20));
 			borderItemContainer.add(borderItemEditPart.getFigure(), locator);
@@ -223,7 +223,7 @@ public class URLExternaEditPart extends AbstractBorderedShapeEditPart {
 	*/
 	public EditPart getPrimaryChildEditPart() {
 		return getChildBySemanticHint(DataWebDeskDSL.diagram.part.DataWebDeskDSLVisualIDRegistry
-				.getType(DataWebDeskDSL.diagram.edit.parts.URLExternaLinkEditPart.VISUAL_ID));
+				.getType(DataWebDeskDSL.diagram.edit.parts.URLExternaNombreWebEditPart.VISUAL_ID));
 	}
 
 	/**

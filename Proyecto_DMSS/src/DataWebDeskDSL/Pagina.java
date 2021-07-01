@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see DataWebDeskDSL.DataWebDeskDSLPackage#getPagina()
  * @model abstract="true"
- *        annotation="gmf.node label='TituloPag' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/pagina.svg' label.icon='false' label.placement='external'"
+ *        annotation="gmf.node label='tituloPag' figure='svg' svg.uri='platform:/plugin/Proyecto_DMSS/iconos/pagina.svg' label.icon='false' label.placement='external'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='noPagAisladaR2'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot noPagAisladaR2='self->closure(accede).accedida_por -> size() > 0'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot noPagAisladaR2='self->closure(accedida).accedida_por -> size() > 0'"
  * @generated
  */
 public interface Pagina extends EObject {

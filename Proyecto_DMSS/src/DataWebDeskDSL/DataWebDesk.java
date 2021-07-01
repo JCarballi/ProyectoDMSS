@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see DataWebDeskDSL.DataWebDeskDSLPackage#getDataWebDesk()
- * @model annotation="gmf.diagram foo='bar' diagram.extension='DMSS'"
+ * @model annotation="gmf.diagram foo='bar' diagram.extension='datawebwesk'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='idRedSocialNombre idRedSocialID idPagina idRol idURLExterna idEntidadID idEntidadNombre unaPrincipalR1 algunaRSR5'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot idRedSocialNombre='self.redsocial->isUnique(nombre)' idRedSocialID='self.redsocial->isUnique(ID_RedSocial)' idPagina='self.pagina->isUnique(TituloPag)' idRol='self.rol->isUnique(NombreRol)' idURLExterna='self.urlexterna->isUnique(Link)' idEntidadID='self.entidad->isUnique(ID_Entidad)' idEntidadNombre='self.entidad->isUnique(nombreEntidad)' unaPrincipalR1='self.pagina->selectByType(PaginaPrincipal)->size()=1' algunaRSR5='self.pagina.muestra->size() > 0'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot idRedSocialNombre='self.redsocial->isUnique(nombre)' idRedSocialID='self.redsocial->isUnique(id_RedSocial)' idPagina='self.pagina->isUnique(tituloPag)' idRol='self.rol->isUnique(nombreRol)' idURLExterna='self.urlexterna->isUnique(link)' idEntidadID='self.entidad->isUnique(id_Entidad)' idEntidadNombre='self.entidad->isUnique(nombreEntidad)' unaPrincipalR1='self.pagina->selectByType(PaginaPrincipal)->size()=1' algunaRSR5='self.pagina.muestra->size() > 0'"
  * @generated
  */
 public interface DataWebDesk extends EObject {

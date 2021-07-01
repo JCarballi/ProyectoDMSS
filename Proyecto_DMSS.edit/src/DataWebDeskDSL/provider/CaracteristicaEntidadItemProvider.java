@@ -61,7 +61,7 @@ public class CaracteristicaEntidadItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNombreCaractPropertyDescriptor(object);
-			addTDatoPropertyDescriptor(object);
+			addTipoDatoPropertyDescriptor(object);
 			addEsta_enPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -90,19 +90,19 @@ public class CaracteristicaEntidadItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the TDato feature.
+	 * This adds a property descriptor for the Tipo Dato feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTDatoPropertyDescriptor(Object object) {
+	protected void addTipoDatoPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CaracteristicaEntidad_TDato_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CaracteristicaEntidad_TDato_feature", "_UI_CaracteristicaEntidad_type"),
-				 DataWebDeskDSLPackage.Literals.CARACTERISTICA_ENTIDAD__TDATO,
+				 getString("_UI_CaracteristicaEntidad_tipoDato_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CaracteristicaEntidad_tipoDato_feature", "_UI_CaracteristicaEntidad_type"),
+				 DataWebDeskDSLPackage.Literals.CARACTERISTICA_ENTIDAD__TIPO_DATO,
 				 true,
 				 false,
 				 false,
@@ -172,7 +172,7 @@ public class CaracteristicaEntidadItemProvider
 
 		switch (notification.getFeatureID(CaracteristicaEntidad.class)) {
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__NOMBRE_CARACT:
-			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TDATO:
+			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TIPO_DATO:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

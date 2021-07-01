@@ -125,8 +125,8 @@ public class PaginaItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Pagina_TituloPag_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Pagina_TituloPag_feature", "_UI_Pagina_type"),
+				 getString("_UI_Pagina_tituloPag_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Pagina_tituloPag_feature", "_UI_Pagina_type"),
 				 DataWebDeskDSLPackage.Literals.PAGINA__TITULO_PAG,
 				 true,
 				 false,

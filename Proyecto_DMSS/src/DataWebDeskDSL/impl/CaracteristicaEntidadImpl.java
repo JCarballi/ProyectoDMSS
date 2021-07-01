@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link DataWebDeskDSL.impl.CaracteristicaEntidadImpl#getNombreCaract <em>Nombre Caract</em>}</li>
- *   <li>{@link DataWebDeskDSL.impl.CaracteristicaEntidadImpl#getTDato <em>TDato</em>}</li>
+ *   <li>{@link DataWebDeskDSL.impl.CaracteristicaEntidadImpl#getTipoDato <em>Tipo Dato</em>}</li>
  *   <li>{@link DataWebDeskDSL.impl.CaracteristicaEntidadImpl#getEsta_en <em>Esta en</em>}</li>
  * </ul>
  *
@@ -53,24 +53,24 @@ public class CaracteristicaEntidadImpl extends EObjectImpl implements Caracteris
 	protected String nombreCaract = NOMBRE_CARACT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTDato() <em>TDato</em>}' attribute.
+	 * The default value of the '{@link #getTipoDato() <em>Tipo Dato</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTDato()
+	 * @see #getTipoDato()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final TipoDato TDATO_EDEFAULT = TipoDato.INTEGER;
+	protected static final TipoDato TIPO_DATO_EDEFAULT = TipoDato.INTEGER;
 
 	/**
-	 * The cached value of the '{@link #getTDato() <em>TDato</em>}' attribute.
+	 * The cached value of the '{@link #getTipoDato() <em>Tipo Dato</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTDato()
+	 * @see #getTipoDato()
 	 * @generated
 	 * @ordered
 	 */
-	protected TipoDato tDato = TDATO_EDEFAULT;
+	protected TipoDato tipoDato = TIPO_DATO_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getEsta_en() <em>Esta en</em>}' reference.
@@ -127,8 +127,8 @@ public class CaracteristicaEntidadImpl extends EObjectImpl implements Caracteris
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TipoDato getTDato() {
-		return tDato;
+	public TipoDato getTipoDato() {
+		return tipoDato;
 	}
 
 	/**
@@ -136,11 +136,11 @@ public class CaracteristicaEntidadImpl extends EObjectImpl implements Caracteris
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTDato(TipoDato newTDato) {
-		TipoDato oldTDato = tDato;
-		tDato = newTDato == null ? TDATO_EDEFAULT : newTDato;
+	public void setTipoDato(TipoDato newTipoDato) {
+		TipoDato oldTipoDato = tipoDato;
+		tipoDato = newTipoDato == null ? TIPO_DATO_EDEFAULT : newTipoDato;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TDATO, oldTDato, tDato));
+			eNotify(new ENotificationImpl(this, Notification.SET, DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TIPO_DATO, oldTipoDato, tipoDato));
 	}
 
 	/**
@@ -243,8 +243,8 @@ public class CaracteristicaEntidadImpl extends EObjectImpl implements Caracteris
 		switch (featureID) {
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__NOMBRE_CARACT:
 				return getNombreCaract();
-			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TDATO:
-				return getTDato();
+			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TIPO_DATO:
+				return getTipoDato();
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__ESTA_EN:
 				if (resolve) return getEsta_en();
 				return basicGetEsta_en();
@@ -263,8 +263,8 @@ public class CaracteristicaEntidadImpl extends EObjectImpl implements Caracteris
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__NOMBRE_CARACT:
 				setNombreCaract((String)newValue);
 				return;
-			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TDATO:
-				setTDato((TipoDato)newValue);
+			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TIPO_DATO:
+				setTipoDato((TipoDato)newValue);
 				return;
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__ESTA_EN:
 				setEsta_en((Entidad)newValue);
@@ -284,8 +284,8 @@ public class CaracteristicaEntidadImpl extends EObjectImpl implements Caracteris
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__NOMBRE_CARACT:
 				setNombreCaract(NOMBRE_CARACT_EDEFAULT);
 				return;
-			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TDATO:
-				setTDato(TDATO_EDEFAULT);
+			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TIPO_DATO:
+				setTipoDato(TIPO_DATO_EDEFAULT);
 				return;
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__ESTA_EN:
 				setEsta_en((Entidad)null);
@@ -304,8 +304,8 @@ public class CaracteristicaEntidadImpl extends EObjectImpl implements Caracteris
 		switch (featureID) {
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__NOMBRE_CARACT:
 				return NOMBRE_CARACT_EDEFAULT == null ? nombreCaract != null : !NOMBRE_CARACT_EDEFAULT.equals(nombreCaract);
-			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TDATO:
-				return tDato != TDATO_EDEFAULT;
+			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__TIPO_DATO:
+				return tipoDato != TIPO_DATO_EDEFAULT;
 			case DataWebDeskDSLPackage.CARACTERISTICA_ENTIDAD__ESTA_EN:
 				return esta_en != null;
 		}
@@ -324,8 +324,8 @@ public class CaracteristicaEntidadImpl extends EObjectImpl implements Caracteris
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (nombreCaract: ");
 		result.append(nombreCaract);
-		result.append(", TDato: ");
-		result.append(tDato);
+		result.append(", tipoDato: ");
+		result.append(tipoDato);
 		result.append(')');
 		return result.toString();
 	}

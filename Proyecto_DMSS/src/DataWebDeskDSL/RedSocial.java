@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link DataWebDeskDSL.RedSocial#getTipoCont <em>Tipo Cont</em>}</li>
- *   <li>{@link DataWebDeskDSL.RedSocial#getID_RedSocial <em>ID Red Social</em>}</li>
+ *   <li>{@link DataWebDeskDSL.RedSocial#getId_RedSocial <em>Id Red Social</em>}</li>
  *   <li>{@link DataWebDeskDSL.RedSocial#getMostrada <em>Mostrada</em>}</li>
  *   <li>{@link DataWebDeskDSL.RedSocial#getNombre <em>Nombre</em>}</li>
  * </ul>
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface RedSocial extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Tipo Cont</b></em>' attribute.
+	 * The default value is <code>"TEXTO"</code>.
 	 * The literals are from the enumeration {@link DataWebDeskDSL.tipoContenido}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -40,7 +41,7 @@ public interface RedSocial extends EObject {
 	 * @see DataWebDeskDSL.tipoContenido
 	 * @see #setTipoCont(tipoContenido)
 	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getRedSocial_TipoCont()
-	 * @model
+	 * @model default="TEXTO"
 	 * @generated
 	 */
 	tipoContenido getTipoCont();
@@ -57,30 +58,30 @@ public interface RedSocial extends EObject {
 	void setTipoCont(tipoContenido value);
 
 	/**
-	 * Returns the value of the '<em><b>ID Red Social</b></em>' attribute.
+	 * Returns the value of the '<em><b>Id Red Social</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>ID Red Social</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Id Red Social</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>ID Red Social</em>' attribute.
-	 * @see #setID_RedSocial(int)
-	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getRedSocial_ID_RedSocial()
+	 * @return the value of the '<em>Id Red Social</em>' attribute.
+	 * @see #setId_RedSocial(int)
+	 * @see DataWebDeskDSL.DataWebDeskDSLPackage#getRedSocial_Id_RedSocial()
 	 * @model required="true"
 	 * @generated
 	 */
-	int getID_RedSocial();
+	int getId_RedSocial();
 
 	/**
-	 * Sets the value of the '{@link DataWebDeskDSL.RedSocial#getID_RedSocial <em>ID Red Social</em>}' attribute.
+	 * Sets the value of the '{@link DataWebDeskDSL.RedSocial#getId_RedSocial <em>Id Red Social</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>ID Red Social</em>' attribute.
-	 * @see #getID_RedSocial()
+	 * @param value the new value of the '<em>Id Red Social</em>' attribute.
+	 * @see #getId_RedSocial()
 	 * @generated
 	 */
-	void setID_RedSocial(int value);
+	void setId_RedSocial(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Mostrada</b></em>' reference list.

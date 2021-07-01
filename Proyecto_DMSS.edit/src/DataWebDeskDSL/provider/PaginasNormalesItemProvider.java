@@ -62,8 +62,8 @@ public class PaginasNormalesItemProvider extends PaginaItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PaginasNormales_Texto_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PaginasNormales_Texto_feature", "_UI_PaginasNormales_type"),
+				 getString("_UI_PaginasNormales_texto_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PaginasNormales_texto_feature", "_UI_PaginasNormales_type"),
 				 DataWebDeskDSLPackage.Literals.PAGINAS_NORMALES__TEXTO,
 				 true,
 				 false,
@@ -84,8 +84,8 @@ public class PaginasNormalesItemProvider extends PaginaItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PaginasNormales_Multimedia_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PaginasNormales_Multimedia_feature", "_UI_PaginasNormales_type"),
+				 getString("_UI_PaginasNormales_multimedia_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PaginasNormales_multimedia_feature", "_UI_PaginasNormales_type"),
 				 DataWebDeskDSLPackage.Literals.PAGINAS_NORMALES__MULTIMEDIA,
 				 true,
 				 false,
