@@ -23,13 +23,13 @@
 [/template]
 
 [template public generateTipos(aCaracteristica : CaracteristicaEntidad)]
-[if(aCaracteristica.TDato = TipoDato::STRING)]
+[if(aCaracteristica.tipoDato = TipoDato::STRING)]
 varchar(255)
 [else]
-[if(aCaracteristica.TDato = TipoDato::INTEGER)]
+[if(aCaracteristica.tipoDato = TipoDato::INTEGER)]
 INTEGER
 [else]
-[if(aCaracteristica.TDato = TipoDato::BOOLEAN)]
+[if(aCaracteristica.tipoDato = TipoDato::BOOLEAN)]
 BOOLEAN
 [/if]
 [/if]

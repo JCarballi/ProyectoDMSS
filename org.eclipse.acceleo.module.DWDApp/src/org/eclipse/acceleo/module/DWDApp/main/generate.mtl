@@ -24,7 +24,7 @@
 package home;
 
 [for(r : Rol | aDataWebDesk.rol)]
-	import view.[r.NombreRol/].[r.NombreRol/];
+	import view.[r.nombreRol/].[r.nombreRol/];
 [/for]
 
 public class Main{	
@@ -41,7 +41,7 @@ public class Main{
 		System.out.println("0. Salir");
 		[for(r : Rol | aDataWebDesk.rol)]
 		[generateRol(r)/]
-		System.out.println("[aDataWebDesk.rol->indexOf(r)/]. [r.NombreRol/]");
+		System.out.println("[aDataWebDesk.rol->indexOf(r)/]. [r.nombreRol/]");
 		[/for]
 		System.out.println("");
 
@@ -59,7 +59,7 @@ public class Main{
 	      	break;
 		[for(r : Rol | aDataWebDesk.rol)]
 			case [aDataWebDesk.rol->indexOf(r)/]:
-				[r.NombreRol/] [r.NombreRol.toLowerCase()/] = new [r.NombreRol/]();
+				[r.nombreRol/] [r.nombreRol.toLowerCase()/] = new [r.nombreRol/]();
 			break;
 		[/for]
 		}
@@ -94,25 +94,25 @@ System.out.println("");
 [if(aPagina.urlexterna->size()>0)]
 System.out.println("Páginas externas:");
 [for (url: URLExterna | aPagina.urlexterna)]
-System.out.println("[url.nombreWeb/]: [url.Link/]");
+System.out.println("[url.nombreWeb/]: [url.link/]");
 [/for]
 [/if]
 	
 [/template]
 
 [template public generateRol(aRol : Rol)]
-[file ('view/'+aRol.NombreRol+'/'+aRol.NombreRol+'.java', false, 'UTF-8')]
-package view.[aRol.NombreRol/];
+[file ('view/'+aRol.nombreRol+'/'+aRol.nombreRol+'.java', false, 'UTF-8')]
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 import home.Main;
 
-public class [aRol.NombreRol.toUpperFirst()/]{
-	public [aRol.NombreRol.toUpperFirst()/]() {
+public class [aRol.nombreRol.toUpperFirst()/]{
+	public [aRol.nombreRol.toUpperFirst()/]() {
 		System.out.println("\n\n\n");
 		System.out.println("---------------------------------------------------------------------------------");
 
-		System.out.println("Pantalla principal de Rol [aRol.NombreRol/]");
+		System.out.println("Pantalla principal de Rol [aRol.nombreRol/]");
 
 		System.out.println("");
 		System.out.println("Listado de páginas a las que tiene acceso:");
@@ -120,10 +120,10 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 		System.out.println("0. Volver a inicio");
 		[for (p: Pagina | aRol.tiene_acceso->closure(accede))]
 		[if(p.oclIsTypeOf(PaginasNormales))]
-		System.out.println([aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/]+". [p.TituloPag.replaceAll(' ', '_')/]");			
+		System.out.println([aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/]+". [p.tituloPag.replaceAll(' ', '_')/]");			
 		[else]
 		[if(not p.oclIsTypeOf(PaginaPrincipal))]
-		System.out.println( [aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/] +". [p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.TituloPag.replaceAll(' ', '_')/]");
+		System.out.println( [aRol.tiene_acceso->closure(accede)->asOrderedSet()->indexOf(p)/] +". [p.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [p.tituloPag.replaceAll(' ', '_')/]");
 		[/if]
 		[/if]		
 		[/for]
@@ -149,7 +149,7 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 			case [aRol.tiene_acceso->closure(accede)->excluding(oclIsTypeOf(PaginaPrincipal))->asOrderedSet()->indexOf(p)/]:
 			[if(p.oclIsTypeOf(PaginasNormales))]
 				[generatePagina(aRol, p.oclAsType(PaginasNormales))/]
-				[p.TituloPag.replaceAll(' ', '_')/] [p.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new [p.TituloPag.replaceAll(' ', '_')/](); 
+				[p.tituloPag.replaceAll(' ', '_')/] [p.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new [p.tituloPag.replaceAll(' ', '_')/](); 
 			[else]
 				[generatePaginaCRUD(aRol, p)/]
 			break;
@@ -166,49 +166,49 @@ public class [aRol.NombreRol.toUpperFirst()/]{
 
 [template public generatePaginaCRUD (aRol : Rol, aPagina : Pagina)]
 [if (aPagina.oclIsKindOf(PagIndice))]
-Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/]();	
+Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/]();	
 [generatePagina(aRol, aPagina.oclAsType(PagIndice))/]	
 [/if]
 [if (aPagina.oclIsKindOf(PagLeer))]
-Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/]();	
+Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/]();	
 [generatePagina(aRol, aPagina.oclAsType(PagLeer))/]	
 [/if]
 [if (aPagina.oclIsKindOf(PagBorrar))]
-Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/]();	
+Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/]();	
 [generatePagina(aRol, aPagina.oclAsType(PagBorrar))/]	
 [/if]
 [if (aPagina.oclIsKindOf(PagCrear))]
-Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/]();	
+Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/]();	
 [generatePagina(aRol, aPagina.oclAsType(PagCrear))/]	
 [/if]
 [if (aPagina.oclIsKindOf(CRUD))]
-CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/]();	
+CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/]();	
 [generatePagina(aRol, aPagina.oclAsType(CRUD))/]	
 [/if]
 [/template]
 
 [template public generateEnlaceCRUD (aRol : Rol, aPagina : Pagina)]
 [if (aPagina.oclIsKindOf(PagIndice))]
-Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/]();	
+Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Indice_[aPagina.oclAsType(PagIndice).tiene_asociada.nombreEntidad/]();	
 [/if]
 [if (aPagina.oclIsKindOf(PagLeer))]
-Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/]();	
+Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Detalles_[aPagina.oclAsType(PagLeer).tiene_asociada.nombreEntidad/]();	
 [/if]
 [if (aPagina.oclIsKindOf(PagBorrar))]
-Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/]();	
+Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Borrar_[aPagina.oclAsType(PagBorrar).tiene_asociada.nombreEntidad/]();	
 [/if]
 [if (aPagina.oclIsKindOf(PagCrear))]
-Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/]();	
+Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Crear_[aPagina.oclAsType(PagCrear).tiene_asociada.nombreEntidad/]();	
 [/if]
 [if (aPagina.oclIsKindOf(CRUD))]
-CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/]();	
+CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/] [aPagina.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new CRUD_[aPagina.oclAsType(CRUD).tiene_asociada.nombreEntidad/]();	
 [/if]
 [/template]
 
 [template public generatePagina(aRol : Rol, aIndice : PagIndice)]
-[file ('view/'+aRol.NombreRol+'/Indice_'+aIndice.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[file ('view/'+aRol.nombreRol+'/Indice_'+aIndice.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
 
-package view.[aRol.NombreRol/];
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 import java.util.List;
@@ -223,7 +223,7 @@ public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		System.out.println("\n\n\n");
 		System.out.println("---------------------------------------------------------------------------------");
 
-		System.out.println("Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]");
+		System.out.println("Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aRol.nombreRol/]");
 		
 		System.out.println("");
 		[generateRRSS(aIndice)/]
@@ -251,7 +251,7 @@ public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 
 		if(keyPressed == 0){
 			System.out.println("Volviendo al Rol");
-			[aRol.NombreRol/] r = new [aRol.NombreRol/]();
+			[aRol.nombreRol/] r = new [aRol.nombreRol/]();
 		}else{
 			[aIndice.tiene_asociada.nombreEntidad/] [aIndice.tiene_asociada.nombreEntidad.toLower()/] = [aIndice.tiene_asociada.nombreEntidad.toLower()/]List.get(keyPressed);
 			System.out.println([aIndice.tiene_asociada.nombreEntidad.toLower()/]);
@@ -264,9 +264,9 @@ public class Indice_[aIndice.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generatePagina(aRol : Rol, aDetalle : PagLeer)]
-[file ('view/'+aRol.NombreRol+'/Detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[file ('view/'+aRol.nombreRol+'/Detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
 
-package view.[aRol.NombreRol/];
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 
@@ -276,7 +276,7 @@ public class Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		System.out.println("\n\n\n");
 		System.out.println("---------------------------------------------------------------------------------");
 
-		System.out.println("Pantalla detalle de [aDetalle.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]");
+		System.out.println("Pantalla detalle de [aDetalle.tiene_asociada.nombreEntidad/] Rol [aRol.nombreRol/]");
 		
 		System.out.println("");
 		[generateRRSS(aDetalle)/]
@@ -285,10 +285,10 @@ public class Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		System.out.println("Campos:");
 
 		[for(c : CaracteristicaEntidad | aDetalle.tiene_asociada.caracteristica)]
-		System.out.println("-[c.nombreCaract/]: valor // ([c.TDato/])");	
+		System.out.println("-[c.nombreCaract/]: valor // ([c.tipoDato/])");	
 		[/for]
 		[for(e : Entidad | aDetalle.tiene_asociada.esta_relacionada)]
-		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		System.out.println("-Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a [e.nombreEntidad/]");	
 		[/for]
 		System.out.println("");
 
@@ -296,7 +296,7 @@ public class Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 
 		System.out.println("1. Borrar [aDetalle.tiene_asociada.nombreEntidad/]");
 		[for(e : Entidad | aDetalle.tiene_asociada.esta_relacionada)]
-		System.out.println("[aDetalle.tiene_asociada.esta_relacionada->indexOf(e)+1/]. Consultar detalles de [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		System.out.println("[aDetalle.tiene_asociada.esta_relacionada->indexOf(e)+1/]. Consultar detalles de [e.id_Entidad/] // Referencia a [e.nombreEntidad/]");	
 		[/for]
 		System.out.println("[aDetalle.tiene_asociada.esta_relacionada->size()+2/]. Volver");
 
@@ -312,7 +312,7 @@ public class Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		switch (keyPressed) {
 			case [aDetalle.tiene_asociada.esta_relacionada->size()+2/]:
 				System.out.println("Volviendo al Rol");
-				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
+				[aRol.nombreRol/] r = new [aRol.nombreRol/]();
 			break;
 			case 1:
 				Borrar_[aDetalle.tiene_asociada.nombreEntidad/] [aDetalle.tiene_asociada.nombreEntidad.toLowerCase()/] = new Borrar_[aDetalle.tiene_asociada.nombreEntidad/]();
@@ -333,9 +333,9 @@ public class Detalles_[aDetalle.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generatePagina(aRol : Rol, aBorrar : PagBorrar)]
-[file ('view/'+aRol.NombreRol+'/Borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[file ('view/'+aRol.nombreRol+'/Borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
 
-package view.[aRol.NombreRol/];
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 	
@@ -345,7 +345,7 @@ public class Borrar_[aBorrar.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		System.out.println("\n\n\n");
 		System.out.println("---------------------------------------------------------------------------------");
 
-		System.out.println("Pantalla Borrar de [aBorrar.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]");
+		System.out.println("Pantalla Borrar de [aBorrar.tiene_asociada.nombreEntidad/] Rol [aRol.nombreRol/]");
 		
 		System.out.println("");
 		[generateRRSS(aBorrar)/]
@@ -368,7 +368,7 @@ public class Borrar_[aBorrar.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		switch (keyPressed) {
 			case 0:
 				System.out.println("Volviendo al Rol");
-				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
+				[aRol.nombreRol/] r = new [aRol.nombreRol/]();
 			break;
 		}
 	
@@ -379,9 +379,9 @@ public class Borrar_[aBorrar.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generatePagina(aRol : Rol, aEntidad : Entidad, aBorrar : PagBorrar)]
-[file ('view/'+aRol.NombreRol+'/BorrarConfirmacion_'+aEntidad.nombreEntidad+'.java', false, 'UTF-8')]
+[file ('view/'+aRol.nombreRol+'/BorrarConfirmacion_'+aEntidad.nombreEntidad+'.java', false, 'UTF-8')]
 
-package view.[aRol.NombreRol/];
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 
@@ -405,7 +405,7 @@ public class BorrarConfirmacion_[aEntidad.nombreEntidad.toUpperFirst()/]{
 		System.out.println("Nota: No se eliminan los datos correspondiente a las referencias de [aEntidad.nombreEntidad/]:");
 
 		[for(e : Entidad | aEntidad.esta_relacionada)]
-		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		System.out.println("-Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a [e.nombreEntidad/]");	
 		[/for]
 
 		System.out.println("");
@@ -421,7 +421,7 @@ public class BorrarConfirmacion_[aEntidad.nombreEntidad.toUpperFirst()/]{
 		switch (keyPressed) {
 			case 0:
 				System.out.println("Volviendo al índice");
-				Indice_[aBorrar.tiene_asociada.nombreEntidad/] [aBorrar.TituloPag.toLowerCase().replaceAll(' ', '_')/] = new Indice_[aBorrar.tiene_asociada.nombreEntidad/]();	
+				Indice_[aBorrar.tiene_asociada.nombreEntidad/] [aBorrar.tituloPag.toLowerCase().replaceAll(' ', '_')/] = new Indice_[aBorrar.tiene_asociada.nombreEntidad/]();	
 			break;
 		}
 
@@ -432,9 +432,9 @@ public class BorrarConfirmacion_[aEntidad.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generatePagina(aRol : Rol, aCrear : PagCrear)]
-[file ('view/'+aRol.NombreRol+'/Crear_'+aCrear.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+[file ('view/'+aRol.nombreRol+'/Crear_'+aCrear.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
 
-package view.[aRol.NombreRol/];
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 
@@ -455,14 +455,14 @@ public class Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 
 		System.out.println("Introduzca la información correspondiente a los siguientes campos:");
 	[for(c : CaracteristicaEntidad | aCrear.tiene_asociada.caracteristica)]
-		System.out.println("-[c.nombreCaract/]: valor // ([c.TDato/])");
-		[if(c.TDato = TipoDato::INTEGER)]
+		System.out.println("-[c.nombreCaract/]: valor // ([c.tipoDato/])");
+		[if(c.tipoDato = TipoDato::INTEGER)]
 		int [c.nombreCaract/] = Keyin.inInt("");
 		[/if]	
-		[if(c.TDato = TipoDato::STRING)]
+		[if(c.tipoDato = TipoDato::STRING)]
 		String [c.nombreCaract/] = Keyin.inString("");
 		[/if]	
-		[if(c.TDato = TipoDato::BOOLEAN)]
+		[if(c.tipoDato = TipoDato::BOOLEAN)]
 		Boolean [c.nombreCaract/] = Keyin.inInt("");
 		[/if]			
 	[/for]
@@ -474,7 +474,7 @@ public class Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		[generatePagina(aRol, aCrear.oclAsType(PagLeer))/]		
 
 		[for(e : Entidad | aCrear.tiene_asociada.esta_relacionada)]
-		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		System.out.println("-Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a [e.nombreEntidad/]");	
 		[/for]
 		System.out.println("");
 
@@ -495,7 +495,7 @@ public class Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		switch (keyPressed) {
 			case 2:
 				System.out.println("Volviendo al Rol");
-				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
+				[aRol.nombreRol/] r = new [aRol.nombreRol/]();
 			break;
 		}
 
@@ -506,8 +506,8 @@ public class Crear_[aCrear.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generatePagina(aRol : Rol, aCRUD : CRUD)]
-[file ('view/'+aRol.NombreRol+'/CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
-package view.[aRol.NombreRol/];
+[file ('view/'+aRol.nombreRol+'/CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 	
@@ -542,7 +542,7 @@ public class CRUD_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		switch (keyPressed) {
 			case 0:
 				System.out.println("Volviendo al Rol");
-				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
+				[aRol.nombreRol/] r = new [aRol.nombreRol/]();
 			break;
 
 			case 1:
@@ -568,8 +568,8 @@ public class CRUD_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generateIndexCRUD (aRol : Rol, aCRUD : CRUD)]
-[file ('view/'+aRol.NombreRol+'/Indice_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
-package view.[aRol.NombreRol/];
+[file ('view/'+aRol.nombreRol+'/Indice_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 
@@ -585,7 +585,7 @@ public class Indice_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		System.out.println("\n\n\n");
 		System.out.println("---------------------------------------------------------------------------------");
 
-		System.out.println("Pantalla índice de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]");
+		System.out.println("Pantalla índice de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.nombreRol/]");
 		
 		System.out.println("");
 		[generateRRSS(aCRUD)/]
@@ -626,8 +626,8 @@ public class Indice_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generateCreateCRUD (aRol : Rol, aCRUD : CRUD)]
-[file ('view/'+aRol.NombreRol+'/Crear_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
-package view.[aRol.NombreRol/];
+[file ('view/'+aRol.nombreRol+'/Crear_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 	
@@ -645,10 +645,10 @@ public class Crear_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 
 		System.out.println("Introduzca la información correspondiente a los siguientes campos:");
 		[for(c : CaracteristicaEntidad | aCRUD.tiene_asociada.caracteristica)]
-		System.out.println("-[c.nombreCaract/]: valor // ([c.TDato/])");	
+		System.out.println("-[c.nombreCaract/]: valor // ([c.tipoDato/])");	
 		[/for]
 		[for(e : Entidad | aCRUD.tiene_asociada.esta_relacionada)]
-		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		System.out.println("-Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a [e.nombreEntidad/]");	
 		[/for]
 		System.out.println("");
 
@@ -680,8 +680,8 @@ public class Crear_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generateRemoveCRUD (aRol : Rol, aCRUD : CRUD)]
-[file ('view/'+aRol.NombreRol+'/Borrar_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
-package view.[aRol.NombreRol/];
+[file ('view/'+aRol.nombreRol+'/Borrar_'+aCRUD.tiene_asociada.nombreEntidad+'.java', false, 'UTF-8')]
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 	
@@ -691,7 +691,7 @@ public class Borrar_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 		System.out.println("\n\n\n");
 		System.out.println("---------------------------------------------------------------------------------");
 
-		System.out.println("Pantalla Borrar de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]");
+		System.out.println("Pantalla Borrar de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.nombreRol/]");
 		
 		System.out.println("");
 		[generateRRSS(aCRUD)/]
@@ -725,47 +725,47 @@ public class Borrar_[aCRUD.tiene_asociada.nombreEntidad.toUpperFirst()/]{
 [/template]
 
 [template public generatePagina(aRol : Rol, aPagina : PaginasNormales)]
-[file ('view/'+aRol.NombreRol+'/'+aPagina.TituloPag+'.java', false, 'UTF-8')]
-package view.[aRol.NombreRol/];
+[file ('view/'+aRol.nombreRol+'/'+aPagina.tituloPag+'.java', false, 'UTF-8')]
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 
-public class [aPagina.TituloPag/]{
-	public [aPagina.TituloPag/](){
+public class [aPagina.tituloPag/]{
+	public [aPagina.tituloPag/](){
 
 		System.out.println("\n\n\n");
 		System.out.println("---------------------------------------------------------------------------------");
 
-		System.out.println("Página con contenido: [aPagina.TituloPag/]");
+		System.out.println("Página con contenido: [aPagina.tituloPag/]");
 			
 		System.out.println("");
 		[generateRRSS(aPagina)/]
 		System.out.println("");	
 	
-		[if(aPagina.Texto->size() > 0)]
-		System.out.println("Texto:");
-		System.out.println("[aPagina.Texto/]");
+		[if(aPagina.texto->size() > 0)]
+		System.out.println("texto:");
+		System.out.println("[aPagina.texto/]");
 		System.out.println("");	
 		System.out.println("");	
 		[/if]
-		[if(aPagina.Multimedia->size() > 0)]
-		System.out.println("Multimedia:");	
-		System.out.println("[aPagina.Multimedia/]");	
+		[if(aPagina.multimedia->size() > 0)]
+		System.out.println("multimedia:");	
+		System.out.println("[aPagina.multimedia/]");	
 		System.out.println("");	
 		[/if]
 	
-		int keyPressed = Keyin.inInt("Pulse 0 para volver a la pantalla de Rol [aRol.NombreRol/]");
+		int keyPressed = Keyin.inInt("Pulse 0 para volver a la pantalla de Rol [aRol.nombreRol/]");
 
 		while(keyPressed != 0) {
 			System.out.println("");
 			System.out.println("Error: Opción no encontrada");
-			keyPressed = Keyin.inInt("Pulse 0 para volver a la pantalla de Rol [aRol.NombreRol/]");
+			keyPressed = Keyin.inInt("Pulse 0 para volver a la pantalla de Rol [aRol.nombreRol/]");
 		}
 
 		switch (keyPressed) {
 			case 0:
 				System.out.println("Volviendo al Rol");
-				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
+				[aRol.nombreRol/] r = new [aRol.nombreRol/]();
 	      	break;
 		}
 
@@ -944,13 +944,13 @@ public class [e.nombreEntidad/]{
 [/template]
 
 [template public generateTipos(c : CaracteristicaEntidad)]
-[if(c.TDato = TipoDato::INTEGER)]
+[if(c.tipoDato = TipoDato::INTEGER)]
 int
 [/if]
-[if(c.TDato = TipoDato::BOOLEAN)]
+[if(c.tipoDato = TipoDato::BOOLEAN)]
 boolean
 [/if]
-[if(c.TDato = TipoDato::STRING)]
+[if(c.tipoDato = TipoDato::STRING)]
 String
 [/if]
 [/template]
@@ -962,21 +962,21 @@ String
 [/template]
 
 [template public generateAtributos(aCaracteristica : CaracteristicaEntidad)]
-[if(aCaracteristica.TDato = TipoDato::INTEGER)]
+[if(aCaracteristica.tipoDato = TipoDato::INTEGER)]
 int [aCaracteristica.nombreCaract/] = 3
 [/if]
-[if(aCaracteristica.TDato = TipoDato::BOOLEAN)]
+[if(aCaracteristica.tipoDato = TipoDato::BOOLEAN)]
 boolean [aCaracteristica.nombreCaract/] = false
 [/if]
-[if(aCaracteristica.TDato = TipoDato::STRING)]
+[if(aCaracteristica.tipoDato = TipoDato::STRING)]
 String [aCaracteristica.nombreCaract/] = "hello world"
 [/if]
 [/template]
 
 [template public generateEntidadesRelacionadas(aRol : Rol, aEntidad : Entidad)]
-[file ('view/'+aRol.NombreRol+'/Detalles_'+aEntidad.nombreEntidad+'.java', false, 'UTF-8')]
+[file ('view/'+aRol.nombreRol+'/Detalles_'+aEntidad.nombreEntidad+'.java', false, 'UTF-8')]
 
-package view.[aRol.NombreRol/];
+package view.[aRol.nombreRol/];
 
 import home.Keyin;
 
@@ -986,15 +986,15 @@ public class Detalles_[aEntidad.nombreEntidad.toUpperFirst()/]{
 		System.out.println("\n\n\n");
 		System.out.println("---------------------------------------------------------------------------------");
 
-		System.out.println("Pantalla detalle de [aEntidad.nombreEntidad/] Rol [aRol.NombreRol/]");
+		System.out.println("Pantalla detalle de [aEntidad.nombreEntidad/] Rol [aRol.nombreRol/]");
 
 		System.out.println("Campos:");
 
 		[for(c : CaracteristicaEntidad | aEntidad.caracteristica)]
-		System.out.println("-[c.nombreCaract/]: valor // ([c.TDato/])");	
+		System.out.println("-[c.nombreCaract/]: valor // ([c.tipoDato/])");	
 		[/for]
 		[for(e : Entidad | aEntidad.esta_relacionada)]
-		System.out.println("-Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		System.out.println("-Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a [e.nombreEntidad/]");	
 		[/for]
 		System.out.println("");
 
@@ -1002,7 +1002,7 @@ public class Detalles_[aEntidad.nombreEntidad.toUpperFirst()/]{
 
 		System.out.println("1. Borrar [aEntidad.nombreEntidad/]");
 		[for(e : Entidad | aEntidad.esta_relacionada)]
-		System.out.println("[aEntidad.esta_relacionada->indexOf(e)+1/]. Consultar detalles de [e.ID_Entidad/] // Referencia a [e.nombreEntidad/]");	
+		System.out.println("[aEntidad.esta_relacionada->indexOf(e)+1/]. Consultar detalles de [e.id_Entidad/] // Referencia a [e.nombreEntidad/]");	
 		[/for]
 		System.out.println("[aEntidad.esta_relacionada->size()+2/]. Volver");
 
@@ -1018,7 +1018,7 @@ public class Detalles_[aEntidad.nombreEntidad.toUpperFirst()/]{
 		switch (keyPressed) {
 			case [aEntidad.esta_relacionada->size()+2/]:
 				System.out.println("Volviendo al Rol");
-				[aRol.NombreRol/] r = new [aRol.NombreRol/]();
+				[aRol.nombreRol/] r = new [aRol.nombreRol/]();
 			break;
 			case 1:
 				Borrar_[aEntidad.nombreEntidad/] [aEntidad.nombreEntidad.toLowerCase()/] = new Borrar_[aEntidad.nombreEntidad/]();

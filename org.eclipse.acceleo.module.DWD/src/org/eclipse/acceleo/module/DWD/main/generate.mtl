@@ -33,7 +33,7 @@
 <ol type="1">
 	<li>Salir</li>
 [for (r: Rol | aDataWebDesk.rol)]
-	<li><a href="[r.NombreRol/]/index_[r.NombreRol/].html">[r.NombreRol/]</a></li>
+	<li><a href="[r.nombreRol/]/index_[r.nombreRol/].html">[r.nombreRol/]</a></li>
 	[generate(r)/]
 [/for]
 </ol>
@@ -65,26 +65,26 @@
 <p>Enlaces externos:</p>
 <ul>
 [for (url: URLExterna | aPagina.urlexterna)]
-<li> <p><a href="[aPagina.urlexterna.Link/]">[aPagina.urlexterna.nombreWeb/]</a> </li>
+<li> <p><a href="[aPagina.urlexterna.link/]">[aPagina.urlexterna.nombreWeb/]</a> </li>
 [/for]
 </ul>
 [/if]	
 [/template]
 
 [template public generate (aRol : Rol)]
-[file (aRol.NombreRol+'/index_'+aRol.NombreRol+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/index_'+aRol.nombreRol+'.html', false, 'UTF-8')]
 <!DOCTYPE html>
 <html lang=es>
 
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aRol.NombreRol/]</title>
+	<title>[aRol.nombreRol/]</title>
 </head>
 
 <body>
 
-<h1>Pantalla principal de Rol [aRol.NombreRol/]</h1>
+<h1>Pantalla principal de Rol [aRol.nombreRol/]</h1>
 
 <p>Listado de páginas a las que tiene acceso:</p>
 
@@ -94,7 +94,7 @@
 [for (p: Pagina | aRol.tiene_acceso->closure(accede))]
 
 	[if(p.oclIsTypeOf(PaginasNormales))]
-	<li><a href="[p.TituloPag/].html">[p.TituloPag/]</a></li>
+	<li><a href="[p.tituloPag/].html">[p.tituloPag/]</a></li>
 	[generatePage(aRol, p.oclAsType(PaginasNormales))/]	
 	[else]
 	[generatePageCRUD(aRol, p)/]
@@ -112,30 +112,30 @@
 
 [template public generatePageCRUD (aRol : Rol, aPagina : Pagina)]
 	[if (aPagina.oclIsKindOf(PagIndice))]
-		<li><a href="indice_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		<li><a href="indice_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.tituloPag/]</a></li>
 		[generatePage(aPagina.oclAsType(PagIndice))/] 
 	[/if]
 	[if (aPagina.oclIsKindOf(PagLeer))]
-		<li><a href="detalles_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		<li><a href="detalles_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.tituloPag/]</a></li>
 		[generatePage(aPagina.oclAsType(PagLeer))/]
 	[/if]
 	[if (aPagina.oclIsKindOf(PagBorrar))]
 		[generatePage(aRol, aPagina.oclAsType(PagBorrar))/] 
-		<li><a href="borrar_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		<li><a href="borrar_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.tituloPag/]</a></li>
 	[/if]
 	[if (aPagina.oclIsKindOf(PagCrear))]
-		<li><a href="crear_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		<li><a href="crear_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.tituloPag/]</a></li>
 		[generatePage(aPagina.oclAsType(PagCrear))/] 
 	[/if]
 	[if (aPagina.oclIsKindOf(CRUD))]
-		<li><a href="CRUD_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.TituloPag/]</a></li>
+		<li><a href="CRUD_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.tituloPag/]</a></li>
 		[generatePage(aPagina.oclAsType(CRUD))/]
 	[/if]
 [/template]
 
 
 [template public generatePage (aRol : Rol, aIndice : PagIndice)]
-[file (aRol.NombreRol+'/indice_'+aIndice.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/indice_'+aIndice.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -143,12 +143,12 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aIndice.TituloPag/]</title>
+	<title>[aIndice.tituloPag/]</title>
 </head>
 
 <body>
 
-<h1>Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]</h1>
+<h1>Pantalla índice de [aIndice.tiene_asociada.nombreEntidad/] Rol [aRol.nombreRol/]</h1>
 
 [if(aIndice.muestra->size() > 0)]
 [generateRRSS(aIndice)/]
@@ -160,9 +160,9 @@
 <ol>
 	<li><a href="../index.html">Salir al menú</a></li>
 	[for (pgDetalles: PagLeer | aIndice.tiene_asociada.asociada->selectByType(PagLeer))]
-	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/]">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.TituloPag/]</a></li>
+	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/]">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.tituloPag/]</a></li>
 	[/for]
-	<li><a href="index_[aRol.NombreRol/].html">Volver al Rol</a></li>
+	<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
 </ol>
 </footer>
 
@@ -175,7 +175,7 @@
 
 
 [template public generatePage (aRol : Rol, aDetalle : PagLeer)]
-[file (aRol.NombreRol+'/detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/detalles_'+aDetalle.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -183,7 +183,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aDetalle.TituloPag/]</title>
+	<title>[aDetalle.tituloPag/]</title>
 </head>
 
 <body>
@@ -198,10 +198,10 @@
 
 <ul>
 [for (c: CaracteristicaEntidad | aDetalle.tiene_asociada.caracteristica)]
-	<li>[c.nombreCaract/]: // ([c.TDato/])</li>
+	<li>[c.nombreCaract/]: // ([c.tipoDato/])</li>
 [/for]
 [for (e: Entidad| aDetalle.tiene_asociada.relacionada)]
-	<li>Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
+	<li>Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
 [/for]
 </ul>
 
@@ -213,7 +213,7 @@
 	[for (e: Entidad | aDetalle.tiene_asociada.relacionada)]
 	<li>Consultar detalles de [e.nombreEntidad/]</li>
 	[/for]
-	<li><a href="index_[aRol.NombreRol/].html">Volver al Rol</a></li>
+	<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
 </ol>
 </footer>
 
@@ -224,7 +224,7 @@
 [/template]
 
 [template public generatePage (aRol : Rol, aBorrar : PagBorrar)]
-[file (aRol.NombreRol+'/borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/borrar_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -232,7 +232,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aBorrar.TituloPag/]</title>
+	<title>[aBorrar.tituloPag/]</title>
 </head>
 
 <body>
@@ -246,7 +246,7 @@
 <p>Listado de : [aBorrar.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
-	<li><a href="index_[aRol.NombreRol/].html">Salir al Rol</a></li>
+	<li><a href="index_[aRol.nombreRol/].html">Salir al Rol</a></li>
 </ol>
 
 </body>
@@ -257,7 +257,7 @@
 
 
 [template public generateConfirmacion (aRol : Rol, aBorrar : PagCRUD)]
-[file (aRol.NombreRol+'/borradoConfirmacion_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/borradoConfirmacion_'+aBorrar.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -265,12 +265,12 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aBorrar.TituloPag/]</title>
+	<title>[aBorrar.tituloPag/]</title>
 </head>
 
 <body>
 
-<h1>Pantalla de borrado de la asignatura [aBorrar.tiene_asociada.ID_Entidad/] </h1>
+<h1>Pantalla de borrado de la asignatura [aBorrar.tiene_asociada.id_Entidad/] </h1>
 
 [if(aBorrar.muestra->size() > 0)]
 [generateRRSS(aBorrar)/]
@@ -282,9 +282,9 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <footer>
 <ul>
 	[for (e: Entidad | aBorrar.tiene_asociada.relacionada)]
-	<li>Id_[e.nombreEntidad/]: [e.ID_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
+	<li>Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
 	[/for]
-	<li><a href="index_[aRol.NombreRol/].html">Salir al Rol</a></li>
+	<li><a href="index_[aRol.nombreRol/].html">Salir al Rol</a></li>
 </ul>
 </footer>
 
@@ -295,7 +295,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 [/template]
 
 [template public generatePage (aRol : Rol, aCrear : PagCrear)]
-[file (aRol.NombreRol+'/crear_'+aCrear.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/crear_'+aCrear.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -303,7 +303,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aCrear.TituloPag/]</title>
+	<title>[aCrear.tituloPag/]</title>
 </head>
 
 <body>
@@ -327,7 +327,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 
 <ol>
 	<li>Aceptar->Crear la asignatura->Salir al Rol</li>
-	<li><a href="index_[aRol.NombreRol/].html">Cancelar->Salir al Rol</a></li>
+	<li><a href="index_[aRol.nombreRol/].html">Cancelar->Salir al Rol</a></li>
 </ol>
 </footer>
 
@@ -338,7 +338,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 [/template]
 
 [template public generatePage (aRol : Rol, aCRUD : CRUD)]
-[file (aRol.NombreRol+'/CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/CRUD_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -346,7 +346,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aCRUD.TituloPag/]</title>
+	<title>[aCRUD.tituloPag/]</title>
 </head>
 
 <body>
@@ -361,7 +361,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <p>Listado de [aCRUD.tiene_asociada.nombreEntidad/]</p>
 
 <ol>
-	<li><a href="index_[aRol.NombreRol/].html">Salir al Rol</a></li>
+	<li><a href="index_[aRol.nombreRol/].html">Salir al Rol</a></li>
 	[generateIndexCRUD(aRol, aCRUD)/]
 	<li><a href="Indice_[aCRUD.tiene_asociada.nombreEntidad/].html">Listar</a></li>
 	[generateCreateCRUD(aRol, aCRUD)/]
@@ -379,38 +379,38 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 
 
 [template public generatePage (aRol : Rol, aPagina : PaginasNormales)]
-[file (aRol.NombreRol+'/'+aPagina.TituloPag+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/'+aPagina.tituloPag+'.html', false, 'UTF-8')]
 	<!DOCTYPE html>
 <html lang=es>
 
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aPagina.TituloPag/]</title>
+	<title>[aPagina.tituloPag/]</title>
 </head>
 
 <body>
 
-<h1>Pantalla con contenido: [aPagina.TituloPag/] </h1>
+<h1>Pantalla con contenido: [aPagina.tituloPag/] </h1>
 
 	[if(aPagina.muestra->size() > 0)]
 	[generateRRSS(aPagina)/]
 	[/if]
 
-	[if(aPagina.Multimedia->size()>0)]
+	[if(aPagina.multimedia->size()>0)]
 	<p>Contenido multimedia:<br><br>
-	[aPagina.oclAsType(PaginasNormales).Multimedia/]</p>
+	[aPagina.oclAsType(PaginasNormales).multimedia/]</p>
 	[/if]
 
-	[if(aPagina.Texto->size()>0)]
+	[if(aPagina.texto->size()>0)]
 	<p>Contenido texto:<br><br>
-	[aPagina.oclAsType(PaginasNormales).Texto/]</p>
+	[aPagina.oclAsType(PaginasNormales).texto/]</p>
 	[/if]
 
 	<footer>
 
 	<ul>
-		<li><a href="index_[aRol.NombreRol/].html">Volver al Rol</a></li>
+		<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
 	</ul>
 	
 	</footer>
@@ -421,7 +421,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 [/template]
 
 [template public generateIndexCRUD (aRol : Rol, aCRUD : CRUD)]
-[file (aRol.NombreRol+'/indice_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/indice_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -429,12 +429,12 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aCRUD.TituloPag/]</title>
+	<title>[aCRUD.tituloPag/]</title>
 </head>
 
 <body>
 
-<h1>Pantalla índice de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.NombreRol/]</h1>
+<h1>Pantalla índice de [aCRUD.tiene_asociada.nombreEntidad/] Rol [aRol.nombreRol/]</h1>
 
 [if(aCRUD.muestra->size() > 0)]
 [generateRRSS(aCRUD)/]
@@ -447,9 +447,9 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <ol>
 	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Salir al menú CRUD</a></li>
 	[for (pgDetalles: PagLeer | aCRUD.tiene_asociada.asociada->selectByType(PagLeer))]
-	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/]">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.TituloPag/]</a></li>
+	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/]">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.tituloPag/]</a></li>
 	[/for]
-	<li><a href="index_[aRol.NombreRol/].html">Volver al Rol</a></li>
+	<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
 </ol>
 </footer>
 
@@ -460,7 +460,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 [/template]
 
 [template public generateCreateCRUD (aRol : Rol, aCRUD : CRUD)]
-[file (aRol.NombreRol+'/crear_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/crear_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -468,7 +468,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aCRUD.TituloPag/]</title>
+	<title>[aCRUD.tituloPag/]</title>
 </head>
 
 <body>
@@ -503,7 +503,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 [/template]
 
 [template public generateRemoveCRUD (aRol : Rol, aCRUD : CRUD)]
-[file (aRol.NombreRol+'/borrar_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+[file (aRol.nombreRol+'/borrar_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
 
 <!DOCTYPE html>
 <html lang=es>
@@ -511,7 +511,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../stylesheet.css"/>
-	<title>[aCRUD.TituloPag/]</title>
+	<title>[aCRUD.tituloPag/]</title>
 </head>
 
 <body>
