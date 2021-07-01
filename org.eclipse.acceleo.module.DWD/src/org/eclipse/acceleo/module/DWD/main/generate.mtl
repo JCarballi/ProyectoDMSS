@@ -91,7 +91,7 @@
 <footer>
 <ol type="1">
 	<li><a href="../index.html">Salir</li>
-[for (p: Pagina | aRol.tiene_acceso->closure(accede))]
+[for (p: Pagina | aRol.tiene_acceso->closure(accede)->union(self.tiene_acceso))]
 
 	[if(p.oclIsTypeOf(PaginasNormales))]
 	<li><a href="[p.tituloPag/].html">[p.tituloPag/]</a></li>
@@ -104,6 +104,9 @@
 </ol>
 </footer>
 
+[for(e : Entidad | aRol.tiene_acceso->closure(accede)->union(self.tiene_acceso)->selectByKind(PagCRUD).tiene_asociada->closure(relacionada)->union(aRol.tiene_acceso->closure(accede)->union(self.tiene_acceso)->selectByKind(PagCRUD).tiene_asociada->closure(esta_relacionada))->asSet())]
+[generateDetallesAsociada(aRol, e)/]
+[/for]
 
 </body>
 </html>
@@ -121,6 +124,7 @@
 	[/if]
 	[if (aPagina.oclIsKindOf(PagBorrar))]
 		[generatePage(aRol, aPagina.oclAsType(PagBorrar))/] 
+		[generateConfirmacion(aRol, aPagina.oclAsType(PagCRUD))/]
 		<li><a href="borrar_[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/].html">[aPagina.oclAsType(PagCRUD).tiene_asociada.nombreEntidad/] [aPagina.tituloPag/]</a></li>
 	[/if]
 	[if (aPagina.oclIsKindOf(PagCrear))]
@@ -160,7 +164,7 @@
 <ol>
 	<li><a href="../index.html">Salir al menú</a></li>
 	[for (pgDetalles: PagLeer | aIndice.tiene_asociada.asociada->selectByType(PagLeer))]
-	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/]">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.tituloPag/]</a></li>
+	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/].html">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.tituloPag/]</a></li>
 	[/for]
 	<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
 </ol>
@@ -200,7 +204,7 @@
 [for (c: CaracteristicaEntidad | aDetalle.tiene_asociada.caracteristica)]
 	<li>[c.nombreCaract/]: // ([c.tipoDato/])</li>
 [/for]
-[for (e: Entidad| aDetalle.tiene_asociada.relacionada)]
+[for (e: Entidad| aDetalle.tiene_asociada->closure(relacionada)->union(aDetalle.tiene_asociada->closure(esta_relacionada))->excluding(self)->asSet())]
 	<li>Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
 [/for]
 </ul>
@@ -209,9 +213,13 @@
 <p>Listado de opciones:</p>
 
 <ol>
+	[if(aDetalle.tiene_asociada.asociada->selectByType(PagBorrar)->size()>0)]
+	<li><a href="borradoConfirmacion_[aDetalle.tiene_asociada.nombreEntidad/].html">Borrar [aDetalle.tiene_asociada.nombreEntidad/]</a></li>
+	[else]
 	<li>Borrar [aDetalle.tiene_asociada.nombreEntidad/]</li>
-	[for (e: Entidad | aDetalle.tiene_asociada.relacionada)]
-	<li>Consultar detalles de [e.nombreEntidad/]</li>
+	[/if]
+	[for (e: Entidad | aDetalle.tiene_asociada->closure(relacionada)->union(aDetalle.tiene_asociada->closure(esta_relacionada))->excluding(self)->asSet())]
+	<li><a href="detalles_[e.nombreEntidad/].html">Consultar detalles de [e.nombreEntidad/]</li>
 	[/for]
 	<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
 </ol>
@@ -270,18 +278,18 @@
 
 <body>
 
-<h1>Pantalla de borrado de la asignatura [aBorrar.tiene_asociada.id_Entidad/] </h1>
+<h1>Pantalla de borrado de [aBorrar.tiene_asociada.nombreEntidad/] con ID [aBorrar.tiene_asociada.id_Entidad/] </h1>
 
 [if(aBorrar.muestra->size() > 0)]
 [generateRRSS(aBorrar)/]
 [/if]
 
-<p>>>Asignatura borrada!!<br><br>
+<p>>>[aBorrar.tiene_asociada.nombreEntidad/] borrada!!<br><br>
 Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.tiene_asociada.nombreEntidad/]</p>
 
 <footer>
 <ul>
-	[for (e: Entidad | aBorrar.tiene_asociada.relacionada)]
+	[for (e: Entidad| aBorrar.tiene_asociada->closure(relacionada)->union(aBorrar.tiene_asociada->closure(esta_relacionada))->excluding(self)->asSet())]
 	<li>Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
 	[/for]
 	<li><a href="index_[aRol.nombreRol/].html">Salir al Rol</a></li>
@@ -308,7 +316,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 
 <body>
 
-<h1>Pantalla de detalle de [aCrear.tiene_asociada.nombreEntidad/] </h1>
+<h1>Pantalla de creación de [aCrear.tiene_asociada.nombreEntidad/] </h1>
 
 [if(aCrear.muestra->size() > 0)]
 [generateRRSS(aCrear)/]
@@ -326,7 +334,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <p>Listado de opciones:</p>
 
 <ol>
-	<li>Aceptar->Crear la asignatura->Salir al Rol</li>
+	<li><a href="index_[aRol.nombreRol/].html">Aceptar->Crear [aCrear.tiene_asociada.nombreEntidad/]->Salir al Rol</a></li>
 	<li><a href="index_[aRol.nombreRol/].html">Cancelar->Salir al Rol</a></li>
 </ol>
 </footer>
@@ -367,7 +375,10 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 	[generateCreateCRUD(aRol, aCRUD)/]
 	<li><a href="Crear_[aCRUD.tiene_asociada.nombreEntidad/].html">Crear nuevo elemento</a></li>
 	[generateRemoveCRUD(aRol, aCRUD)/]
+	[generateConfirmacion(aRol, aCRUD)/]
 	<li><a href="Borrar_[aCRUD.tiene_asociada.nombreEntidad/].html">Borrar un elemento</a></li>
+	[generateDetailsCRUD(aRol, aCRUD)/]
+	<li><a href="Detalles_[aCRUD.tiene_asociada.nombreEntidad/].html">Detalles de un elemento</a></li>
 </ol>
 </footer>
 
@@ -398,13 +409,17 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 	[/if]
 
 	[if(aPagina.multimedia->size()>0)]
-	<p>Contenido multimedia:<br><br>
-	[aPagina.oclAsType(PaginasNormales).multimedia/]</p>
+	<p>Contenido multimedia:</p>
+	[for(cadena : String | aPagina.oclAsType(PaginasNormales).multimedia)]
+	<img src="[cadena/]" alt="Imagen [aPagina.oclAsType(PaginasNormales).multimedia->indexOf(cadena)/]">
+	[/for]
 	[/if]
 
 	[if(aPagina.texto->size()>0)]
-	<p>Contenido texto:<br><br>
-	[aPagina.oclAsType(PaginasNormales).texto/]</p>
+	<p>Contenido texto:</p>
+	[for(texto : String | aPagina.oclAsType(PaginasNormales).texto)]
+	<p>[texto/]</p>
+	[/for]
 	[/if]
 
 	<footer>
@@ -447,7 +462,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <ol>
 	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Salir al menú CRUD</a></li>
 	[for (pgDetalles: PagLeer | aCRUD.tiene_asociada.asociada->selectByType(PagLeer))]
-	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/]">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.tituloPag/]</a></li>
+	<li><a href="detalles_[pgDetalles.tiene_asociada.nombreEntidad/].html">[pgDetalles.tiene_asociada.nombreEntidad/] [pgDetalles.tituloPag/]</a></li>
 	[/for]
 	<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
 </ol>
@@ -473,7 +488,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 
 <body>
 
-<h1>Pantalla de detalle de [aCRUD.tiene_asociada.nombreEntidad/] </h1>
+<h1>Pantalla de creación de [aCRUD.tiene_asociada.nombreEntidad/] </h1>
 
 [if(aCRUD.muestra->size() > 0)]
 [generateRRSS(aCRUD)/]
@@ -491,7 +506,7 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 <p>Listado de opciones:</p>
 
 <ol>
-	<li>Aceptar->Crear la asignatura->Salir al Rol</li>
+	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Aceptar->Crear la [aCRUD.tiene_asociada.nombreEntidad/]->Salir al menú CRUD</a></li>
 	<li><a href="CRUD_[aCRUD.tiene_asociada.nombreEntidad/].html">Cancelar->Salir al menú CRUD</a></li>
 </ol>
 </footer>
@@ -538,6 +553,57 @@ Nota: No se eliminan los datos correspondientes a las referencias de [aBorrar.ti
 [/file]
 [/template]
 
+[template public generateDetailsCRUD (aRol : Rol, aCRUD : CRUD)]
+[file (aRol.nombreRol+'/detalles_'+aCRUD.tiene_asociada.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html lang=es>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../stylesheet.css"/>
+	<title>[aCRUD.tituloPag/]</title>
+</head>
+
+<body>
+
+<h1>Pantalla de detalle de [aCRUD.tiene_asociada.nombreEntidad/] </h1>
+
+[if(aCRUD.muestra->size() > 0)]
+[generateRRSS(aCRUD)/]
+[/if]
+
+<p>Campos:</p>
+
+<ul>
+[for (c: CaracteristicaEntidad | aCRUD.tiene_asociada.caracteristica)]
+	<li>[c.nombreCaract/]: // ([c.tipoDato/])</li>
+[/for]
+[for (e: Entidad| aCRUD.tiene_asociada->closure(relacionada)->union(aCRUD.tiene_asociada->closure(esta_relacionada))->excluding(self)->asSet())]
+	<li>Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
+[/for]
+</ul>
+
+<footer>
+<p>Listado de opciones:</p>
+
+<ol>
+	<li><a href="borradoConfirmacion_[aCRUD.tiene_asociada.nombreEntidad/].html">Borrar [aCRUD.tiene_asociada.nombreEntidad/]</a></li>
+	[for (e: Entidad| aCRUD.tiene_asociada->closure(relacionada)->union(aCRUD.tiene_asociada->closure(esta_relacionada))->excluding(self)->asSet())]
+	<li><a href="detalles_[e.nombreEntidad/].html">Consultar detalles de [e.nombreEntidad/]</a></li>
+	[/for]
+	<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
+</ol>
+</footer>
+
+</body>
+</html>
+
+
+[/file]
+[/template]
+
+
 [template public generateCSS (aDataWebDesk : DataWebDesk)]
 [file('stylesheet.css', false, 'UTF-8')]
 
@@ -577,6 +643,55 @@ ol{
 ul{
  margin : 5px;
 }
+
+[/file]
+[/template]
+
+[template public generateDetallesAsociada (aRol : Rol, aEntidad : Entidad)]
+[file (aRol.nombreRol+'/detalles_'+aEntidad.nombreEntidad+'.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html lang=es>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../stylesheet.css"/>
+	<title>Detalles [aEntidad.nombreEntidad/]</title>
+</head>
+
+<body>
+
+<h1>Pantalla de detalle de [aEntidad.nombreEntidad/] </h1>
+
+<p>Campos:</p>
+
+<ul>
+[for (c: CaracteristicaEntidad | aEntidad.caracteristica)]
+	<li>[c.nombreCaract/]: // ([c.tipoDato/])</li>
+[/for]
+[for (e: Entidad| aEntidad.relacionada)]
+	<li>Id_[e.nombreEntidad/]: [e.id_Entidad/] // Referencia a la entidad [e.nombreEntidad/]</li>
+[/for]
+</ul>
+
+<footer>
+<p>Listado de opciones:</p>
+
+<ol>
+	[if(aEntidad.asociada->selectByType(PagBorrar)->size()>0)]
+	<li><a href="borradoConfirmacion_[aEntidad.nombreEntidad/].html">Borrar [aEntidad.nombreEntidad/]</a></li>
+	[else]
+	<li>Borrar [aEntidad.nombreEntidad/]</li>
+	[/if]
+	[for (e: Entidad | aEntidad.relacionada)]
+	<li><a href="detalles_[e.nombreEntidad/].html">Consultar detalles de [e.nombreEntidad/]</li>
+	[/for]
+	<li><a href="index_[aRol.nombreRol/].html">Volver al Rol</a></li>
+</ol>
+</footer>
+
+</body>
+</html>
 
 [/file]
 [/template]
